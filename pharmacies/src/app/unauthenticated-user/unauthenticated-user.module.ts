@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 @NgModule({
   declarations: [LandingPageComponent, LoginPageComponent],
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatRadioModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ]
 })
 export class UnauthenticatedUserModule { }
