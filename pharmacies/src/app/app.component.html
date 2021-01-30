@@ -1,4 +1,10 @@
 <mat-toolbar color="primary"> 
+  <span style="width: 10px;"></span>
+
+  <button mat-icon-button routerLink="../">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span font-color="white" style="margin-left: 10px;">PharmCenter</span>
   <span style="width: 20px;"></span>
 
   <span style="flex: 1 1 auto;" name="dermatologist">
@@ -19,7 +25,16 @@
   <span style="flex: 1 1 auto;" name="system-admin">
   </span>
 
-  <span style="flex: 1 1 auto;" name="unauthenticated-user">
+  <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed">
+    <button style="float: right;" mat-button routerLink="../login" *ngIf="!this.authService.isAuthenticated()">
+      Log In
+    </button>
+    <button style="float: right;" mat-button routerLink="../register" *ngIf="!this.authService.isAuthenticated()">
+      Register
+    </button>
+    <button style="float: right;" mat-button routerLink="../" *ngIf="this.authService.isAuthenticated()" (click) = "this.authService.logOut()">
+      Log Out
+    </button>
   </span>
 </mat-toolbar>
 <router-outlet></router-outlet>
