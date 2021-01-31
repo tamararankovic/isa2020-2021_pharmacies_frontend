@@ -13,7 +13,7 @@ export class AuthService {
   public loginPageDisplayed = false;
 
   login(user : UserLoginDTO) {
-    return this._http.post(Constants.loginUrl, user, {responseType: 'text'});
+    return this._http.post(Constants.loginUrl, user, {responseType: 'text', withCredentials: true});
   }
 
   setRole(role : string) {
@@ -30,6 +30,8 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('role');
-    this._http.post(Constants.loginUrl, null);
+    this._http.post(Constants.logoutUrl, null, {withCredentials: true}).subscribe(
+      (val) => console.log("uspesno")
+    )
   }
 }
