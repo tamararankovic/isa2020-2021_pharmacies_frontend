@@ -18,6 +18,12 @@ export class Constants {
     //dermatologist profile
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";
 
+    //dermatologist personal info update
+    public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
+
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
+
+    //pharmacist personal info update
+    public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
 }

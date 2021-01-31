@@ -2,50 +2,50 @@
 <mat-card style="width: 35%; margin: 0 auto;">
     <form style="padding: 30px;">
 
-        <mat-form-field class="example-full-width">
-            <label class="static-label">Name: </label>
-            <label class="normal-label" (click)="changeName()">{{dto.name}}</label>
-            <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeName()">Change Name</button>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Name: </label>
+            <label matInput class="normal-label" name="imelabela1"(click)="changeName()">{{dto.name}}</label>
+            <button type="button" mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeName()">Change Name</button>
+        </div>
+        <mat-form-field class="example-full-width"  *ngIf="nameChange">
+            <input matInput placeholder="New name" id="newName" name="imetekst" [(ngModel)]="name">
         </mat-form-field>
-        <mat-form-field class="example-full-width" *ngIf="nameChange">
-            <input matInput placeholder="New name">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" *ngIf="nameChange">
+        <div class="example-full-width" *ngIf="nameChange" style="display: block;">
             <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveName()">Save</button>
-            <button mat-raised-button style="float: right; width: 150px; color: gray;" (click)="saveName()">Cancel</button>
-        </mat-form-field>
+            <button mat-raised-button style="float: right; width: 150px; color: gray;" (click)="cancelName()">Cancel</button>
+        </div>
 
-        <mat-form-field class="example-full-width">
-            <label class="static-label">Surname: </label>
-            <label class="normal-label">{{dto.surname}}</label>
+        <div class="example-full-width" style="padding-bottom: 20x; padding-top: 40px; display:inline-block">
+            <label class="static-label" name="prezimelabela">Surname: </label>
+            <label class="normal-label" name="prezimelabela2" (click)="changeSurname()">{{dto.surname}}</label>
             <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeSurname()">Change Surname</button>
-        </mat-form-field>
+        </div>
         <mat-form-field class="example-full-width" *ngIf="surnameChange">
-            <input matInput placeholder="New surname" >
+            <input matInput placeholder="New surname" id="newSurname" name="prezimetekst" [(ngModel)]="surname">
         </mat-form-field>
-        <mat-form-field class="example-full-width" *ngIf="surnameChange">
+        <div class="example-full-width" *ngIf="surnameChange" style="display: block;">
             <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveSurname()">Save</button>
-            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="saveSurname()">Cancel</button>
-        </mat-form-field>
+            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="cancelSurname()">Cancel</button>
+        </div>
 
-        <mat-form-field class="example-full-width">
-            <label class="static-label">Email: </label>
-            <label class="normal-label">{{dto.email}}</label>
+        <div class="example-full-width" style="padding-bottom: 20px; padding-top: 40px; display:inline-block">
+            <label class="static-label" name="emaillabela">Email: </label>
+            <label class="normal-label" name="emaillabela2" (click)="changeEmail()">{{dto.email}}</label>
             <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeEmail()">Change Email</button>
-        </mat-form-field>
+        </div>
         <mat-form-field class="example-full-width" *ngIf="emailChange">
-            <input matInput placeholder="New email" >
+            <input matInput placeholder="New email" id="newEmail" name="emailtekst" [(ngModel)]="email" style="font-size: 16px;">
         </mat-form-field>
-        <mat-form-field class="example-full-width" *ngIf="emailChange">
+        <div class="example-full-width" *ngIf="emailChange" style="display: block;">
             <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveEmail()">Save</button>
-            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="saveEmail()">Cancel</button>
-        </mat-form-field>
+            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="cancelEmail()">Cancel</button>
+        </div>
 
 
         <div style="height: 60px;"></div>
-        <mat-form-field class="example-full-width">
+        <div class="example-full-width" style="padding-bottom: 10px;">
             <button mat-raised-button style="width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(93, 147, 235);">Change Password</button>
             <button mat-raised-button style="float: right; width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(211, 141, 147);">Calendar</button>
-        </mat-form-field>
+        </div>
     </form>
 </mat-card>

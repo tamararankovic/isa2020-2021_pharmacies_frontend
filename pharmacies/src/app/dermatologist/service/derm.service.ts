@@ -14,4 +14,8 @@ export class DermService {
   getDermatologist() : Observable<DermDTO> {
     return this._http.get<DermDTO>(Constants.dermatologistProfileUrl, {withCredentials: true});
   }
+
+  updateDermatologist(dto : DermDTO) : Observable<DermDTO>{
+    return this._http.post<DermDTO>(Constants.dermatologistUpdateUrl, dto, {withCredentials: true});
+  }
 }

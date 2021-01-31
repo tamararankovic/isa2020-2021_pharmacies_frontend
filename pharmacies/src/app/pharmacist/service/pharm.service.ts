@@ -14,4 +14,8 @@ export class PharmService {
   getPharmacist() : Observable<PharmDTO> {
     return this._http.get<PharmDTO>(Constants.pharmacistProfileUrl, {withCredentials: true});
   }
+
+  updatePharmacist(dto : PharmDTO) : Observable<PharmDTO>{
+    return this._http.post<PharmDTO>(Constants.pharmacistUpdateUrl, dto, {withCredentials: true});
+  }
 }
