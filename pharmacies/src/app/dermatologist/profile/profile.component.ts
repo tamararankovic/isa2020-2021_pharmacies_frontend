@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermDTO } from '../DTOs/derm-dto';
+import { PasswordDTO } from '../DTOs/password-dto';
 import { DermService } from '../service/derm.service';
 
 @Component({
@@ -14,9 +15,14 @@ export class ProfileComponent implements OnInit {
   name = "";
   surname = "";
   email = "";
+  password = "";
+  newPassword = "";
+  newPasswordRepeat = "";
+  hide = true;
   nameChange = false;
   surnameChange = false;
   emailChange = false;
+  passwordChange = false;
   dermData : DermDTO = new DermDTO("Tamara", "Rankovic", "email3@gmail.com");
 
   constructor(private dermService : DermService, private _snackBar: MatSnackBar) { }
@@ -100,6 +106,31 @@ export class ProfileComponent implements OnInit {
       }
     );
     this.emailChange = false;
+  }
+
+  changePassword(){
+    this.passwordChange = true;
+  }
+
+  cancelPassword(){
+    this.passwordChange = false;
+  }
+  savePassword(){
+    if(this.newPassword != this.newPasswordRepeat) this.openSnackBar("Please make sure your passwords match.", "Okay");
+    else if(this.password == "" || this.newPassword == "" || this.newPasswordRepeat == "") this.openSnackBar("Password cannot be empty.", "Okay");
+    else if(this.newPassword.length < 8) this.openSnackBar("Please enter at least 8 characters.", "Okay");
+    else{
+      var dto : PasswordDTO = new PasswordDTO(this.password, this.newPassword, this.newPasswordRepeat);
+      this.dermService.changePassword(dto).subscribe(
+        val => {
+          this.openSnackBar("Password changed.", "Okay");
+          this.passwordChange = false;
+        },
+        error => {
+          this.openSnackBar(error.error, "Okay");
+        }
+      );
+    }
   }
 
   openSnackBar(message: string, action: string) {

@@ -18,6 +18,9 @@ export class Constants {
     //dermatologist profile
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";
 
+    //dermatologist change password
+    public static dermatologistPasswordUrl = Constants.baseUrl + "/derm/changePassword";
+
     //dermatologist personal info update
     public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
 
@@ -26,4 +29,7 @@ export class Constants {
 
     //pharmacist personal info update
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
+
+    //pharmacist change password
+    public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
 }
