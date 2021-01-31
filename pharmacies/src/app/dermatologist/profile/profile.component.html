@@ -1,0 +1,51 @@
+<h2 style="text-align: center; margin-top: 30px;">Dermatologist Profile</h2>
+<mat-card style="width: 35%; margin: 0 auto;">
+    <form style="padding: 30px;">
+
+        <mat-form-field class="example-full-width">
+            <label class="static-label">Name: </label>
+            <label class="normal-label" (click)="changeName()">{{dto.name}}</label>
+            <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeName()">Change Name</button>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="nameChange">
+            <input matInput placeholder="New name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="nameChange">
+            <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveName()">Save</button>
+            <button mat-raised-button style="float: right; width: 150px; color: gray;" (click)="saveName()">Cancel</button>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label class="static-label">Surname: </label>
+            <label class="normal-label">{{dto.surname}}</label>
+            <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeSurname()">Change Surname</button>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="surnameChange">
+            <input matInput placeholder="New surname" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="surnameChange">
+            <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveSurname()">Save</button>
+            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="saveSurname()">Cancel</button>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label class="static-label">Email: </label>
+            <label class="normal-label">{{dto.email}}</label>
+            <button mat-raised-button style="float: right; width: 150px; color: rgb(93, 147, 235);" (click)="changeEmail()">Change Email</button>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="emailChange">
+            <input matInput placeholder="New email" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="emailChange">
+            <button mat-raised-button style="float: left; width: 150px; color: rgb(93, 147, 235);" (click)="saveEmail()">Save</button>
+            <button mat-raised-button style="float: right; width: 150px; color: gray" (click)="saveEmail()">Cancel</button>
+        </mat-form-field>
+
+
+        <div style="height: 60px;"></div>
+        <mat-form-field class="example-full-width">
+            <button mat-raised-button style="width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(93, 147, 235);">Change Password</button>
+            <button mat-raised-button style="float: right; width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(211, 141, 147);">Calendar</button>
+        </mat-form-field>
+    </form>
+</mat-card>

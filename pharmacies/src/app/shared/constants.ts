@@ -14,4 +14,10 @@ export class Constants {
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
+
+    //dermatologist profile
+    public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";
+
+    //pharmacist profile
+    public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
 }
