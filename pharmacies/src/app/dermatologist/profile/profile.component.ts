@@ -125,6 +125,9 @@ export class ProfileComponent implements OnInit {
         val => {
           this.openSnackBar("Password changed.", "Okay");
           this.passwordChange = false;
+          this.password = "";
+          this.newPassword = "";
+          this.newPasswordRepeat = "";
         },
         error => {
           this.openSnackBar(error.error, "Okay");
