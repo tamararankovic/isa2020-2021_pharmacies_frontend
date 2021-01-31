@@ -14,4 +14,7 @@ export class Constants {
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
+
+    //patient
+    public static getPharmacyInfoUrl = Constants.baseUrl + "/pharmacy/info/";
 }
