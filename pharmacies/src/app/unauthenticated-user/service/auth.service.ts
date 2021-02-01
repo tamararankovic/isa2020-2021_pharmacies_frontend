@@ -31,7 +31,7 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('role');
     this._http.post(Constants.logoutUrl, null, {withCredentials: true}).subscribe(
-      val => console.log("uspesno")
-    );
+      (val) => console.log("uspesno")
+    )
   }
 }

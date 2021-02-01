@@ -1,0 +1,132 @@
+<h1 style="text-align: center; margin-top: 2%;"><b>Pharmacy profile</b></h1>
+<div style="width: 100%; height: 100%;">
+    <span style="width: 50%; height: 100%; float: left;">
+        <mat-card class="mat-elevation-z8" style="margin-top: 5%; margin-left: 10%; width: 80%; height: max-content; padding-top: 5%;">
+            <div style="font-size: large; margin-bottom: 7%; margin-left: 10%; margin-right: 10%;">
+                <label style="color: rgb(93,147,235);">Name: </label>
+                <label style="word-wrap: break-word;"> {{data.name}}</label>
+            </div>
+            <div style="font-size: large; margin-bottom: 7%; margin-left: 10%; margin-right: 10%;">
+                <label style="color: rgb(93,147,235);">Description: </label>
+                <label style="word-wrap: break-word;"> {{data.description}}</label>
+            </div>
+            <div style="font-size: large; margin-bottom: 7%; margin-left: 10%; margin-right: 10%;">
+                <label style="color: rgb(93,147,235);">Address: </label>
+                <label style="word-wrap: break-word;"> {{data.address}}</label>
+            </div>
+            <div style="font-size: large; margin-bottom: 5%; margin-left: 10%; margin-right: 10%;">
+                <label style="color: rgb(93,147,235);">Average rating: </label>
+                <label style="word-wrap: break-word;"> {{data.avgRating}}</label>
+            </div>
+        </mat-card>
+        <div style="background-color: rgb(93,147,235); margin-top: 5%; margin-left: 10%; width: 85%; height: 35%;">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" style="height: 100%; width: 100%;">
+                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+        </div>
+    </span>
+    <span style="width: 50%; height: 100%; float: right;">
+        <div style="margin-top: 5%; margin-left: 5%; margin-right: 10%;">
+            <button mat-raised-button color="primary" style="width: 100%; padding-top: 3%; padding-bottom: 3%;" (click)="toggleMedicineList()">Show medicines</button>
+            <table mat-table [dataSource]="data.medicines" style="margin-top: 5%; width: 100%;" *ngIf="showMedicines">
+                <ng-container matColumnDef="Name">
+                  <th mat-header-cell *matHeaderCellDef> NAME </th>
+                  <td mat-cell *matCellDef="let element"> {{element}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="Reserve">
+                  <th mat-header-cell *matHeaderCellDef> RESERVE </th>
+                  <td mat-cell *matCellDef="let element" style="width: 30%;"> 
+                    <button mat-stroked-button style="color: rgb(22, 155, 189);">Reserve</button>                                      
+                  </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsMedicine"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsMedicine;"></tr>
+            </table>
+
+            <button mat-raised-button color="primary" style="width: 100%; padding-top: 3%; padding-bottom: 3%; margin-top: 5%;" (click)="togglePharmacistList()">Show pharmacists</button>
+            <table mat-table [dataSource]="data.pharmacists" style="margin-top: 5%; width: 100%;" *ngIf="showPharmacists">
+                <ng-container matColumnDef="Name">
+                  <th mat-header-cell *matHeaderCellDef> FULL NAME </th>
+                  <td mat-cell *matCellDef="let element"> {{element}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPharmacist"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsPharmacist"></tr>
+            </table>
+
+            <button mat-raised-button color="primary" style="width: 100%; padding-top: 3%; padding-bottom: 3%; margin-top: 5%;" (click)="toggleDermatologistList()">Show dermatologists</button>
+            <table mat-table [dataSource]="data.dermatologists" style="margin-top: 5%; width: 100%;" *ngIf="showDermatologists">
+                <ng-container matColumnDef="Name">
+                  <th mat-header-cell *matHeaderCellDef> FULL NAME </th>
+                  <td mat-cell *matCellDef="let element"> {{element}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsDermatologist"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsDermatologist;"></tr>
+            </table>
+
+            <button mat-raised-button color="primary" style="width: 100%; padding-top: 3%; padding-bottom: 3%; margin-top: 5%; margin-bottom: 5%;" (click)="toggleExaminationList()">Show dermatologits examinations</button>
+            <table mat-table [dataSource]="data.examinations" style="margin-bottom: 5%; width: 100%;" *ngIf="showExaminations">
+                <ng-container matColumnDef="Date">
+                  <th mat-header-cell *matHeaderCellDef> DATE </th>
+                  <td mat-cell *matCellDef="let element"> {{element.startDateTime | date : longDate}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="StartTime">
+                    <th mat-header-cell *matHeaderCellDef> START TIME </th>
+                    <td mat-cell *matCellDef="let element"> {{element.startDateTime | date : "shortTime"}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Duration">
+                    <th mat-header-cell *matHeaderCellDef> DURATION </th>
+                    <td mat-cell *matCellDef="let element"> {{element.duration}} mins </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Dermatologist">
+                    <th mat-header-cell *matHeaderCellDef> DERMATOLOGIST </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dermatologist}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Price">
+                    <th mat-header-cell *matHeaderCellDef> PRICE </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="Schedule">
+                  <th mat-header-cell *matHeaderCellDef> SCHEDULE </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    <button mat-stroked-button style="color: rgb(22, 155, 189);">Schedule</button>                                      
+                  </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsExamination"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsExamination;"></tr>
+            </table>
+
+            <div style="height: 30%; width: 100%;">
+                <mat-card class="mat-elevation-z8" style="width: 25%; display: inline-block;">
+                    <mat-card-content style="text-align: center; width: 100%; height: 100%;">
+                        <img src="assets/eprescription.png">
+                        <p>Check medicine availability via ePrescription</p>
+                    </mat-card-content>                    
+                </mat-card>
+
+                <mat-card class="mat-elevation-z8" style="width: 25%; margin-left: 4%; display: inline-block;">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/pharmacist.png">
+                        <p style="width: 80%; margin-left: 10%;">Schedule consultations with a pharmacist</p>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-card class="mat-elevation-z8" style="width: 25%; margin-left: 4%; display: inline-block;">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/subscribe.png">
+                        <p>Subscribe to pharmacy's deals and promotions</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </span>
+</div>
