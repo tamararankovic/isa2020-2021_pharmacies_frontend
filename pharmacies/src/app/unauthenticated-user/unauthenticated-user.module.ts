@@ -11,10 +11,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar'; 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegisterPageComponent } from './register-page/register-page.component'; 
 
 @NgModule({
-  declarations: [LandingPageComponent, LoginPageComponent],
+  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent],
   imports: [
     CommonModule,
     UnauthenticatedUserRoutingModule,
