@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { PatientRoutingModule } from './patient-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent],
+  declarations: [HomePageComponent, ProfileComponent],
   imports: [
     CommonModule,
     PatientRoutingModule
