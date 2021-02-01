@@ -1,1 +1,73 @@
-<p>profile works!</p>
+<div style="display:block; justify-content:center;">
+    <div style="height:100%; display: flex; justify-content:center;">
+        <mat-card class="mat-elevation-z8" style="margin: 30px; width: 35%; height: 80%; display: flex; justify-content: center; align-items: center; padding: 20px;">
+            <form style="padding: 20px;">
+                <h2 style="text-align: center; padding-bottom: 10px;">My Profile</h2>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Name:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "name" disabled>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Surname:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "surname">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Email:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "email">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Address:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "address">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >City:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "city">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Country:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "country">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Phone number:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "phone">
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button color="primary" style="float:right;">Change profile</button>
+                    </div>
+            </form>
+        </mat-card>
+        <div>
+            <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
+                <form style="padding: 20px; width: 100%;">
+                    <h2 style="text-align: center; margin-bottom:10px;">Allergies</h2>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Allergies:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "points">
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button color="primary" style="float:right;">Add allergies</button>
+                    </div>
+                </form>
+            
+            </mat-card>
+            <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
+                <form style="padding: 20px;">
+                    <h2 style="text-align: center; margin-bottom:10px;">Loyalty program</h2>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Points:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "points">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Category:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "category">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label >Pogodnosti:</mat-label>
+                        <input matInput [(ngModel)]="name" name = "pog">
+                    </mat-form-field>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
+        
