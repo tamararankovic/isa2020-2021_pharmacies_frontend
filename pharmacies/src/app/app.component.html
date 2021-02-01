@@ -7,22 +7,28 @@
   <span font-color="white" style="margin-left: 10px;">PharmCenter</span>
   <span style="width: 20px;"></span>
 
-  <span style="flex: 1 1 auto;" name="dermatologist">
+  <span style="flex: 1 1 auto;" name="dermatologist"  *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'DERMATOLOGIST'">
+    <button style="float: right;" mat-button routerLink="../dermatologist/profile">
+      Profile
+    </button>
   </span>
 
-  <span style="flex: 1 1 auto;" name="patient">
+  <span style="flex: 1 1 auto;" name="patient" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PATIENT'">
   </span>
 
-  <span style="flex: 1 1 auto;" name="pharmacist">
+  <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
+    <button style="float: right;" mat-button routerLink="../pharmacist/profile">
+      Profile
+    </button>
   </span>
 
-  <span style="flex: 1 1 auto;" name="pharmacy-admin">
+  <span style="flex: 1 1 auto;" name="pharmacy-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACY_ADMIN'">
   </span>
 
-  <span style="flex: 1 1 auto;" name="supplier">
+  <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
   </span>
 
-  <span style="flex: 1 1 auto;" name="system-admin">
+  <span style="flex: 1 1 auto;" name="system-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SYSTEM_ADMIN'">
   </span>
 
   <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed">
