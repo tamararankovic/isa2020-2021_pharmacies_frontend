@@ -35,4 +35,6 @@ export class Constants {
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
     public static pharmacistUrl = Constants.baseUrl + "/pharm";
+    public static deleteDermUrl = Constants.baseUrl + "/derm/delete/";
+    public static deletePharmUrl = Constants.baseUrl + "/pharm/delete/";
 }

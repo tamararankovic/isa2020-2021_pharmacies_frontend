@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   public email : string;
   public password : string;
-  constructor(private authService : AuthService, private _snackBar: MatSnackBar, private router : Router) { }
+  constructor(private authService : AuthService, private snackBar: MatSnackBar, private router : Router) { }
   
   ngOnInit(): void {
     this.authService.loginPageDisplayed = true;
@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 5000,
     });
   }

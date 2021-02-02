@@ -14,4 +14,8 @@ export class PharmacistService {
   getPharmacists() : Observable<PharmacistDTO[]> {
     return this.http.get<PharmacistDTO[]>(Constants.pharmacistUrl, {withCredentials : true});
   }
+
+  delete(id : number) {
+    return this.http.post(Constants.deletePharmUrl + id, null, {withCredentials : true});
+  }
 }

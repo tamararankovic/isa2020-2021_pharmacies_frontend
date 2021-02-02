@@ -30,7 +30,7 @@
         <ng-container matColumnDef="Delete">
           <th mat-header-cell *matHeaderCellDef> DELETE </th>
           <td mat-cell *matCellDef="let element"> 
-            <button mat-stroked-button style="color:firebrick;">Delete</button>                                      
+            <button mat-stroked-button style="color:firebrick;" (click)="delete(element.id)">Delete</button>                                      
           </td>
         </ng-container>
     

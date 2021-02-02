@@ -14,4 +14,8 @@ export class DermatologistService {
   getDermatologists() : Observable<DermatologistDTO[]> {
     return this.http.get<DermatologistDTO[]>(Constants.dermatologistsUrl, {withCredentials : true});
   }
+
+  delete(id : number) {
+    return this.http.post(Constants.deleteDermUrl + id, null, {withCredentials : true});
+  }
 }
