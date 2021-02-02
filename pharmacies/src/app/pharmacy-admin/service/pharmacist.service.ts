@@ -18,4 +18,8 @@ export class PharmacistService {
   delete(id : number) {
     return this.http.post(Constants.deletePharmUrl + id, null, {withCredentials : true});
   }
+
+  search(fullName : string) {
+    return this.http.get<PharmacistDTO[]>(Constants.searchPharmUrl + fullName, {withCredentials : true});
+  }
 }

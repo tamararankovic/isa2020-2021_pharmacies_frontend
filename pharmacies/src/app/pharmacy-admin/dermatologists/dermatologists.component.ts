@@ -17,6 +17,8 @@ export class DermatologistsComponent implements OnInit {
   public dermatologists : DermatologistDTO[] = [];
   public displayedColumns : string[] = [];
 
+  public value : string = "";
+
   ngOnInit(): void {
     this.get();
     if (this.router.url.toLowerCase().includes(Constants.patientRole.toLowerCase()))
@@ -42,5 +44,15 @@ export class DermatologistsComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 5000,
     });
+  }
+
+  search() {
+    if (this.value.length == 0) this.get();
+    else {
+      this.dermService.search(this.value).subscribe(
+        (val) => this.dermatologists = val,
+        error => this.openSnackBar(error.error, "Okay")
+      );
+    }
   }
 }

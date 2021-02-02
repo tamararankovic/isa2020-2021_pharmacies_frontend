@@ -18,4 +18,8 @@ export class DermatologistService {
   delete(id : number) {
     return this.http.post(Constants.deleteDermUrl + id, null, {withCredentials : true});
   }
+
+  search(fullName : string) {
+    return this.http.get<DermatologistDTO[]>(Constants.searchDermUrl + fullName, {withCredentials : true});
+  }
 }

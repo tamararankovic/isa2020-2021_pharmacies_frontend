@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list'; 
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatIconModule,
+    FormsModule
   ]
 })
 export class PharmacyAdminModule { }

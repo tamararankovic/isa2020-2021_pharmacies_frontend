@@ -17,6 +17,8 @@ export class PharmacistsComponent implements OnInit {
   public pharmacists : PharmacistDTO[] = [];
   public displayedColumns : string[] = [];
 
+  public value : string = "";
+
   ngOnInit(): void {
     this.get();
     if (this.router.url.toLowerCase().includes(Constants.patientRole.toLowerCase()))
@@ -42,5 +44,15 @@ export class PharmacistsComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 5000,
     });
+  }
+
+  search() {
+    if (this.value.length == 0) this.get();
+    else {
+      this.pharmService.search(this.value).subscribe(
+        (val) => this.pharmacists = val,
+        error => this.openSnackBar(error.error, "Okay")
+      );
+    }
   }
 }
