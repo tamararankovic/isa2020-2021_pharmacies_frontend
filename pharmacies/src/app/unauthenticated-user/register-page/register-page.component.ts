@@ -5,6 +5,7 @@ import { AuthService } from '../service/auth.service';
 import { Constants } from 'src/app/shared/constants';
 import { UserRegisterDto } from '../DTOs/user-register-dto';
 
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -34,7 +35,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   register(){
     if(this.password != this.confirmePassword) this.openSnackBar("Please make sure your passwords match.", "Okay")
-    else if(this.password.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay");
+    else if(this.password.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
     else {
       this.authService.register(new UserRegisterDto(this.email, this.password, this.nameOfUser, this.surname,
         this.address, this.city, this.country, this.phone)).subscribe(
