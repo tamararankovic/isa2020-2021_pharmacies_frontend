@@ -24,6 +24,8 @@ export class PharmacistsComponent implements OnInit {
 
   public value : string = "";
 
+  public displayAddNewButton = false;
+
   //rating slider
   minValue: number = 0;
   maxValue: number = 5;
@@ -37,8 +39,10 @@ export class PharmacistsComponent implements OnInit {
     this.get();
     if (this.router.url.toLowerCase().includes(Constants.patientRole.toLowerCase()))
       this.displayedColumns = ["Name", "Surname", "Rating", "Pharmacy"];
-    else if (this.router.url.toLowerCase().includes(Constants.pharmacyAdminRole.toLowerCase().replace("_", "-")))
+    else if (this.router.url.toLowerCase().includes(Constants.pharmacyAdminRole.toLowerCase().replace("_", "-"))) {
       this.displayedColumns = ["Name", "Surname", "Rating", "Pharmacy", "Delete"];
+      this.displayAddNewButton = true;
+    }
   }
 
   delete(id : number) {

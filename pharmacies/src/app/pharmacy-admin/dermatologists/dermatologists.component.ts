@@ -24,6 +24,8 @@ export class DermatologistsComponent implements OnInit {
 
   public value : string = "";
 
+  public displayAddNewButton = false;
+
   //rating slider
   minValue: number = 0;
   maxValue: number = 5;
@@ -37,8 +39,10 @@ export class DermatologistsComponent implements OnInit {
     this.get();
     if (this.router.url.toLowerCase().includes(Constants.patientRole.toLowerCase()))
       this.displayedColumns = ["Name", "Surname", "Rating", "Pharmacies"];
-    else if (this.router.url.toLowerCase().includes(Constants.pharmacyAdminRole.toLowerCase().replace("_", "-")))
+    else if (this.router.url.toLowerCase().includes(Constants.pharmacyAdminRole.toLowerCase().replace("_", "-"))) {
       this.displayedColumns = ["Name", "Surname", "Rating", "Pharmacies", "Delete"];
+      this.displayAddNewButton = true;
+    }
   }
 
   delete(id : number) {
@@ -105,5 +109,9 @@ export class DermatologistsComponent implements OnInit {
       if (dermatologist.avgRating >= this.minValue && dermatologist.avgRating <= this.maxValue)
         dermatologists.push(dermatologist);
     return dermatologists;
+  }
+
+  create() {
+    this.router.navigate(["pharmacy-admin/new-dermatologist"]);
   }
 }

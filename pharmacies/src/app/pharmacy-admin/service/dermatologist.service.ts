@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants';
 import { DermatologistDTO } from '../DTOs/dermatologist-dto';
+import { DermatologistToEmployDTO } from '../DTOs/dermatologist-to-employ-dto';
+import { NewDermatologistDTO } from '../DTOs/new-dermatologist-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +23,13 @@ export class DermatologistService {
 
   search(fullName : string) {
     return this.http.get<DermatologistDTO[]>(Constants.searchDermUrl + fullName, {withCredentials : true});
+  }
+
+  getDermatologistsToEmploy() {
+    return this.http.get<DermatologistToEmployDTO[]>(Constants.dermToEmployUrl, {withCredentials : true});
+  }
+
+  postNewDermatologist(d : NewDermatologistDTO) {
+    return this.http.post(Constants.newDermUrl, d, {withCredentials : true});
   }
 }
