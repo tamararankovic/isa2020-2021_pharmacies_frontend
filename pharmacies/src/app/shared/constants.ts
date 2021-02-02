@@ -27,6 +27,14 @@ export class Constants {
     public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
     //dermatologist patient search
     public static dermatologistSearchUrl = Constants.baseUrl + "/derm/patients";
+    //dermatologist appointment dto
+    public static dermatologistAppointmentUrl = Constants.baseUrl + "/derm/appointment";
+    //dermatologist get medicine list
+    public static dermatologistGetMedicineUrl = Constants.baseUrl + "/derm/medicine";
+    //dermatologist fill report
+    public static dermatologistSaveReportUrl = Constants.baseUrl + "/derm/report";
+    //dermatologist if patient is allergic
+    public static dermatologistAllergicUrl = Constants.baseUrl + "/derm/allergies";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";

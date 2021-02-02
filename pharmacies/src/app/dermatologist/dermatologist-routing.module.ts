@@ -5,11 +5,13 @@ import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.c
 import { HomePageComponent } from './home-page/home-page.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path: 'profile', component: ProfileComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path: 'search', component: PatientSearchComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
+  {path: 'report', component: ReportComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 
