@@ -4,6 +4,7 @@ import { PharmDTO } from '../DTOs/pharm-dto';
 import { Constants } from 'src/app/shared/constants';
 import { Observable } from 'rxjs';
 import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
+import { PatientSearchDTO } from 'src/app/dermatologist/DTOs/patient-search-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class PharmService {
 
   changePassword(dto : PasswordDTO) {
     return this._http.post(Constants.pharmacistPasswordUrl, dto, {withCredentials: true});
+  }
+
+  searchPatients(dto : PatientSearchDTO) : Observable<PatientSearchDTO[]>{
+    return this._http.post<PatientSearchDTO[]>(Constants.pharmacistSearchUrl, dto, {withCredentials: true});
   }
 }
