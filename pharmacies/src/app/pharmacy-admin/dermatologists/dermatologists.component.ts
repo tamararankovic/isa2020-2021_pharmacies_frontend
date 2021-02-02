@@ -1,4 +1,6 @@
+import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
@@ -16,8 +18,20 @@ export class DermatologistsComponent implements OnInit {
 
   public dermatologists : DermatologistDTO[] = [];
   public displayedColumns : string[] = [];
+  public displayDermatologists : DermatologistDTO[] = [];
+  public selectedPharmacies = new FormControl();
+  public pharmacies : string[] = [];
 
   public value : string = "";
+
+  //rating slider
+  minValue: number = 0;
+  maxValue: number = 5;
+  options: Options = {
+    floor: 0,
+    ceil: 5,
+    step: 0.1
+  };
 
   ngOnInit(): void {
     this.get();
@@ -36,7 +50,14 @@ export class DermatologistsComponent implements OnInit {
 
   get() {
     this.dermService.getDermatologists().subscribe(
-      (val) => this.dermatologists = val
+      (val) => {this.dermatologists = val
+                this.displayDermatologists = this.dermatologists;
+                for (let dermatologist of this.dermatologists)
+                  for (let pharmacy of dermatologist.pharmacies)
+                    if(!this.pharmacies.some(p => p == pharmacy))
+                      this.pharmacies.push(pharmacy);
+                this.filter();
+      }
     )
   }
 
@@ -50,9 +71,39 @@ export class DermatologistsComponent implements OnInit {
     if (this.value.length == 0) this.get();
     else {
       this.dermService.search(this.value).subscribe(
-        (val) => this.dermatologists = val,
+        (val) => {this.dermatologists = val;
+                  this.displayDermatologists = this.dermatologists;
+                  this.filter()},
         error => this.openSnackBar(error.error, "Okay")
       );
     }
+  }
+
+  filter() {
+    this.displayDermatologists = [];
+    let byPharmacy = this.filterByPharmacy();
+    let byRating = this.filterByRating();
+    for(let dermatologist of this.dermatologists)
+      if(byPharmacy.some(p => p.id == dermatologist.id) && byRating.some(p => p.id == dermatologist.id))
+        this.displayDermatologists.push(dermatologist);
+  }
+
+  filterByPharmacy() : DermatologistDTO[] {
+    if (this.selectedPharmacies.value == null) return this.dermatologists;
+    let selected : string[] = this.selectedPharmacies.value;
+    let dermatologists : DermatologistDTO[] = [];
+    for (let dermatologist of this.dermatologists)
+      for (let pharmacy of dermatologist.pharmacies)
+        if (selected.some(s => s == pharmacy))
+          dermatologists.push(dermatologist);
+    return dermatologists;
+  }
+
+  filterByRating() : DermatologistDTO[] {
+    let dermatologists : DermatologistDTO[] = [];
+    for (let dermatologist of this.dermatologists)
+      if (dermatologist.avgRating >= this.minValue && dermatologist.avgRating <= this.maxValue)
+        dermatologists.push(dermatologist);
+    return dermatologists;
   }
 }

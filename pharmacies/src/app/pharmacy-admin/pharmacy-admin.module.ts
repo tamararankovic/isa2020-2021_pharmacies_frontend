@@ -13,7 +13,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list'; 
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select'; 
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 @NgModule({
@@ -30,7 +32,10 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatListModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    NgxSliderModule
   ]
 })
 export class PharmacyAdminModule { }

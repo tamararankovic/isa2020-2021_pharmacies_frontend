@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
 import { PharmacistDTO } from '../DTOs/pharmacist-dto';
 import { PharmacistService } from '../service/pharmacist.service';
+import { Options } from '@angular-slider/ngx-slider';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-pharmacists',
@@ -16,8 +18,20 @@ export class PharmacistsComponent implements OnInit {
 
   public pharmacists : PharmacistDTO[] = [];
   public displayedColumns : string[] = [];
+  public pharmacies : string[] = [];
+  public displayPharmacists : PharmacistDTO[] = [];
+  public selectedPharmacies = new FormControl();
 
   public value : string = "";
+
+  //rating slider
+  minValue: number = 0;
+  maxValue: number = 5;
+  options: Options = {
+    floor: 0,
+    ceil: 5,
+    step: 0.1
+  };
 
   ngOnInit(): void {
     this.get();
@@ -36,7 +50,13 @@ export class PharmacistsComponent implements OnInit {
 
   get() {
     this.pharmService.getPharmacists().subscribe(
-      (val) => this.pharmacists = val
+      (val) => {this.pharmacists = val;
+                this.displayPharmacists = this.pharmacists;
+                for (let pharmacist of this.pharmacists)
+                  if(!this.pharmacies.some(p => p == pharmacist.pharmacy))
+                    this.pharmacies.push(pharmacist.pharmacy);
+                this.filter();
+      }
     )
   }
 
@@ -50,9 +70,38 @@ export class PharmacistsComponent implements OnInit {
     if (this.value.length == 0) this.get();
     else {
       this.pharmService.search(this.value).subscribe(
-        (val) => this.pharmacists = val,
+        (val) => {this.pharmacists = val;
+                  this.displayPharmacists = this.pharmacists;
+                  this.filter()},
         error => this.openSnackBar(error.error, "Okay")
       );
     }
+  }
+
+  filter() {
+    this.displayPharmacists = [];
+    let byPharmacy = this.filterByPharmacy();
+    let byRating = this.filterByRating();
+    for(let pharmacist of this.pharmacists)
+      if(byPharmacy.some(p => p.id == pharmacist.id) && byRating.some(p => p.id == pharmacist.id))
+        this.displayPharmacists.push(pharmacist);
+  }
+
+  filterByPharmacy() : PharmacistDTO[] {
+    if (this.selectedPharmacies.value == null) return this.pharmacists;
+    let selected : string[] = this.selectedPharmacies.value;
+    let pharmacists : PharmacistDTO[] = [];
+    for (let pharmacist of this.pharmacists)
+      if (selected.some(s => s == pharmacist.pharmacy))
+        pharmacists.push(pharmacist);
+    return pharmacists;
+  }
+
+  filterByRating() : PharmacistDTO[] {
+    let pharmacists : PharmacistDTO[] = [];
+    for (let pharmacist of this.pharmacists)
+      if (pharmacist.avgRating >= this.minValue && pharmacist.avgRating <= this.maxValue)
+        pharmacists.push(pharmacist);
+    return pharmacists;
   }
 }

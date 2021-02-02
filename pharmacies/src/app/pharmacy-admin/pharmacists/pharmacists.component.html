@@ -10,9 +10,20 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>      
-      <button mat-raised-button color="primary" style="width: 8%; float: right;" (click)="search()">Search</button>
+      <button mat-raised-button color="accent" style="width: 8%; float: right;" (click)="search()">Search</button>
     </div>
-    <table mat-table [dataSource]="pharmacists" style="margin-bottom: 5%; width: 80%; margin-left: 10%;">
+    <div style="width: 80%; margin-left: 10%;">
+      <mat-form-field appearance="fill" style="width: 45%; display: inline-block;">
+        <mat-label>Filter by pharmacy</mat-label>
+        <mat-select [formControl]="selectedPharmacies" multiple (selectionChange)="filter()">
+          <mat-option *ngFor="let pharmacy of pharmacies" [value]="pharmacy">{{pharmacy}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p style="display: inline-block; margin-left: 1%;">Filter by rating</p>
+      <ngx-slider class="custom-slider" [(value)]="minValue" [(highValue)]="maxValue" [options]="options" style="width: 45%; float: right;" (userChangeEnd)="filter()"></ngx-slider>
+    </div>
+
+    <table mat-table [dataSource]="displayPharmacists" style="margin-bottom: 5%; width: 80%; margin-left: 10%;">
         <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef> NAME </th>
           <td mat-cell *matCellDef="let element"> {{element.name }} </td>
@@ -36,7 +47,7 @@
         <ng-container matColumnDef="Delete">
           <th mat-header-cell *matHeaderCellDef> DELETE </th>
           <td mat-cell *matCellDef="let element"> 
-            <button mat-raised-button style="color:white; background-color:firebrick;" (click)="delete(element.id)">Delete</button>                                      
+            <button mat-raised-button color="warn" (click)="delete(element.id)">Delete</button>                                      
           </td>
         </ng-container>
     
