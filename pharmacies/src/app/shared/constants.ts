@@ -35,6 +35,15 @@ export class Constants {
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
     //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
+
+    //patients profile
+    public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
+    //edit patient profile
+    public static patientEditUrl = Constants.baseUrl + "/patient/edit";
+    //change password
+    public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
+    //get medicine for allergies
+    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
     //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
 }
