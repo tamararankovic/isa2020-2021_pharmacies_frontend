@@ -23,4 +23,8 @@ export class PatientService {
   changePassword(dto : PasswordDTO) {
     return this._http.post(Constants.patientPasswordUrl, dto, {withCredentials: true});
   }
+
+  getMedicine(): Observable<string[]>{
+    return this._http.get<string[]>(Constants.patientMedicineUrl, {withCredentials: true});
+  }
 }

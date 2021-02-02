@@ -5,31 +5,31 @@
                 <h2 style="text-align: center; padding-bottom: 10px;">My Profile</h2>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Name:</mat-label>
-                        <input matInput [(ngModel)]="profile.name" name = "nameee" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.name" name = "nameee" required pattern = "[a-zA-Z]{2,30}" [disabled] = "disabled"/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Surname:</mat-label>
-                        <input matInput [(ngModel)]="profile.surname" name = "surname" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.surname" name = "surname" required pattern = "[a-zA-Z]{2,30}" [disabled] = "disabled"/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Email:</mat-label>
-                        <input matInput [(ngModel)]="profile.email" name = "email" disabled>
+                        <input matInput  type = "text" [(ngModel)]="profile.email" name = "email"  disabled/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Address:</mat-label>
-                        <input matInput [(ngModel)]="profile.address" name = "address" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.address" name = "address" required [disabled] = "disabled"/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >City:</mat-label>
-                        <input matInput [(ngModel)]="profile.city" name = "city" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.city" name = "city" required [disabled] = "disabled"/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Country:</mat-label>
-                        <input matInput [(ngModel)]="profile.country" name = "country" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.country" name = "country" required [disabled] = "disabled"/>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Phone number:</mat-label>
-                        <input matInput [(ngModel)]="profile.phone" name = "phone" [disabled] = "disabled">
+                        <input matInput type = "text" [(ngModel)]="profile.phone" name = "phone" required [disabled] = "disabled"/>
                     </mat-form-field>
                     <div *ngIf= "passwordChange">
                         <mat-form-field style="width: 100%;">
@@ -38,7 +38,7 @@
                         </mat-form-field>
                         <mat-form-field style="width: 100%;">
                             <mat-label >New password:</mat-label>
-                            <input matInput type="password" name="passwordtekst1" [(ngModel)]="newPassword" />
+                            <input matInput type="password"  name="passwordtekst1" [(ngModel)]="newPassword" />
                         </mat-form-field>
 
                         <mat-form-field style="width: 100%;">
@@ -49,7 +49,7 @@
                 
                     <div class="example-full-width" *ngIf="passwordChange" style="display: block;">
                         <button mat-raised-button color = "primary" style="float: right;" (click)="savePassword()">Save</button>
-                        <button mat-raised-button colot = "warn" style="float: left;" (click)="cancelPassword()">Cancel</button>
+                        <button mat-raised-button color = "warn" style="float: left;" (click)="cancelPassword()">Cancel</button>
                     </div>
 
                     <div *ngIf="hidden">
@@ -64,17 +64,41 @@
         </mat-card>
         <div>
             <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
-                <form style="padding: 20px; width: 100%;">
+                <div style="padding: 20px; width: 100%;">
                     <h2 style="text-align: center; margin-bottom:10px;">Allergies</h2>
                     <mat-form-field style="width: 100%;">
-                        <mat-label >Allergies:</mat-label>
-                        <input matInput [(ngModel)]="profile.name" name = "points" disabled>
+                        <mat-label matInput >Allergies:</mat-label>
+                        <input matInput [disabled] = "disabled"/>
+                        <ul matInput *ngIf = "profile.allergies.length > 0" >
+                            <li *ngFor ="let a of profile.allergies" style = "color: gray; ">{{a}}</li>
+                        </ul>
+                        <p *ngIf = "profile.allergies.length == 0" style = "padding-top:15px;">No allergies</p>
+                        
                     </mat-form-field>
-                    <div>
-                        <button mat-raised-button color="primary" style="float:right;">Add allergies</button>
+                    
+                    <div *ngIf = "!showMed">
+                        <button mat-raised-button color="primary" (click)="chooseAllergies()" style="float:right;">Add allergies</button>
                     </div>
-                </form>
-            
+                    <div *ngIf = "showMed">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose allergies</mat-label>
+                            <mat-select  [formControl]="med" multiple>
+                                <mat-select-trigger>
+                                {{med.value ? med.value[0] : ''}}
+                                    <span *ngIf="med.value?.length > 1" class="example-additional-selection">
+                                        (+{{med.value.length - 1}} {{med.value?.length === 2 ? 'other' : 'others'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option *ngFor="let m of medicine" [value]="m">{{m}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div>
+                        <button mat-raised-button color="primary" (click)="saveAllergies()" style="float:right;">Save</button>
+                        <button mat-raised-button color="warn" (click)="cancelAllergies()" style="float:left;">Cancel</button>
+                        </div>
+                    </div>
+      
+                </div>
             </mat-card>
             <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
                 <form style="padding: 20px;">

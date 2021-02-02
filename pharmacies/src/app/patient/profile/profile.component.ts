@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
 import { PatientDto } from '../DTOs/patient-dto';
 import { PatientService } from '../service/patient.service';
+
+
+
 
 @Component({
   selector: 'app-profile',
@@ -16,10 +20,15 @@ export class ProfileComponent implements OnInit {
   public hidden : boolean = true;
   public hidden1 : boolean = false;
   public passwordChange: boolean = false;
+  public showMed:boolean = false;
 
   password = "";
   newPassword = "";
   newPasswordRepeat = "";
+
+  med = new FormControl();
+  mobileValidator = new FormControl('', Validators.required);
+  nameValidator = new FormControl('', Validators.required);
 
   public name1 : string;
   public surname : string;
@@ -30,12 +39,13 @@ export class ProfileComponent implements OnInit {
   public phone : string;
   public points : number;
   public category : string;
+  public medicine: string[];
   
  
   constructor(private patientService : PatientService,  private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.patientService.getPatient().subscribe(data => this.profile = data);      
+    this.patientService.getPatient().subscribe(data => this.profile = data); 
   }
 
   enableFields(){
@@ -71,13 +81,16 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges(){
-    this.disabled = true;
-    this.hidden = true;
-    this.hidden1 = false; 
-    
 
     this.patientService.editPatient(this.profile).subscribe(
-      data => this.profile = data);
+      val =>{
+        this.disabled = true;
+      this.hidden = true;
+      this.hidden1 = false; 
+      },
+      error =>{
+        this.openSnackBar(error.error, "Okay");
+      });
         
   }
 
@@ -108,15 +121,40 @@ export class ProfileComponent implements OnInit {
     this.passwordChange = false;
     this.hidden = true;
     this.hidden1 = false;
-    
+
     this.password = "";
     this.newPassword = "";
     this.newPasswordRepeat = "";
   }
+
+  chooseAllergies(){
+    this.patientService.getMedicine().subscribe(data => this.medicine = data);
+    this.showMed = true;
+  }
+
+
+  cancelAllergies(){
+    this.showMed = false;
+  }
+
+  saveAllergies(){
+    
+    for(let i = 0; i < this.med.value.length; i++){
+
+      this.profile.allergies.push(this.med.value[i]);
+    }
+    this.patientService.editPatient(this.profile).subscribe(
+      val =>{
+        this.showMed = false;
+      });
+  }
+
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000
     });
   }
+
+
 }

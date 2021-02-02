@@ -38,4 +38,6 @@ export class Constants {
     public static patientEditUrl = Constants.baseUrl + "/patient/edit";
     //change password
     public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
+    //get medicine for allergies
+    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
 }

@@ -8,6 +8,7 @@ export class PatientDto {
         public country : string,
         public phone : string,
         public points : number,
-        public category : string
+        public category : string,
+        public allergies : string[]
     ) {}
 }
