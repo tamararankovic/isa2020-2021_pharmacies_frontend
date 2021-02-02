@@ -12,6 +12,7 @@ export class Constants {
     //unauthenticated user
     public static loginUrl = Constants.baseUrl + "/auth/login";
     public static registerUrl = Constants.baseUrl + "/auth/register";
+    public static changePasswordUrl = Constants.baseUrl + "/auth/changePassword";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
