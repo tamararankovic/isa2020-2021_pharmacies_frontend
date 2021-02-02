@@ -11,11 +11,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ProfileComponent } from './profile/profile.component'; 
-
+import { ProfileComponent } from './profile/profile.component';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent],
   imports: [
     CommonModule,
     DermatologistRoutingModule,
@@ -25,7 +27,9 @@ import { ProfileComponent } from './profile/profile.component';
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule
   ]
 })
 export class DermatologistModule { }

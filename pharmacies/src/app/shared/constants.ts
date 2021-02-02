@@ -25,6 +25,8 @@ export class Constants {
     public static dermatologistPasswordUrl = Constants.baseUrl + "/derm/changePassword";
     //dermatologist personal info update
     public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
+    //dermatologist patient search
+    public static dermatologistSearchUrl = Constants.baseUrl + "/derm/patients";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
@@ -32,4 +34,6 @@ export class Constants {
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
     //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
+    //pharmacist patient search
+    public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
 }
