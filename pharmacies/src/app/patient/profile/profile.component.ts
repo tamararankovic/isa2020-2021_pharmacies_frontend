@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
 import { PatientDto } from '../DTOs/patient-dto';
 import { PatientService } from '../service/patient.service';
 
@@ -15,6 +17,10 @@ export class ProfileComponent implements OnInit {
   public hidden1 : boolean = false;
   public passwordChange: boolean = false;
 
+  password = "";
+  newPassword = "";
+  newPasswordRepeat = "";
+
   public name1 : string;
   public surname : string;
   public email : string;
@@ -26,7 +32,7 @@ export class ProfileComponent implements OnInit {
   public category : string;
   
  
-  constructor(private patientService : PatientService) { }
+  constructor(private patientService : PatientService,  private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.patientService.getPatient().subscribe(data => this.profile = data);      
@@ -71,7 +77,46 @@ export class ProfileComponent implements OnInit {
     
 
     this.patientService.editPatient(this.profile).subscribe(
-      data =>  this.profile = data);
+      data => this.profile = data);
         
+  }
+
+  savePassword(){
+    if(this.newPassword != this.newPasswordRepeat) this.openSnackBar("Please make sure your passwords match.", "Okay");
+    else if(this.password == "" || this.newPassword == "" || this.newPasswordRepeat == "") this.openSnackBar("Password cannot be empty.", "Okay");
+    else if(this.newPassword.length < 8) this.openSnackBar("Please enter at least 8 characters.", "Okay");
+    else{
+      var dto : PasswordDTO = new PasswordDTO(this.password, this.newPassword, this.newPasswordRepeat);
+      this.patientService.changePassword(dto).subscribe(
+        val => {
+          this.openSnackBar("Password changed.", "Okay");
+          this.passwordChange = false;
+          this.hidden = true;
+          this.hidden1 = false;
+          this.password = "";
+          this.newPassword = "";
+          this.newPasswordRepeat = "";
+        },
+        error => {
+          this.openSnackBar(error.error, "Okay");
+        }
+      );      
+    }
+  }
+
+  cancelPassword(){
+    this.passwordChange = false;
+    this.hidden = true;
+    this.hidden1 = false;
+    
+    this.password = "";
+    this.newPassword = "";
+    this.newPasswordRepeat = "";
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000
+    });
   }
 }

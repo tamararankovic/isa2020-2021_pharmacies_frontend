@@ -34,22 +34,22 @@
                     <div *ngIf= "passwordChange">
                         <mat-form-field style="width: 100%;">
                             <mat-label >Old password:</mat-label>
-                            <input matInput name="passwordtekst" />
+                            <input matInput type="password" name="passwordtekst" [(ngModel)]="password" />
                         </mat-form-field>
                         <mat-form-field style="width: 100%;">
                             <mat-label >New password:</mat-label>
-                            <input matInput name="passwordtekst1"  />
+                            <input matInput type="password" name="passwordtekst1" [(ngModel)]="newPassword" />
                         </mat-form-field>
 
                         <mat-form-field style="width: 100%;">
                             <mat-label >Repeat new password:</mat-label>
-                            <input matInput name="passwordtekst2" />
+                            <input matInput type="password" name="passwordtekst2" [(ngModel)]="newPasswordRepeat"/>
                         </mat-form-field>
                     </div>
                 
                     <div class="example-full-width" *ngIf="passwordChange" style="display: block;">
-                        <button mat-raised-button style="float: right;" (click)="savePassword()">Save</button>
-                        <button mat-raised-button style="float: left;" (click)="cancelPassword()">Cancel</button>
+                        <button mat-raised-button color = "primary" style="float: right;" (click)="savePassword()">Save</button>
+                        <button mat-raised-button colot = "warn" style="float: left;" (click)="cancelPassword()">Cancel</button>
                     </div>
 
                     <div *ngIf="hidden">
@@ -58,7 +58,7 @@
                     </div>
                     <div *ngIf="hidden1">
                         <button mat-raised-button color="primary" (click)="saveChanges()" style="float:right;">Save changes</button>
-                        <button mat-raised-button color="primary" (click)="cancelEdit()" style="float:left;">Cancel</button>
+                        <button mat-raised-button color="warn" (click)="cancelEdit()" style="float:left;">Cancel</button>
                     </div>
             </form>
         </mat-card>
