@@ -5,34 +5,60 @@
                 <h2 style="text-align: center; padding-bottom: 10px;">My Profile</h2>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Name:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "name" disabled>
+                        <input matInput [(ngModel)]="profile.name" name = "nameee" [disabled] = "disabled">
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Surname:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "surname">
+                        <input matInput [(ngModel)]="profile.surname" name = "surname" [disabled] = "disabled">
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Email:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "email">
+                        <input matInput [(ngModel)]="profile.email" name = "email" disabled>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Address:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "address">
+                        <input matInput [(ngModel)]="profile.address" name = "address" [disabled] = "disabled">
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >City:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "city">
+                        <input matInput [(ngModel)]="profile.city" name = "city" [disabled] = "disabled">
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Country:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "country">
+                        <input matInput [(ngModel)]="profile.country" name = "country" [disabled] = "disabled">
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Phone number:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "phone">
+                        <input matInput [(ngModel)]="profile.phone" name = "phone" [disabled] = "disabled">
                     </mat-form-field>
-                    <div>
-                        <button mat-raised-button color="primary" style="float:right;">Change profile</button>
+                    <div *ngIf= "passwordChange">
+                        <mat-form-field style="width: 100%;">
+                            <mat-label >Old password:</mat-label>
+                            <input matInput name="passwordtekst" />
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%;">
+                            <mat-label >New password:</mat-label>
+                            <input matInput name="passwordtekst1"  />
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <mat-label >Repeat new password:</mat-label>
+                            <input matInput name="passwordtekst2" />
+                        </mat-form-field>
+                    </div>
+                
+                    <div class="example-full-width" *ngIf="passwordChange" style="display: block;">
+                        <button mat-raised-button style="float: right;" (click)="savePassword()">Save</button>
+                        <button mat-raised-button style="float: left;" (click)="cancelPassword()">Cancel</button>
+                    </div>
+
+                    <div *ngIf="hidden">
+                        <button mat-raised-button color="primary" (click)="enableFields()" style="float:right;" >Edit profile</button>
+                        <button mat-raised-button color="primary" (click)="editPassword()" style="float:left;">Change password</button>    
+                    </div>
+                    <div *ngIf="hidden1">
+                        <button mat-raised-button color="primary" (click)="saveChanges()" style="float:right;">Save changes</button>
+                        <button mat-raised-button color="primary" (click)="cancelEdit()" style="float:left;">Cancel</button>
                     </div>
             </form>
         </mat-card>
@@ -42,7 +68,7 @@
                     <h2 style="text-align: center; margin-bottom:10px;">Allergies</h2>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Allergies:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "points">
+                        <input matInput [(ngModel)]="profile.name" name = "points" disabled>
                     </mat-form-field>
                     <div>
                         <button mat-raised-button color="primary" style="float:right;">Add allergies</button>
@@ -55,15 +81,15 @@
                     <h2 style="text-align: center; margin-bottom:10px;">Loyalty program</h2>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Points:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "points">
+                        <input matInput [(ngModel)]="profile.points" name = "points" disabled>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Category:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "category">
+                        <input matInput [(ngModel)]="profile.category" name = "category" disabled>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Pogodnosti:</mat-label>
-                        <input matInput [(ngModel)]="name" name = "pog">
+                        <input matInput [(ngModel)]="profile.points" name = "pog" disabled>
                     </mat-form-field>
                 </form>
             </mat-card>

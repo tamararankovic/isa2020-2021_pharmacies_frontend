@@ -3,11 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RouteGuardService } from '../shared/helpers/route-guard.service';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
-<<<<<<< HEAD
 import { ProfileComponent } from './profile/profile.component';
-=======
 import { PharmacyPageComponent } from './pharmacy-page/pharmacy-page.component';
->>>>>>> master
 
 const routes: Routes = [
   {path: 'pharmacy/:id', component: PharmacyPageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
