@@ -1,0 +1,71 @@
+<div style="height:100%; display: flex; justify-content: center;  background-image: url(assets/ml\.png); background-position: center; background-repeat: no-repeat; background-size: cover; height: max-content;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 4%; width: 60%; height: 60%; display: flex; justify-content: center; align-items: center; height: max-content; padding-top: 5px; opacity: 85%;">
+        <form #feedform="ngForm" style="width: 80%;" (submit)="register()" novalidate>
+            <h2 style="text-align: center;">
+                Register
+            </h2>
+            
+            <div class="item1">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Email</mat-label>
+                    <input matInput required id="usernameInput" #name = "ngModel" name="c1" [(ngModel)] = "email" pattern = ".+@.+" style="height: 40%;"/>
+                </mat-form-field>
+              </div>
+              
+              <div class="item2">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput required id="passwordInput" #name2 = "ngModel" name="c2" type="password" [(ngModel)] = "password" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item3">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Confirme Password</mat-label>
+                    <input matInput required id="confirmePasswordInput" #name3 = "ngModel" name="c3" type="password" [(ngModel)] = "confirmePassword" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item4">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Name</mat-label>
+                    <input matInput required id="nameInput" #name4 = "ngModel" name="c4"  [(ngModel)] = "nameOfUser" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item5">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Surname</mat-label>
+                    <input matInput required id="surnameInput" #name5 = "ngModel" name="c5"  [(ngModel)] = "surname" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item6">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Address</mat-label>
+                    <input matInput required id="addressInput" #name6 = "ngModel" name="c6"  [(ngModel)] = "address" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item7">
+                <mat-form-field style="width:100%;">
+                    <mat-label>City</mat-label>
+                    <input matInput required id="cityInput" #name7 = "ngModel" name="c7"  [(ngModel)] = "city" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item8">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Country</mat-label>
+                    <input matInput required id="countryInput" #name8 = "ngModel" name="c8"  [(ngModel)] = "country" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item9">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Phone</mat-label>
+                    <input matInput required id="phoneInput" #name9 = "ngModel" name="c9"  [(ngModel)] = "phone" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+        
+            <div style="text-align: center; margin-top: 50px;">
+                <button id="registerButton" [disabled] ="name.invalid || name2.invalid" mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Register</button>
+              </div>
+        
+        
+        </form>
+    </mat-card>
+</div>
