@@ -16,6 +16,8 @@ export class Constants {
 
     //system admin
     public static registerSupplierUrl = Constants.baseUrl + "/admin/registerSupplier";
+    public static registerAdminUrl = Constants.baseUrl + "/admin/registerSystemAdmin";
+    public static registerPharmacyUrl = Constants.baseUrl + "/admin/registerPharmacy";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";

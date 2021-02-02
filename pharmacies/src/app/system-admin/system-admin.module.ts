@@ -10,10 +10,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SystemAdminRoutingModule } from './system-admin-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterSupplierComponent } from './register-supplier/register-supplier.component';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, RegisterSupplierComponent],
+  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent],
   imports: [
     CommonModule,
     SystemAdminRoutingModule,
