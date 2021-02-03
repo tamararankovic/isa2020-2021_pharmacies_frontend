@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants';
+import { NewPharmacistDTO } from '../DTOs/new-pharmacist-dto';
 import { PharmacistDTO } from '../DTOs/pharmacist-dto';
 
 @Injectable({
@@ -21,5 +22,9 @@ export class PharmacistService {
 
   search(fullName : string) {
     return this.http.get<PharmacistDTO[]>(Constants.searchPharmUrl + fullName, {withCredentials : true});
+  }
+
+  create(pharmacist : NewPharmacistDTO) {
+    return this.http.post(Constants.newPharmUrl, pharmacist, {withCredentials : true});
   }
 }

@@ -1,6 +1,9 @@
-export class NewDermatologistDTO {
+export class NewPharmacistDTO {
     constructor(
-        public dermatologistId : number,
+        public name : string,
+        public surname : string,
+        public email : string,
+        public password : string,
         public monday : boolean,
         public tuesday : boolean,
         public wednesday : boolean,

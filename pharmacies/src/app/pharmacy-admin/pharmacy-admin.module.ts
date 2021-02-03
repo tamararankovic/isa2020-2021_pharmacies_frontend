@@ -19,11 +19,12 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { NewDermatologistComponent } from './new-dermatologist/new-dermatologist.component';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,

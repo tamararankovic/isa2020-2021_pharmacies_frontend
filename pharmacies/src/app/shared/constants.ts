@@ -41,4 +41,5 @@ export class Constants {
     public static searchPharmUrl = Constants.baseUrl + "/pharm/search/";
     public static dermToEmployUrl = Constants.baseUrl + "/derm/get-unemployed-in-pharmacy";
     public static newDermUrl = Constants.baseUrl + "/derm/new-pharmacy";
+    public static newPharmUrl = Constants.baseUrl + "/pharm/create";
 }

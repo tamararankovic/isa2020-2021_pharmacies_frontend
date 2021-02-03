@@ -108,4 +108,8 @@ export class PharmacistsComponent implements OnInit {
         pharmacists.push(pharmacist);
     return pharmacists;
   }
+
+  create() {
+    this.router.navigate(["pharmacy-admin/new-pharmacist"]);
+  }
 }
