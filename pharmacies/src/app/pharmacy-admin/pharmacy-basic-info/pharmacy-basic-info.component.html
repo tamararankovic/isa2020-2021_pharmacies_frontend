@@ -1,0 +1,29 @@
+<h1 style="text-align: center; margin-top: 2%;"><b>Pharmacy basic information</b></h1>
+<div style="width: 100%; height: max-content;">
+    <span style="width: 50%; height: 100%; float: left;">
+        <mat-card class="mat-elevation-z8" style="margin-top: 40px; margin-left: 10%; width: 80%; min-height: 350px; max-height: 350px;">
+            <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 5%;">
+                <mat-form-field class="example-form-field" style="width: 100%;">
+                    <mat-label>Enter pharmacy name</mat-label>
+                    <input required #n="ngModel" maxlength="50" minlength="1" matInput placeholder="Name must have between 1 and 50 characters and be unique" [(ngModel)]="data.name">
+                </mat-form-field>
+                <mat-form-field class="example-form-field" style="width: 100%;">
+                    <mat-label>Enter pharmacy description</mat-label>
+                    <textarea #d="ngModel" style="height: 200px;" maxlength="1000" matInput placeholder="Description can contain up to 1000 characters" [(ngModel)]="data.description"></textarea>
+                </mat-form-field>
+            </div>
+        </mat-card>
+    </span>
+    <span style="width: 50%; height: 100%; float: right;">
+        <mat-form-field class="example-form-field" style="width: 80%; float: right; margin-right: 10%; margin-top: 40px;">
+            <mat-label>Enter address</mat-label>
+            <input matInput type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" #search [(ngModel)]="data.address" (keyup)="change()">
+        </mat-form-field>
+        <div style="background-color: rgb(93,147,235); margin-top: 25px; float: right; margin-right: 10%; width: 80%; height: 300px;">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" style="height: 100%; width: 100%;">
+                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+        </div>
+        <button mat-raised-button color="primary" style="margin-top: 3%; float: right; margin-right: 10%;" [disabled]="n.invalid || !addressValid" (click)="update()">Save changes</button>
+    </span>
+</div>
