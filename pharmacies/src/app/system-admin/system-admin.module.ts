@@ -7,15 +7,18 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 import { SystemAdminRoutingModule } from './system-admin-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterSupplierComponent } from './register-supplier/register-supplier.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy.component';
+import { RegisterDermatologistComponent } from './register-dermatologist/register-dermatologist.component';
+import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/register-pharmacy-admin.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent],
+  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent],
   imports: [
     CommonModule,
     SystemAdminRoutingModule,
@@ -25,7 +28,8 @@ import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ]
 })
 export class SystemAdminModule { }

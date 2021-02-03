@@ -8,24 +8,24 @@
             <div class="item1">
                 <mat-form-field style="width:100%;">
                     <mat-label>Name</mat-label>
-                    <input matInput required id="nameInput" #name4 = "ngModel" name="c1"  [(ngModel)] = "nameOfPharmacy" style="height: 40%;"/>
+                    <input matInput required id="nameInput" #name = "ngModel" name="c1"  [(ngModel)] = "nameOfPharmacy" style="height: 40%;"/>
                 </mat-form-field>
             </div>
             <div class="item2">
                 <mat-form-field style="width:100%;">
                     <mat-label>Description</mat-label>
-                    <input matInput required id="descriptionInput" #name5 = "ngModel" name="c2"  [(ngModel)] = "description" style="height: 40%;"/>
+                    <input matInput required id="descriptionInput" #name1 = "ngModel" name="c2"  [(ngModel)] = "description" style="height: 40%;"/>
                 </mat-form-field>
             </div>
             <div class="item3">
                 <mat-form-field style="width:100%;">
                     <mat-label>Address</mat-label>
-                    <input matInput required id="addressInput" #name5 = "ngModel" name="c3"  [(ngModel)] = "address" style="height: 40%;"/>
+                    <input matInput required id="addressInput" #name2 = "ngModel" name="c3"  [(ngModel)] = "address" style="height: 40%;"/>
                 </mat-form-field>
             </div>
         
             <div style="text-align: center; margin-top: 50px;">
-                <button id="registerButton" mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Register</button>
+                <button id="registerButton" [disabled] ="name.invalid || name1.invalid || name2.invalid " mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Register</button>
               </div>
         
         

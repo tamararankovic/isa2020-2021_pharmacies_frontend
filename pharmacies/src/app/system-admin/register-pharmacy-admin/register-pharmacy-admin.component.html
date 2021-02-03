@@ -1,0 +1,80 @@
+<div style="height:100%; display: flex; justify-content: center;  ">
+    <mat-card class="mat-elevation-z8" style="margin-top: 4%; width: 70%; height: 60%; display: flex; justify-content: center; align-items: center; height: max-content; padding-top: 5px; ">
+        <form #feedform="ngForm" style="width: 80%;" (submit)="registerPharmacyAdmin()" novalidate>
+            <h2 style="text-align: center;">
+                Register pharmacy admin
+            </h2>
+            
+            <div class="item1">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Email</mat-label>
+                    <input matInput required id="usernameInput" #name = "ngModel" name="c1" [(ngModel)] = "email" pattern = ".+@.+" style="height: 40%;"/>
+                </mat-form-field>
+              </div>
+              
+              <div class="item2">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput required id="passwordInput" #name2 = "ngModel" name="c2" type="password" [(ngModel)] = "password" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item3">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Confirme Password</mat-label>
+                    <input matInput required id="confirmePasswordInput" #name3 = "ngModel" name="c3" type="password" [(ngModel)] = "confirmePassword" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item4">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Name</mat-label>
+                    <input matInput required id="nameInput" #name4 = "ngModel" name="c4"  [(ngModel)] = "nameOfUser" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item5">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Surname</mat-label>
+                    <input matInput required id="surnameInput" #name5 = "ngModel" name="c5"  [(ngModel)] = "surname" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            
+            <div style="display: flex; justify-content: center; margin-top: 5%;">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description</th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef> Address</th>
+                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef> Select</th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <button mat-stroked-button color="accent" type="button" id="selectButton" (click)="OnClick(element)" *ngIf="!element.clicked && !showButton" >ADD ADMIN</button>
+                      <button mat-stroked-button color="accent" type="button" id="selectButton2"  *ngIf="!element.clicked && showButton" >ADD ADMIN</button>
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+                  
+
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button id="registerButton" [disabled] ="name.invalid || name2.invalid || name3.invalid || name4.invalid || name5.invalid" mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Register</button>
+              </div>
+        
+        
+        </form>
+    </mat-card>
+</div>
