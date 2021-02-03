@@ -20,6 +20,9 @@
   </span>
 
   <span style="flex: 1 1 auto;" name="patient" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PATIENT'">
+    <button style="float: right;" mat-button routerLink="../patient/profile">
+      Profile
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
@@ -38,6 +41,24 @@
   </span>
 
   <span style="flex: 1 1 auto;" name="pharmacy-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACY_ADMIN'">
+    <button mat-button routerLink="../pharmacy-admin">
+      Pharmacy profile
+    </button>
+    <button mat-button routerLink="../pharmacy-admin/basic-info">
+      Personal information
+    </button>
+    <button mat-button>
+      Orders
+    </button>
+    <button mat-button>
+      Deals and promotions
+    </button>
+    <button mat-button>
+      Leave requests
+    </button>
+    <button mat-button>
+      Statistics
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">

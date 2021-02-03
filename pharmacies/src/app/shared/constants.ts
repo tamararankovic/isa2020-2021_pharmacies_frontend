@@ -12,6 +12,17 @@ export class Constants {
     //unauthenticated user
     public static loginUrl = Constants.baseUrl + "/auth/login";
     public static registerUrl = Constants.baseUrl + "/auth/register";
+    public static changePasswordUrl = Constants.baseUrl + "/auth/changePassword";
+
+    //system admin
+    public static registerSupplierUrl = Constants.baseUrl + "/admin/registerSupplier";
+    public static registerAdminUrl = Constants.baseUrl + "/admin/registerSystemAdmin";
+    public static registerPharmacyAdminUrl = Constants.baseUrl + "/admin/registerPharmacyAdmin";
+    public static registerPharmacyUrl = Constants.baseUrl + "/admin/registerPharmacy";
+    public static registerDermatologistUrl = Constants.baseUrl + "/admin/registerDermatologist";
+    public static getAllPharmaciesUrl = Constants.baseUrl + "/admin/getPharmacies";
+    public static getAllMedicinesUrl = Constants.baseUrl + "/admin/getMedicines";
+    public static addNewMedicineUrl = Constants.baseUrl + "/admin/addNewMedicine";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
@@ -48,8 +59,6 @@ export class Constants {
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
     //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
-    //pharmacist patient search
-    public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
     //pharmacist appointment dto
     public static pharmacistAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
     //pharmacist get medicine list
@@ -66,4 +75,31 @@ export class Constants {
     public static pharmacistReservationValidUrl = Constants.baseUrl + "/pharm/reservationValid";
     //pharmacist reservation received
     public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
+    
+    //patients profile
+    public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
+    //edit patient profile
+    public static patientEditUrl = Constants.baseUrl + "/patient/edit";
+    //change password
+    public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
+    //get medicine for allergies
+    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
+    //pharmacist patient search
+    public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+
+    //pharmacy admin
+    public static dermatologistsUrl = Constants.baseUrl + "/derm";
+    public static pharmacistUrl = Constants.baseUrl + "/pharm";
+    public static deleteDermUrl = Constants.baseUrl + "/derm/delete/";
+    public static deletePharmUrl = Constants.baseUrl + "/pharm/delete/";
+    public static searchDermUrl = Constants.baseUrl + "/derm/search/";
+    public static searchPharmUrl = Constants.baseUrl + "/pharm/search/";
+    public static dermToEmployUrl = Constants.baseUrl + "/derm/get-unemployed-in-pharmacy";
+    public static newDermUrl = Constants.baseUrl + "/derm/new-pharmacy";
+    public static newPharmUrl = Constants.baseUrl + "/pharm/create";
+    public static getPharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/basic-info";
+    public static updatePharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/update";
+    public static getPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin";
+    public static updatePharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/update";
+    public static changePasswordPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/change-password";
 }

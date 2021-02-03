@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
 import { UserLoginDTO } from '../DTOs/user-login-dto';
+import {UserPasswordChangeDto} from '../DTOs/user-password-change-dto';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -13,9 +14,12 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
 
+  passwordChange = false;
+  public newPassword : string;
+  public newPasswordRepeat : string;
   public email : string;
   public password : string;
-  constructor(private authService : AuthService, private _snackBar: MatSnackBar, private router : Router) { }
+  constructor(private authService : AuthService, private snackBar: MatSnackBar, private router : Router) { }
   
   ngOnInit(): void {
     this.authService.loginPageDisplayed = true;
@@ -28,12 +32,36 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   login() {
     this.authService.login(new UserLoginDTO(this.email, this.password)).subscribe(
       (val) => { this.authService.setRole(val); this.redirectToHomePage(val) },
-      error => this.openSnackBar(error.error, "Okay")
+      error => {
+        if(error.error == 'You have to change your password while logging in for the first time.'){
+          console.log('radi');
+          this.openSnackBar(error.error, "Okay")
+          this.passwordChange = true;
+        }else {
+        this.openSnackBar(error.error, "Okay")
+        }
+      }
     )
   }
-
+  updatePassword() {
+    if(this.newPassword != this.newPasswordRepeat) this.openSnackBar("Please make sure your passwords match.", "Okay")
+    else if(this.newPassword.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
+    else {
+      this.authService.changePassword(new UserPasswordChangeDto(this.email, this.password, this.newPassword)).subscribe(
+      (data) => {
+        let visibleMessage = "You have successfuly changed your password!Now you can log in!";
+        this.openSnackBar(visibleMessage, "Okay");
+        this.passwordChange = false;
+        this.password = "";
+      },
+      error => {
+        this.openSnackBar(error.error, "Okay")
+      }
+    )
+    }
+  }
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 5000,
     });
   }
