@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermAppDTO } from '../../dermatologist/DTOs/derm-app-dto';
 import { DermReportDTO } from '../../dermatologist/DTOs/derm-report-dto';
+import { MedicineDetailsDTO } from '../../dermatologist/DTOs/med-details-dto';
 import { MedAllDTO } from '../../dermatologist/DTOs/medicine-allergy-dto';
 import { MedicineDTO } from '../../dermatologist/DTOs/medicine-dto';
 import { TherapyDTO } from '../../dermatologist/DTOs/therapy-dto';
@@ -13,6 +14,13 @@ import { PharmService } from '../service/pharm.service';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
+
+  showMedicineDetails = false;
+  ingredients : string[] = [ "M", "Dj"];
+  displayedColumns3: string[] = ['ingredients'];
+  anyIngredient = false;
+  withPrescription = true;
+  details : MedicineDetailsDTO;
 
   diagnosis = "";
   hasMedicine = false;
@@ -55,8 +63,22 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  medicineDetails(){
-    
+  medicineDetails(element){
+    this.pharmService.getMedicineDetails(element.id).subscribe(
+      data => {
+        this.details = data;
+        this.ingredients = this.details.ingredients;
+        if(this.ingredients.length > 0){
+          this.anyIngredient = true;
+        } else this.anyIngredient = false;
+        this.withPrescription = this.details.withPrescription;
+        this.showMedicineDetails = true;
+      }
+    );
+  }
+
+  cancelDetails(){
+    this.showMedicineDetails = false;
   }
 
   chooseMedicine(element){

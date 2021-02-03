@@ -11,6 +11,7 @@ import { DermReportDTO } from 'src/app/dermatologist/DTOs/derm-report-dto';
 import { MedAllDTO } from 'src/app/dermatologist/DTOs/medicine-allergy-dto';
 import { IsAllergicDTO } from 'src/app/dermatologist/DTOs/is-allergic-dto';
 import { MedQuanDTO } from 'src/app/dermatologist/DTOs/med-quan-dto';
+import { MedicineDetailsDTO } from 'src/app/dermatologist/DTOs/med-details-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,9 @@ export class PharmService {
 
   getCompatibleMedicine(medicineId : number) : Observable<MedicineDTO[]>{
     return this._http.get<MedicineDTO[]>(Constants.pharmacistCompatibleUrl + "/" + medicineId, {withCredentials: true});
+  }
+
+  getMedicineDetails(medicineId : number) : Observable<MedicineDetailsDTO>{
+    return this._http.get<MedicineDetailsDTO>(Constants.dermatologistMedicineDetailsUrl + "/" + medicineId, {withCredentials: true});
   }
 }

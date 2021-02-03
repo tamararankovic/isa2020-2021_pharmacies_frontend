@@ -1,6 +1,6 @@
 <h2 style="text-align: center; margin-top: 30px;">Fill Report</h2>
 <mat-card style="width: 50%; margin: 0 auto;">
-    <form style="padding: 30px;">
+    <form style="padding: 30px;" *ngIf="!showMedicineDetails">
         <div class="example-full-width" style="padding-bottom: 20px;">
             <label matInput class="static-label" name="imelabela">Patient name: </label>
             <label matInput class="normal-label" name="imelabela1">{{dermAppDTO.patientName}}</label>
@@ -130,4 +130,61 @@
             <div style="height: 30px;" *ngIf="hasTherapy"></div>
         </div>
     </form>
+    <form style="padding: 30px;" *ngIf="showMedicineDetails">
+        <h3 style="text-align: center; margin-top: 0px; font-weight: 500; color:  rgb(93, 147, 235);">MEDICINE DETAILS</h3>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Medicine name: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.name}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Medicine code: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.code}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Medicine type: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.type}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Medicine form: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.form}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Manufacturer: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.manufacturer}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Additional info: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.additionalInfo}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Points: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.points}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Side effects: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.sideEffects}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Advised Daily Dose: </label>
+            <label matInput class="normal-label" name="imelabela1">{{details.advisedDailyDose}}</label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" *ngIf="withPrescription" style="color: rgb(187, 109, 106);" name="imelabela">WITH PRESCRIPTION </label>
+            <label matInput class="static-label" *ngIf="!withPrescription" style="color: rgb(145, 187, 106);" name="imelabela">WITHOUT PRESCRIPTION </label>
+        </div>
+
+        <table mat-table *ngIf="anyIngredient" [dataSource]="ingredients" class="mat-elevation-z8">
+            <ng-container matColumnDef="ingredients">
+            <th mat-header-cell *matHeaderCellDef> Ingredients </th>
+            <td mat-cell *matCellDef="let element"> {{element}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+        </table>
+        <div style="height: 20px;"></div>
+        <button mat-raised-button (click)="cancelDetails()" style="float: right; width: 150px; color: white; background-color: rgb(93, 147, 235);">Back</button>
+        <div style="height: 30px;"></div>
+    </form>
 </mat-card>
+<div style="height: 30px;"></div>

@@ -39,6 +39,8 @@ export class Constants {
     public static dermatologistCheckMedicineQuantityUrl = Constants.baseUrl + "/derm/medicine/isAvailable";
     //dermatologist check for compatible medicine
     public static dermatologistCompatibleUrl = Constants.baseUrl + "/derm/medicine/compatible";
+    //dermatologist and pharmacist medicine details
+    public static dermatologistMedicineDetailsUrl = Constants.baseUrl + "/derm/medicineDetails";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
