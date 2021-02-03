@@ -12,16 +12,21 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RegisterPageComponent } from './register-page/register-page.component'; 
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { PharmaciesSearchComponent } from './pharmacies-search/pharmacies-search.component'; 
 
 @NgModule({
-  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent],
+  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent, PharmaciesSearchComponent],
   imports: [
     CommonModule,
     UnauthenticatedUserRoutingModule,
     MatButtonModule,
     MatCardModule,
+    MatSortModule,
     FormsModule,
+    MatTableModule,
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,

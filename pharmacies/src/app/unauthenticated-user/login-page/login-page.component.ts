@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
 import { UserLoginDTO } from '../DTOs/user-login-dto';
-import {UserPasswordChangeDto} from '../DTOs/user-password-change-dto';
+import { UserPasswordChangeDto } from '../DTOs/user-password-change-dto';
+
 import { AuthService } from '../service/auth.service';
 
 @Component({
