@@ -59,4 +59,7 @@ export class Constants {
     public static newPharmUrl = Constants.baseUrl + "/pharm/create";
     public static getPharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/basic-info";
     public static updatePharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/update";
+    public static getPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin";
+    public static updatePharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/update";
+    public static changePasswordPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/change-password";
 }
