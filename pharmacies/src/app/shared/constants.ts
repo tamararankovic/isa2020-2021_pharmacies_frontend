@@ -38,6 +38,20 @@ export class Constants {
     public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
     //dermatologist patient search
     public static dermatologistSearchUrl = Constants.baseUrl + "/derm/patients";
+    //dermatologist appointment dto
+    public static dermatologistAppointmentUrl = Constants.baseUrl + "/derm/appointment";
+    //dermatologist get medicine list
+    public static dermatologistGetMedicineUrl = Constants.baseUrl + "/derm/medicine";
+    //dermatologist fill report
+    public static dermatologistSaveReportUrl = Constants.baseUrl + "/derm/report";
+    //dermatologist if patient is allergic
+    public static dermatologistAllergicUrl = Constants.baseUrl + "/derm/allergies";
+    //dermatologist check medicine quantity
+    public static dermatologistCheckMedicineQuantityUrl = Constants.baseUrl + "/derm/medicine/isAvailable";
+    //dermatologist check for compatible medicine
+    public static dermatologistCompatibleUrl = Constants.baseUrl + "/derm/medicine/compatible";
+    //dermatologist and pharmacist medicine details
+    public static dermatologistMedicineDetailsUrl = Constants.baseUrl + "/derm/medicineDetails";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
@@ -45,6 +59,22 @@ export class Constants {
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
     //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
+    //pharmacist appointment dto
+    public static pharmacistAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
+    //pharmacist get medicine list
+    public static pharmacistGetMedicineUrl = Constants.baseUrl + "/pharm/medicine";
+    //pharmacist fill report
+    public static pharmacistSaveReportUrl = Constants.baseUrl + "/pharm/report";
+    //pharmacist if patient is allergic
+    public static pharmacistAllergicUrl = Constants.baseUrl + "/pharm/allergies";
+    //pharmacist check medicine quantity
+    public static pharmacistCheckMedicineQuantityUrl = Constants.baseUrl + "/pharm/medicine/isAvailable";
+    //pharmacist check for compatible medicine
+    public static pharmacistCompatibleUrl = Constants.baseUrl + "/pharm/medicine/compatible";
+    //pharmacist check for compatible medicine
+    public static pharmacistReservationValidUrl = Constants.baseUrl + "/pharm/reservationValid";
+    //pharmacist reservation received
+    public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
     
     //patients profile
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";

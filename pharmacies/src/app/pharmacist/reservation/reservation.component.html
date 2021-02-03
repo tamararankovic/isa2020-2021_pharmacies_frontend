@@ -1,0 +1,23 @@
+<h2 style="text-align: center; margin-top: 30px;">Reservation Search</h2>
+<mat-card style="width: 35%; margin: 0 auto;">
+    <form style="padding: 30px;">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter reservation id..." id="newName" name="imetekst" [(ngModel)]="reservationIdText">
+        </mat-form-field>
+        <div class="example-full-width" style="display: block;">
+            <button mat-raised-button style="float: right; width: 150px; background-color: rgb(93, 147, 235); color: white;" (click)="search()">Search</button>
+        </div>
+
+        <div style="height: 30px;" *ngIf="searchDone"></div>
+        <div class="example-full-width" style="padding-top: 30px;" *ngIf="searchDone && valid">
+            <h3 style="text-align: center; color: rgb(145, 187, 106); font-weight: bold;">RESERVATION FOUND! </h3>
+            <button type="button" mat-raised-button style="width: 100%; color: white; background-color: rgb(102, 156, 51); height: 80px; font-size: large;" (click)="received()">Medicine received</button>
+        </div>
+        <div class="example-full-width" style="padding-top: 30px;" *ngIf="searchDone && !valid">
+            <h3 style="text-align: center; color: rgb(187, 109, 106); font-weight: bold;">RESERVATION IS NOT FOUND! </h3>
+            <div style="height: 10px;"></div>
+            <button type="button" mat-raised-button style="margin-left: 30%; width: 40%; color: gray;" (click)="cancel()">Cancel</button>
+        </div>
+        <div style="height: 30px;" *ngIf="!searchDone"></div>
+    </form>
+</mat-card>
