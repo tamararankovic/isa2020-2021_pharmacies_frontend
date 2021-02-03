@@ -20,11 +20,13 @@ import { NewDermatologistComponent } from './new-dermatologist/new-dermatologist
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component'; 
+import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component';
+import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic-info.component'; 
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
@@ -43,7 +45,11 @@ import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.componen
     NgxSliderModule,
     MatCardModule,
     NgxMaterialTimepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyArX13dkqG1oKxB4wnrinrHr7pzuNrR2wQ',
+      libraries: ['places']
+    })
   ]
 })
 export class PharmacyAdminModule { }
