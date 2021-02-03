@@ -45,6 +45,31 @@ export class Constants {
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
     //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
+    
+    //patients profile
+    public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
+    //edit patient profile
+    public static patientEditUrl = Constants.baseUrl + "/patient/edit";
+    //change password
+    public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
+    //get medicine for allergies
+    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
     //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+
+    //pharmacy admin
+    public static dermatologistsUrl = Constants.baseUrl + "/derm";
+    public static pharmacistUrl = Constants.baseUrl + "/pharm";
+    public static deleteDermUrl = Constants.baseUrl + "/derm/delete/";
+    public static deletePharmUrl = Constants.baseUrl + "/pharm/delete/";
+    public static searchDermUrl = Constants.baseUrl + "/derm/search/";
+    public static searchPharmUrl = Constants.baseUrl + "/pharm/search/";
+    public static dermToEmployUrl = Constants.baseUrl + "/derm/get-unemployed-in-pharmacy";
+    public static newDermUrl = Constants.baseUrl + "/derm/new-pharmacy";
+    public static newPharmUrl = Constants.baseUrl + "/pharm/create";
+    public static getPharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/basic-info";
+    public static updatePharmacyBasicInfoUrl = Constants.baseUrl + "/pharmacy/update";
+    public static getPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin";
+    public static updatePharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/update";
+    public static changePasswordPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/change-password";
 }
