@@ -14,7 +14,8 @@ import { AgmCoreModule } from '@agm/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
     MatSortModule
   ],
   providers: [],
