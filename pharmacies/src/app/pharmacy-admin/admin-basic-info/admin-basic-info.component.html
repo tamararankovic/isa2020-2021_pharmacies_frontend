@@ -1,0 +1,52 @@
+<div style="width: 40%; margin-left: 6%; display: inline-block; margin-top: 5%;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 5%; padding-top: 2%;">
+        <h2 style="text-align: center;">Personal information</h2>
+
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 5%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Nname</mat-label>
+                <input required #n="ngModel" pattern = "[a-zA-Z ]+" maxlength="30" minlength="2" matInput placeholder="Name must have between 2 and 30 characters and contain only letters and blank spaces" [(ngModel)]="name">
+            </mat-form-field>    
+        </div>
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 3%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Surname</mat-label>
+                <input required #s="ngModel" pattern = "[a-zA-Z ]+" maxlength="30" minlength="2" matInput placeholder="Surname must have between 2 and 30 characters and contain only letters and blank spaces" [(ngModel)]="surname">
+            </mat-form-field>    
+        </div>
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 3%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Email address</mat-label>
+                <input required #e="ngModel" pattern = ".+@.+" matInput minlength="3" maxlength="30" placeholder="Email must have between 3 and 30 characters and contain @" [(ngModel)]="email">
+            </mat-form-field>    
+        </div>
+        <button mat-raised-button color="primary" style="margin-left: 10%; margin-top: 10%;" [disabled]="n.invalid || s.invalid || e.invalid || (name == admin.name && surname == admin.surname && email == admin.email)" (click)="update()">Change</button>
+    </mat-card>
+</div>
+
+<div style="width: 40%; margin-right: 6%; display: inline-block; float: right; margin-top: 5%;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 5%; padding-top: 2%;">
+        <h2 style="text-align: center;">Change password</h2>
+
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 5%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Enter old password</mat-label>
+                <input required placeholder="Password must have between 4 and 30 characters" minlength="4" maxlength="30" #op="ngModel" matInput type="password" [(ngModel)]="oldPassword">
+            </mat-form-field>    
+        </div>
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 3%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Enter new password</mat-label>
+                <input required placeholder="Password must have between 4 and 30 characters" minlength="4" maxlength="30" #p="ngModel" matInput type="password" [(ngModel)]="password">
+            </mat-form-field>    
+        </div>
+        <div style="display: inline-block; width: 80%; margin-left: 10%; margin-top: 3%;">
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Confirm new password</mat-label>
+                <input required placeholder="Password must have between 4 and 30 characters" minlength="4" maxlength="30" #cp="ngModel" matInput type="password" [(ngModel)]="confirmPassword">
+                <div *ngIf="password != confirmPassword && password != '' && confirmPassword != ''"><mat-label style="color: red; font-size: smaller;">Passwords don't match</mat-label></div>
+            </mat-form-field>    
+        </div>
+        <button mat-raised-button color="accent" style="margin-left: 10%; margin-top: 10%;" [disabled]="op.invalid || p.invalid || cp.invalid || password != confirmPassword" (click)="changePassword()">Change</button>
+    </mat-card>
+</div>

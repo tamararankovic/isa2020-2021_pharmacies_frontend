@@ -23,10 +23,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component';
 import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic-info.component'; 
 import { AgmCoreModule } from '@agm/core';
+import { AdminBasicInfoComponent } from './admin-basic-info/admin-basic-info.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
