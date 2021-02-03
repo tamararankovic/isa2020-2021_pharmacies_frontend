@@ -21,6 +21,8 @@ export class Constants {
     public static registerPharmacyUrl = Constants.baseUrl + "/admin/registerPharmacy";
     public static registerDermatologistUrl = Constants.baseUrl + "/admin/registerDermatologist";
     public static getAllPharmaciesUrl = Constants.baseUrl + "/admin/getPharmacies";
+    public static getAllMedicinesUrl = Constants.baseUrl + "/admin/getMedicines";
+    public static addNewMedicineUrl = Constants.baseUrl + "/admin/addNewMedicine";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";

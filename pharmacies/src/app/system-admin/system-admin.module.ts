@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 import { SystemAdminRoutingModule } from './system-admin-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterSupplierComponent } from './register-supplier/register-supplier.component';
@@ -15,10 +16,11 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
 import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy.component';
 import { RegisterDermatologistComponent } from './register-dermatologist/register-dermatologist.component';
 import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/register-pharmacy-admin.component';
+import { AddMedicineComponent } from './add-medicine/add-medicine.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent],
+  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent, AddMedicineComponent],
   imports: [
     CommonModule,
     SystemAdminRoutingModule,
@@ -29,7 +31,8 @@ import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/regist
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ]
 })
 export class SystemAdminModule { }
