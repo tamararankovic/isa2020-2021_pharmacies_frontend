@@ -12,6 +12,7 @@ import { MedAllDTO } from 'src/app/dermatologist/DTOs/medicine-allergy-dto';
 import { IsAllergicDTO } from 'src/app/dermatologist/DTOs/is-allergic-dto';
 import { MedQuanDTO } from 'src/app/dermatologist/DTOs/med-quan-dto';
 import { MedicineDetailsDTO } from 'src/app/dermatologist/DTOs/med-details-dto';
+import { ResValidDTO } from '../DTOs/res-valid-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -62,5 +63,13 @@ export class PharmService {
 
   getMedicineDetails(medicineId : number) : Observable<MedicineDetailsDTO>{
     return this._http.get<MedicineDetailsDTO>(Constants.dermatologistMedicineDetailsUrl + "/" + medicineId, {withCredentials: true});
+  }
+
+  checkIfReservationIsValid(reservationId : number) : Observable<ResValidDTO>{
+    return this._http.get<ResValidDTO>(Constants.pharmacistReservationValidUrl + "/" + reservationId, {withCredentials: true});
+  }
+
+  reservationReceived(reservationId : number) {
+    return this._http.get(Constants.pharmacistReservationUrl + "/" + reservationId, {withCredentials: true});
   }
 }

@@ -62,4 +62,8 @@ export class Constants {
     public static pharmacistCheckMedicineQuantityUrl = Constants.baseUrl + "/pharm/medicine/isAvailable";
     //pharmacist check for compatible medicine
     public static pharmacistCompatibleUrl = Constants.baseUrl + "/pharm/medicine/compatible";
+    //pharmacist check for compatible medicine
+    public static pharmacistReservationValidUrl = Constants.baseUrl + "/pharm/reservationValid";
+    //pharmacist reservation received
+    public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
 }

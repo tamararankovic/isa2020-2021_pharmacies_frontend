@@ -16,10 +16,11 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ReportComponent } from './report/report.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent],
   imports: [
     CommonModule,
     PharmacistRoutingModule,
