@@ -48,4 +48,16 @@ export class Constants {
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
     //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+    //pharmacist appointment dto
+    public static pharmacistAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
+    //pharmacist get medicine list
+    public static pharmacistGetMedicineUrl = Constants.baseUrl + "/pharm/medicine";
+    //pharmacist fill report
+    public static pharmacistSaveReportUrl = Constants.baseUrl + "/pharm/report";
+    //pharmacist if patient is allergic
+    public static pharmacistAllergicUrl = Constants.baseUrl + "/pharm/allergies";
+    //pharmacist check medicine quantity
+    public static pharmacistCheckMedicineQuantityUrl = Constants.baseUrl + "/pharm/medicine/isAvailable";
+    //pharmacist check for compatible medicine
+    public static pharmacistCompatibleUrl = Constants.baseUrl + "/pharm/medicine/compatible";
 }

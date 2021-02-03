@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DermAppDTO } from '../DTOs/derm-app-dto';
-import { DermReportDTO } from '../DTOs/derm-report-dto';
-import { MedAllDTO } from '../DTOs/medicine-allergy-dto';
-import { MedicineDTO } from '../DTOs/medicine-dto';
-import { TherapyDTO } from '../DTOs/therapy-dto';
-import { DermService } from '../service/derm.service';
+import { DermAppDTO } from '../../dermatologist/DTOs/derm-app-dto';
+import { DermReportDTO } from '../../dermatologist/DTOs/derm-report-dto';
+import { MedAllDTO } from '../../dermatologist/DTOs/medicine-allergy-dto';
+import { MedicineDTO } from '../../dermatologist/DTOs/medicine-dto';
+import { TherapyDTO } from '../../dermatologist/DTOs/therapy-dto';
+import { PharmService } from '../service/pharm.service';
 
 @Component({
   selector: 'app-report',
@@ -37,10 +37,10 @@ export class ReportComponent implements OnInit {
   medicineList : MedicineDTO[] = [];
   translatedMedicineList : MedicineDTO[] = [];
 
-  constructor(private dermService : DermService, private _snackBar: MatSnackBar) { }
+  constructor(private pharmService : PharmService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.dermService.getAppointmentData(1).subscribe(
+    this.pharmService.getAppointmentData(1).subscribe(
       data => this.dermAppDTO = data
     );
   }
@@ -48,7 +48,7 @@ export class ReportComponent implements OnInit {
   addMedicine(){
     this.hasMedicine = true;
     if(this.firstMedicine){
-      this.dermService.getMedicineList().subscribe(
+      this.pharmService.getMedicineList().subscribe(
         data => this.medicineList = data
       );
       this.firstMedicine = false;
@@ -71,7 +71,7 @@ export class ReportComponent implements OnInit {
 
   checkAllergies(){
     this.medAllDTO = new MedAllDTO(this.dermAppDTO.patientId, this.chosenMedicine.id);
-    this.dermService.checkAllergies(this.medAllDTO).subscribe(
+    this.pharmService.checkAllergies(this.medAllDTO).subscribe(
       data => {
         if(data.allergic == true){
           this.isAllergic = false;
@@ -128,7 +128,7 @@ export class ReportComponent implements OnInit {
       this.openSnackBar("Duration cannot be 0.", "Okay");
     }
     else {
-      this.dermService.checkMedicineQuantity(this.chosenMedicine.id, this.dermAppDTO.appointmentId).subscribe(
+      this.pharmService.checkMedicineQuantity(this.chosenMedicine.id, this.dermAppDTO.appointmentId).subscribe(
         data => {
           if(data.available){
             this.chosenTherapy.durationInDays = Number(this.duration);
@@ -154,7 +154,7 @@ export class ReportComponent implements OnInit {
             this.openSnackBar("Medicine not available in this pharmacy.", "Okay");
             this.duration = "";
             this.hasTherapy = false;
-            this.dermService.getCompatibleMedicine(this.chosenMedicine.id).subscribe(
+            this.pharmService.getCompatibleMedicine(this.chosenMedicine.id).subscribe(
             data => {
               this.compatibleMedicine = data;
               this.medicineRecommendation = true;
@@ -192,7 +192,7 @@ export class ReportComponent implements OnInit {
     } 
     else{
       this.report = new DermReportDTO(this.dermAppDTO.appointmentId, this.diagnosis, this.therapyList);
-      this.dermService.saveReport(this.report).subscribe(
+      this.pharmService.saveReport(this.report).subscribe(
         data => console.log("izvestaj je upisan u bazu")
       );
       this.openSnackBar("Report is saved.", "Okay");

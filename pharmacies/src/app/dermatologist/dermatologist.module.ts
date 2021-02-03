@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ReportComponent } from './report/report.component';
 
+
 @NgModule({
   declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent],
   imports: [
