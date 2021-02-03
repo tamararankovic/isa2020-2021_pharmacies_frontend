@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { concat } from 'rxjs';
 import { DermAppDTO } from '../DTOs/derm-app-dto';
 import { DermReportDTO } from '../DTOs/derm-report-dto';
 import { MedAllDTO } from '../DTOs/medicine-allergy-dto';
@@ -19,11 +20,14 @@ export class ReportComponent implements OnInit {
   duration = "";
   allergyCheck = false;
   firstMedicine = true;
+  checkMed = false;
   isAllergic = true;
+  medicineRecommendation = false;
   dose : number = 0;
   hasTherapy = false;
   medAllDTO : MedAllDTO;
   therapyPrescribed = false;
+  compatibleMedicine : MedicineDTO[] = [];
   chosenTherapy : TherapyDTO = new TherapyDTO(1, "", 0);
   chosenMedicine : MedicineDTO;
   displayedColumns: string[] = ['name', 'manufacturer', 'details'];
@@ -89,6 +93,31 @@ export class ReportComponent implements OnInit {
     this.hasTherapy = false;
   }
 
+  cancelRecommendation(){
+    this.medicineRecommendation = false;
+    this.hasTherapy = false;
+  }
+
+  addRecommendedTherapy(){
+    this.medicineRecommendation = false;
+    for(let i = 0; i < this.medicineList.length; i++){
+      if(this.medicineList[i].id == this.chosenMedicine.id){
+        this.chosenMedicine = this.medicineList[i];
+      }
+    }
+    for(let i = 0; i < this.therapyList.length; i++){
+      if(this.therapyList[i].medicineId == this.chosenMedicine.id){
+        this.openSnackBar("Medicine already prescribed.", "Okay");
+        this.duration = "";
+        this.isAllergic = true;
+        this.allergyCheck = false;
+        this.hasTherapy = false;
+        return;
+      }
+    }
+    this.addTherapy();
+  }
+
   addTherapy(){
     if(this.duration == ""){
       this.openSnackBar("You have to enter duration.", "Okay");
@@ -100,26 +129,41 @@ export class ReportComponent implements OnInit {
       this.openSnackBar("Duration cannot be 0.", "Okay");
     }
     else {
-      if(this.checkMedicineQuantity()){
-        this.chosenTherapy.durationInDays = Number(this.duration);
-        var chosen2 = new TherapyDTO(this.chosenTherapy.medicineId, this.chosenTherapy.medicineName, this.chosenTherapy.durationInDays);
-        this.therapyList.push(chosen2);
+      this.dermService.checkMedicineQuantity(this.chosenMedicine.id, this.dermAppDTO.appointmentId).subscribe(
+        data => {
+          if(data.available){
+            this.chosenTherapy.durationInDays = Number(this.duration);
+            var chosen2 = new TherapyDTO(this.chosenTherapy.medicineId, this.chosenTherapy.medicineName, this.chosenTherapy.durationInDays);
+            this.therapyList.push(chosen2);
 
-        var therapyList2 = this.therapyList;
-        this.therapyList = [];
-        for(let i = 0; i < therapyList2.length; i++){
-          this.therapyList.push(therapyList2[i]);
+            var therapyList2 = this.therapyList;
+            this.therapyList = [];
+            for(let i = 0; i < therapyList2.length; i++){
+              this.therapyList.push(therapyList2[i]);
+            }
+
+            this.therapyPrescribed = true;
+            this.hasTherapy = false;
+            this.medicineList = this.medicineList.filter(item => item !== this.chosenMedicine);
+            this.translatedMedicineList.push(this.chosenMedicine);
+            if(this.medicineList.length == 0) this.hasMedicine = false;
+            this.allergyCheck = false;
+            this.isAllergic = true;
+            this.duration = "";
+          } 
+          else {
+            this.openSnackBar("Medicine not available in this pharmacy.", "Okay");
+            this.duration = "";
+            this.hasTherapy = false;
+            this.dermService.getCompatibleMedicine(this.chosenMedicine.id).subscribe(
+            data => {
+              this.compatibleMedicine = data;
+              this.medicineRecommendation = true;
+            }
+          );
+          }
         }
-
-        this.therapyPrescribed = true;
-        this.hasTherapy = false;
-        this.medicineList = this.medicineList.filter(item => item !== this.chosenMedicine);
-        this.translatedMedicineList.push(this.chosenMedicine);
-        if(this.medicineList.length == 0) this.hasMedicine = false;
-        this.allergyCheck = false;
-        this.isAllergic = true;
-        this.duration = "";
-      }
+      );
     }
   }
 
@@ -141,10 +185,6 @@ export class ReportComponent implements OnInit {
     if(this.therapyList.length == 0){
       this.therapyPrescribed = false;
     }
-  }
-
-  checkMedicineQuantity() : boolean{
-    return true;
   }
 
   saveReport(){

@@ -40,43 +40,94 @@
         </div>
 
         <div style="height: 30px;"></div>
-        <table mat-table [dataSource]="medicineList" *ngIf="hasMedicine" matSort class="mat-elevation-z8">
-    
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Medicine name </th>
-              <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.name}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="manufacturer">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Manufacturer </th>
-              <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.manufacturer}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="details">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-stroked-button color="accent" (click)="medicineDetails(element)">Details</button>
-                </td>
-              </ng-container>
+        <div *ngIf="!medicineRecommendation">
+            <table mat-table [dataSource]="medicineList" *ngIf="hasMedicine" matSort class="mat-elevation-z8">
         
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <div style="height: 40px;" *ngIf="hasTherapy"></div>
-        <div class="example-full-width" *ngIf="hasTherapy" style="padding-bottom: 20px;">
-            <label matInput class="static-label">Medicine name: </label>
-            <label matInput class="normal-label">{{chosenMedicine.name}}</label>
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Medicine name </th>
+                <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.name}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="manufacturer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Manufacturer </th>
+                <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.manufacturer}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="details">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-stroked-button color="accent" (click)="medicineDetails(element)">Details</button>
+                    </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <div style="height: 40px;" *ngIf="hasTherapy"></div>
+            <div class="example-full-width" *ngIf="hasTherapy" style="padding-bottom: 20px;">
+                <label matInput class="static-label">Medicine name: </label>
+                <label matInput class="normal-label">{{chosenMedicine.name}}</label>
+            </div>
+            <mat-form-field class="example-full-width"  *ngIf="hasTherapy" style="padding-bottom: 10px;">
+                <input matInput placeholder="Duration in days" id="newDose" name="dozatekst" [(ngModel)]="duration">
+            </mat-form-field>
+            <div class="example-full-width" *ngIf="hasTherapy" style="display: block;">
+                <button mat-raised-button (click)="addTherapy()" [disabled]="isAllergic" style="float: left; width: 150px; color: rgb(93, 147, 235);">Save</button>
+                <label matInput *ngIf="allergyCheck&&!isAllergic" class="static-label" style="color: rgb(145, 187, 106); margin-left: 10px; font-size: medium;">No allergies!</label>
+                <label matInput *ngIf="allergyCheck&&isAllergic" class="static-label" style="color: rgb(187, 109, 106); margin-left: 10px; font-size: medium;">Patient has allergy!</label>
+                <button mat-raised-button (click)="checkAllergies()" *ngIf="!allergyCheck" style="width: 150px; color: rgb(145, 187, 106); margin-left: 10px;">Check allergies</button>
+                <button mat-raised-button (click)="cancelMedicine()" style="float: right; width: 150px; color: gray;">Cancel</button>
+            </div>
+            <div style="height: 30px;" *ngIf="hasTherapy"></div>
         </div>
-        <mat-form-field class="example-full-width"  *ngIf="hasTherapy" style="padding-bottom: 10px;">
-            <input matInput placeholder="Duration in days" id="newDose" name="dozatekst" [(ngModel)]="duration">
-        </mat-form-field>
-        <div class="example-full-width" *ngIf="hasTherapy" style="display: block;">
-            <button mat-raised-button (click)="addTherapy()" [disabled]="isAllergic" style="float: left; width: 150px; color: rgb(93, 147, 235);">Save</button>
-            <label matInput *ngIf="allergyCheck&&!isAllergic" class="static-label" style="color: rgb(145, 187, 106); margin-left: 10px; font-size: medium;">No allergies!</label>
-            <label matInput *ngIf="allergyCheck&&isAllergic" class="static-label" style="color: rgb(187, 109, 106); margin-left: 10px; font-size: medium;">Patient has allergy!</label>
-            <button mat-raised-button (click)="checkAllergies()" *ngIf="!allergyCheck" style="width: 150px; color: rgb(145, 187, 106); margin-left: 10px;">Check allergies</button>
-            <button mat-raised-button (click)="cancelMedicine()" style="float: right; width: 150px; color: gray;">Cancel</button>
+
+        <div *ngIf="medicineRecommendation">
+
+            <div class="example-full-width" style="padding-bottom: 20px;">
+                <label matInput class="static-label">Compatible medicine as {{chosenMedicine.name}}: </label>
+                <button mat-raised-button (click)="cancelRecommendation()" style="float: right; width: 200px; color: rgb(206, 101, 101);">Cancel Recommendation</button>
+            </div>
+            <div style="height: 20px;"></div>
+            <table mat-table [dataSource]="compatibleMedicine" *ngIf="hasMedicine" matSort class="mat-elevation-z8">
+        
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Medicine name </th>
+                <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.name}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="manufacturer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Manufacturer </th>
+                <td mat-cell *matCellDef="let element" (click)="chooseMedicine(element)"> {{element.manufacturer}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="details">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-stroked-button color="accent" (click)="medicineDetails(element)">Details</button>
+                    </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <div style="height: 40px;" *ngIf="hasTherapy"></div>
+            <div class="example-full-width" *ngIf="hasTherapy" style="padding-bottom: 20px;">
+                <label matInput class="static-label">Medicine name: </label>
+                <label matInput class="normal-label">{{chosenMedicine.name}}</label>
+            </div>
+            <mat-form-field class="example-full-width"  *ngIf="hasTherapy" style="padding-bottom: 10px;">
+                <input matInput placeholder="Duration in days" id="newDose" name="dozatekst" [(ngModel)]="duration">
+            </mat-form-field>
+            <div class="example-full-width" *ngIf="hasTherapy" style="display: block;">
+                <button mat-raised-button (click)="addRecommendedTherapy()" [disabled]="isAllergic" style="float: left; width: 150px; color: rgb(93, 147, 235);">Save</button>
+                <label matInput *ngIf="allergyCheck&&!isAllergic" class="static-label" style="color: rgb(145, 187, 106); margin-left: 10px; font-size: medium;">No allergies!</label>
+                <label matInput *ngIf="allergyCheck&&isAllergic" class="static-label" style="color: rgb(187, 109, 106); margin-left: 10px; font-size: medium;">Patient has allergy!</label>
+                <button mat-raised-button (click)="checkAllergies()" *ngIf="!allergyCheck" style="width: 150px; color: rgb(145, 187, 106); margin-left: 10px;">Check allergies</button>
+                <button mat-raised-button (click)="cancelMedicine()" style="float: right; width: 150px; color: gray;">Cancel</button>
+            </div>
+            <div style="height: 30px;" *ngIf="hasTherapy"></div>
         </div>
-        <div style="height: 30px;" *ngIf="hasTherapy"></div>
     </form>
 </mat-card>

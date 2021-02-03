@@ -35,6 +35,10 @@ export class Constants {
     public static dermatologistSaveReportUrl = Constants.baseUrl + "/derm/report";
     //dermatologist if patient is allergic
     public static dermatologistAllergicUrl = Constants.baseUrl + "/derm/allergies";
+    //dermatologist check medicine quantity
+    public static dermatologistCheckMedicineQuantityUrl = Constants.baseUrl + "/derm/medicine/isAvailable";
+    //dermatologist check for compatible medicine
+    public static dermatologistCompatibleUrl = Constants.baseUrl + "/derm/medicine/compatible";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
