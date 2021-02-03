@@ -5,6 +5,7 @@ import { PharmacistsComponent } from '../pharmacy-admin/pharmacists/pharmacists.
 import { RouteGuardService } from '../shared/helpers/route-guard.service';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PharmacyPageComponent } from './pharmacy-page/pharmacy-page.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'pharmacists', component: PharmacistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacy/:id', component: PharmacyPageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
   {path: '', component: HomePageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
+  {path: 'profile', component: ProfileComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 

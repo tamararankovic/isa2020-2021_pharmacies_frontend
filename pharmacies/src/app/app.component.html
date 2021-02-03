@@ -11,14 +11,23 @@
     <button style="float: right;" mat-button routerLink="../dermatologist/profile">
       Profile
     </button>
+    <button style="float: right;" mat-button routerLink="../dermatologist/search">
+      Patients
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="patient" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PATIENT'">
+    <button style="float: right;" mat-button routerLink="../patient/profile">
+      Profile
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
     <button style="float: right;" mat-button routerLink="../pharmacist/profile">
       Profile
+    </button>
+    <button style="float: right;" mat-button routerLink="../pharmacist/search">
+      Patients
     </button>
   </span>
 
