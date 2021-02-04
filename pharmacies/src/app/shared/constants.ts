@@ -103,4 +103,5 @@ export class Constants {
     public static updatePharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/update";
     public static changePasswordPharmacyAdmin = Constants.baseUrl + "/pharmacy-admin/change-password";
     public static getAllMedicinesForPharmacyAdminUrl = Constants.baseUrl + "/medicine/by-pharmacy";
+    public static newOrderUrl = Constants.baseUrl + "/order/new";
 }

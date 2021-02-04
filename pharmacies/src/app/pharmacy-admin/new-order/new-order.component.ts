@@ -5,7 +5,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MedicineToOrderDTO } from '../DTOs/medicine-to-order-dto';
+import { NewMedicineQuantityDTO } from '../DTOs/new-medicine-quantity-dto';
+import { NewOrderDTO } from '../DTOs/new-order-dto';
 import { MedicineService } from '../service/medicine.service';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-new-order',
@@ -14,7 +17,7 @@ import { MedicineService } from '../service/medicine.service';
 })
 export class NewOrderComponent implements OnInit {
 
-  constructor(private medicineService : MedicineService, private snackBar : MatSnackBar) { }
+  constructor(private medicineService : MedicineService, private snackBar : MatSnackBar, private orderService : OrderService) { }
 
   public allMedicines : MedicineToOrderDTO[] = [];
 
@@ -61,7 +64,18 @@ export class NewOrderComponent implements OnInit {
       }
     }
     if(valid) {
-      
+      let medicines : NewMedicineQuantityDTO[] = [];
+      for(let data of this.selection.selected) {
+        medicines.push(new NewMedicineQuantityDTO(data.id, data['quantity']));
+      }
+      let date = new Date(this.selectedDate.value);
+      date.setHours(Number(this.selectedTime.substr(0, 2)) + 1);
+      date.setMinutes(Number(this.selectedTime.substr(3, 2)));
+      let order = new NewOrderDTO(medicines, date);
+      this.orderService.create(order).subscribe(
+        (val) => this.openSnackBar("Order successfully created!", "Okay"),
+        error => this.openSnackBar(error.error.message, "Okay")
+      )
     }
   }
 
