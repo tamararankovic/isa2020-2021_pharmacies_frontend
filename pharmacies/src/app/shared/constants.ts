@@ -106,4 +106,6 @@ export class Constants {
     public static newOrderUrl = Constants.baseUrl + "/order/new";
     public static getOrdersUrl = Constants.baseUrl + "/order";
     public static chooseOrderWinnerUrl = Constants.baseUrl + "/order/choose-winner";
+    public static updateOrderUrl = Constants.baseUrl + "/order/update";
+    public static deleteOrderUrl = Constants.baseUrl + "/order/delete/";
 }
