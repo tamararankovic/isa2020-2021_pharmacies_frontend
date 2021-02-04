@@ -34,7 +34,7 @@ export class RegisterPharmacyAdminComponent implements OnInit {
   registerPharmacyAdmin(){
       console.log("uslo u ovo");
       if(this.password != this.confirmePassword) this.openSnackBar("Please make sure your passwords match.", "Okay")
-      else if(this.password.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
+      else if(this.password.length < 4) this.openSnackBar("Please enter at least 4 characters for password.", "Okay")
       else if(this.id == 0) this.openSnackBar("Please choose pharmacy for pharmacy admin.", "Okay")
       else {
         this.adminService.registerPharmacyAdmin(new PharmacyAdminRegisterDTO(this.email, this.password, this.nameOfUser, this.surname, this.id)).subscribe(
