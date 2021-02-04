@@ -4,6 +4,7 @@ import { FormArray, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { MedicineToOrderDTO } from '../DTOs/medicine-to-order-dto';
 import { NewMedicineQuantityDTO } from '../DTOs/new-medicine-quantity-dto';
 import { NewOrderDTO } from '../DTOs/new-order-dto';
@@ -17,7 +18,7 @@ import { OrderService } from '../service/order.service';
 })
 export class NewOrderComponent implements OnInit {
 
-  constructor(private medicineService : MedicineService, private snackBar : MatSnackBar, private orderService : OrderService) { }
+  constructor(private medicineService : MedicineService, private snackBar : MatSnackBar, private orderService : OrderService, private router : Router) { }
 
   public allMedicines : MedicineToOrderDTO[] = [];
 
@@ -73,7 +74,7 @@ export class NewOrderComponent implements OnInit {
       date.setMinutes(Number(this.selectedTime.substr(3, 2)));
       let order = new NewOrderDTO(medicines, date);
       this.orderService.create(order).subscribe(
-        (val) => this.openSnackBar("Order successfully created!", "Okay"),
+        (val) => {this.openSnackBar("Order successfully created!", "Okay"); this.router.navigate(['pharmacy-admin/orders'])},
         error => this.openSnackBar(error.error.message, "Okay")
       )
     }

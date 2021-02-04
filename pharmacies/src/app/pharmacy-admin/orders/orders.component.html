@@ -1,0 +1,41 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">
+    Orders list
+</h1>
+<mat-form-field appearance="fill" style="width: 50%; margin-left: 25%;">
+    <mat-label>Filter by status</mat-label>
+    <mat-select [formControl]="selectedStatuses" multiple (selectionChange)="filter()">
+      <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+<table mat-table class="mat-elevation-z8" [dataSource]="filteredOrders" style=" margin-top: 20px; width: 50%; margin-left: 25%;">
+    
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef> STATUS </th>
+      <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Deadline">
+      <th mat-header-cell *matHeaderCellDef> DEADLINE </th>
+      <td mat-cell *matCellDef="let element"> {{ element.deadline[0]}}.{{ element.deadline[1]}}.{{ element.deadline[2]}}  {{ element.deadline[3]}}:{{ element.deadline[4]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Medicines">
+        <th mat-header-cell *matHeaderCellDef> MEDICINES </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-list role="list">
+                <mat-list-item *ngFor="let medicine of element.medicines" role="listitem">{{ medicine.medicine.name }}</mat-list-item>
+              </mat-list>                  
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Details">
+        <th mat-header-cell *matHeaderCellDef> DETAILS </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-stroked-button color="primary" (click)="viewDetails(element.id)">View details</button>               
+        </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <button mat-raised-button color="primary" style="float: right; margin-right: 25%; margin-top: 20px" routerLink="../new-order">Create</button>

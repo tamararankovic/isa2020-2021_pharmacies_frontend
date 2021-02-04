@@ -26,11 +26,14 @@ import { AgmCoreModule } from '@agm/core';
 import { AdminBasicInfoComponent } from './admin-basic-info/admin-basic-info.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditOrderComponent } from './edit-order/edit-order.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
