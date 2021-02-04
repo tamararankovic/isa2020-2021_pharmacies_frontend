@@ -1,0 +1,154 @@
+<div style="height:100%; display: flex; justify-content: center;  ">
+    <mat-card class="mat-elevation-z8" style="margin-top: 4%; width: 60%; height: 60%; display: flex; justify-content: center; align-items: center; height: max-content; padding-top: 5px; ">
+        <form #feedform="ngForm" style="width: 80%;" (submit)="addMedicine()" novalidate>
+            <h2 style="text-align: center;">
+                Add new medicine
+            </h2>
+            
+            <div class="item1">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Code</mat-label>
+                    <input matInput required id="usernameInput" #name = "ngModel" name="c1" [(ngModel)] = "code" style="height: 40%;"/>
+                </mat-form-field>
+              </div>
+              
+              <div class="item2">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Name</mat-label>
+                    <input matInput required id="passwordInput" #name2 = "ngModel" name="c2"[(ngModel)] = "nameOfMedicine" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div class="item3">
+                  <mat-form-field style="width:100%;">
+                  <mat-label>Medicine Type</mat-label>
+                  <mat-select [(ngModel)] = "type"  #name9 = "ngModel" name="c9" required>
+                    <mat-option>--</mat-option>
+                    <mat-option value="ANTIBIOTIC">Antibiotic</mat-option>
+                    <mat-option value="ANESTHETIC">Anesthetic</mat-option>
+                    <mat-option value="ANTIHISTAMINE">Antihistamine</mat-option>
+                    </mat-select>
+                 
+                  </mat-form-field>
+             </div>
+             <div class="item4">
+                <mat-form-field style="width:100%;">
+                <mat-label>Medicine forme</mat-label>
+                <mat-select [(ngModel)] = "forme" #name8 = "ngModel" name="c8" required>
+                  <mat-option>--</mat-option>
+                  <mat-option value="CAPSULE">Capsule</mat-option>
+                  <mat-option value="TABLET">Tablet</mat-option>
+                  <mat-option value="POWDER">Powder</mat-option>
+                  <mat-option value="CREAM">Cream</mat-option>
+                  <mat-option value="OIL">Oil</mat-option>
+                  <mat-option value="SYRUP">Syrup</mat-option>
+                  </mat-select>
+
+                </mat-form-field>
+              </div>
+           <div class="item5">
+                <mat-form-field style="width:100%;">
+                    <mat-label>Manufacturer</mat-label>
+                    <input matInput  id="nameInput"required #name4 = "ngModel" name="c4"  [(ngModel)] = "manufacturer" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            
+            <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points</mat-label>
+                    <input matInput required id="nameInput" type="number" #name6 = "ngModel" name="c6"  [(ngModel)] = "points" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <div >
+                <mat-form-field style="width:100%;">
+                <mat-label>Prescription type</mat-label>
+                <mat-select [(ngModel)] = "prescripiton"required #name10= "ngModel" name="c10" >
+                  <mat-option>--</mat-option>
+                  <mat-option value="With">With prescription</mat-option>
+                  <mat-option value="Withouth">Without prescription</mat-option>
+                  </mat-select>
+
+                </mat-form-field>
+              </div>
+            <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Additional Info</mat-label>
+                    <input matInput required id="surnameInput" #name7 = "ngModel" name="c7"  [(ngModel)] = "additionalInfo" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+            <h3 style="text-align: center; margin-top: 4%;">
+              Medicine specification
+            </h3>
+            <div >
+              <mat-form-field style="width:100%;">
+                  <mat-label>Side effects</mat-label>
+                  <input matInput required id="nameInput" #name3 = "ngModel" name="c3"  [(ngModel)] = "sideEffects" style="height: 40%;"/>
+              </mat-form-field>
+          </div>
+          <div >
+              <mat-form-field style="width:100%;">
+                  <mat-label>Advised daily dose</mat-label>
+                  <input matInput required id="nameInput" type="number" #name5 = "ngModel" name="c5"  [(ngModel)] = "advisedDailyDose" style="height: 40%;"/>
+              </mat-form-field>
+          </div>
+          <h3 style="text-align: center; margin-top: 4%;">
+            Add ingredients of medicine
+          </h3>
+            <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Add ingredient</mat-label>
+                    <input matInput required id="nameInput"  #name11 = "ngModel" name="c11"  [(ngModel)] = "ingredient" style="height: 40%;"/>
+                </mat-form-field>
+                <button mat-stroked-button color="accent" type="button" id="selectButton" (click)="OnClick()">ADD INGREDIENT</button>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 5%;">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                
+                  <ng-container matColumnDef="ingredient">
+                    <th mat-header-cell *matHeaderCellDef> Ingredients list </th>
+                    <td mat-cell *matCellDef="let element"> {{element}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+                <h3 style="text-align: center; margin-top: 4%;">
+                  Add compatible medicine codes
+                </h3>
+             <div style="display: flex; justify-content: center; margin-top: 5%;">
+                <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+                
+                  <ng-container matColumnDef="code">
+                    <th mat-header-cell *matHeaderCellDef> Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name</th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef> Select</th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <button mat-stroked-button color="accent" type="button" id="selectButton" (click)="OnClick2(element)" *ngIf="!element.clicked" >CHOOSE</button>
+                      
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                </table>
+              </div>  
+        
+            <div style="text-align: center; margin-top: 50px;">
+                <button id="registerButton" [disabled] ="name.invalid || name2.invalid || name3.invalid || name4.invalid || name5.invalid || name6.invalid || name7.invalid || name8.invalid || name9.invalid || name10.invalid ||  name11.invalid " mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Save</button>
+              </div>
+
+        
+        
+        </form>
+    </mat-card>
+</div>
+

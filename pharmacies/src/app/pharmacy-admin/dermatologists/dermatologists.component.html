@@ -1,0 +1,62 @@
+<h1 style="margin-top: 2%; margin-bottom: 2%; text-align: center;">
+    <b>Dermatologist list</b>
+</h1>
+<div style="width: 100%; height: max-content;">
+  <div style="width: 80%; margin-left: 10%;">
+    <mat-form-field class="example-form-field" style="width: 90%; display: inline-block;">
+      <mat-label>Search dermatologists by name and surname</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>      
+    <button mat-raised-button color="accent" style="width: 8%; float: right;" (click)="search()">Search</button>
+  </div>
+  <div style="width: 80%; margin-left: 10%;">
+    <mat-form-field appearance="fill" style="width: 45%; display: inline-block;">
+      <mat-label>Filter by pharmacy</mat-label>
+      <mat-select [formControl]="selectedPharmacies" multiple (selectionChange)="filter()">
+        <mat-option *ngFor="let pharmacy of pharmacies" [value]="pharmacy">{{pharmacy}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p style="display: inline-block; margin-left: 1%;">Filter by rating</p>
+    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" style="width: 45%; float: right;" (userChangeEnd)="filter()"></ngx-slider>
+  </div>  
+
+    <table mat-table [dataSource]="displayDermatologists" style="margin-bottom: 1%; width: 80%; margin-left: 10%;">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Surname">
+            <th mat-header-cell *matHeaderCellDef> SURNAME </th>
+            <td mat-cell *matCellDef="let element"> {{ element.surname }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Rating">
+            <th mat-header-cell *matHeaderCellDef> AVERAGE RATING </th>
+            <td mat-cell *matCellDef="let element"> {{ element.avgRating }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Pharmacies">
+            <th mat-header-cell *matHeaderCellDef> PHARMACIES </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-list role="list">
+                    <mat-list-item *ngFor="let pharmacy of element.pharmacies" role="listitem">{{ pharmacy }}</mat-list-item>
+                  </mat-list>                  
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Delete">
+          <th mat-header-cell *matHeaderCellDef> DELETE </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-stroked-button color="warn" (click)="delete(element.id)">Delete</button>                                      
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <button mat-raised-button color="primary" style="float: right; margin-right: 10%;" *ngIf="displayAddNewButton" (click)="create()">Add new dermatologist</button>
+</div>

@@ -1,1 +1,70 @@
-<p>home-page works!</p>
+<html>
+<body style="background-color: rgb(246, 248, 250);">
+    <div style="display: flex; justify-content: center; background-color: rgb(58, 117, 211);">
+        <mat-card class="mat-elevation-z8" style="width: 1200px; height: 30%; margin-top: 30px; margin-bottom: 30px;">
+            <h2 style="text-align: center;">
+                Complaint's list
+            </h2>
+        </mat-card>
+    </div>
+    <div class="content" fxLayout="row wrap">
+        <div fxFlex="30%">
+                <mat-card class="mat1" routerLink="../system-admin/pharmacy">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/pharmacy.png">
+                        <p id = "text">New Pharmacy</p>
+                    </mat-card-content>
+                </mat-card>
+        </div>
+        <div fxFlex="30%">
+            <mat-card class="mat1" routerLink="../system-admin/pharmacyAdmin">
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/pharmacyAdmin.png">
+                    <p id = "text">New Pharmacy Admin</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="30%">
+            <mat-card class="mat1" routerLink="../system-admin/supplier">
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/supplier.png">
+                    <p id = "text">New Supplier</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="30%">
+            <mat-card class="mat1" routerLink="../system-admin/dermatologist">
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/dermatologist.png">
+                    <p id = "text">New Dermatologist</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="30%">
+            <mat-card class="mat1" routerLink="../system-admin/medicine">
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/medicine.png">
+                    <p id = "text">New medicine</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="mat1" routerLink="../system-admin/admin">
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/admin.png">
+                    <p id = "text">New System Admin</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="mat1" >
+                <mat-card-content style="text-align: center;">
+                    <img src="assets/program.png">
+                    <p id = "text">Loyalty program</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</body>
+</html>
