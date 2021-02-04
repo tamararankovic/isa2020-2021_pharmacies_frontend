@@ -23,7 +23,16 @@
     <button style="float: right;" mat-button routerLink="../patient/profile">
       Profile
     </button>
+    <button style="float: right;" mat-button routerLink="../patient/pharmacy-search">
+      Pharmacy search
+    </button>
+    <button style="float: right;" mat-button routerLink="../patient/medicine-reservations">
+      Medicine reservations
+    </button>
   </span>
+
+  
+
 
   <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
     <button style="float: right;" mat-button routerLink="../pharmacist/profile">

@@ -88,6 +88,7 @@ export class Constants {
     public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
     //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId"
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

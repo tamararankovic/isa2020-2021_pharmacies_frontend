@@ -17,13 +17,13 @@ export class PharmaciesSearchComponent implements OnInit {
   constructor(private pharmaciesService : PharmaciesService ) { }
 
   ngOnInit(): void {
-    this.criteria = new PharmacyInfoDto(this.name, null,this.address, null, null, null, null, null);
+    this.criteria = new PharmacyInfoDto(null,this.name, null,this.address, null, null, null, null, null);
     this.pharmaciesService.getPharmacies(this.criteria).subscribe(data => this.dataSource = data);
     console.log(this.dataSource);
   }
 
   search(){
-    this.criteria = new PharmacyInfoDto(this.name, null,this.address, null, null, null, null, null);
+    this.criteria = new PharmacyInfoDto(null,this.name, null,this.address, null, null, null, null, null);
     this.pharmaciesService.getPharmacies(this.criteria).subscribe(
       data => this.dataSource = data
     );
