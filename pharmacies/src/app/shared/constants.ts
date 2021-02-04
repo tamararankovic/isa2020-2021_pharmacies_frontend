@@ -14,6 +14,7 @@ export class Constants {
     public static registerUrl = Constants.baseUrl + "/auth/register";
     public static changePasswordUrl = Constants.baseUrl + "/auth/changePassword";
     public static allPharmaciesUrl = Constants.baseUrl + "/pharmacy/all";
+    public static allMedicineUrl = Constants.baseUrl + "/medicine/all";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";

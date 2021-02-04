@@ -14,16 +14,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { PharmaciesSearchComponent } from './pharmacies-search/pharmacies-search.component'; 
+import { PharmaciesSearchComponent } from './pharmacies-search/pharmacies-search.component';
+import { MedicineSearchComponent } from './medicine-search/medicine-search.component'; 
 
 @NgModule({
-  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent, PharmaciesSearchComponent],
+  declarations: [LandingPageComponent, LoginPageComponent, RegisterPageComponent, PharmaciesSearchComponent, MedicineSearchComponent],
   imports: [
     CommonModule,
     UnauthenticatedUserRoutingModule,
     MatButtonModule,
     MatCardModule,
+    MatSelectModule,
     MatSortModule,
     FormsModule,
     MatTableModule,
