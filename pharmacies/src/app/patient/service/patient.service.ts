@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PatientDto } from '../DTOs/patient-dto';
 import { Constants } from 'src/app/shared/constants';
 import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
+import { ReservationDto } from '../DTOs/reservation-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,9 @@ export class PatientService {
   getMedicine(): Observable<string[]>{
     return this._http.get<string[]>(Constants.patientMedicineUrl, {withCredentials: true});
   }
+
+  getResrvations() : Observable<ReservationDto[]>{
+    return this._http.get<ReservationDto[]>(Constants.patientReservationsUrl, {withCredentials: true})
+  }
+
 }

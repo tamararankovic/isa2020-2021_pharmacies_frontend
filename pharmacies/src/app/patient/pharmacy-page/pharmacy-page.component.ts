@@ -11,7 +11,7 @@ import { PharmacyService } from '../service/pharmacy.service';
 })
 export class PharmacyPageComponent implements OnInit {
 
-  public data : PharmacyInfoDto = new PharmacyInfoDto("", "", "", 0, [], [], [], []);
+  public data : PharmacyInfoDto = new PharmacyInfoDto(0,"", "", "", 0, [], [], [], []);
 
   public displayedColumnsMedicine = ["Name", "Reserve"];
   public displayedColumnsPharmacist = ["Name"];
