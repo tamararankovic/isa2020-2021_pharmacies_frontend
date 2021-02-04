@@ -24,7 +24,7 @@ export class RegisterDermatologistComponent implements OnInit {
 
   registerDermatologist(){
     if(this.password != this.confirmePassword) this.openSnackBar("Please make sure your passwords match.", "Okay")
-    else if(this.password.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
+    else if(this.password.length < 4) this.openSnackBar("Please enter at least 4 characters for password.", "Okay")
     else {
       this.adminService.registerDermatologist(new DermatologistDTO(this.email, this.password, this.nameOfUser, this.surname)).subscribe(
           (data) => {

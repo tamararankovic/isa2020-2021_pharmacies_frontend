@@ -31,8 +31,11 @@
     </button>
   </span>
 
-  
-
+  <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
+    <button style="float: right;" mat-button routerLink="../supplier/profile">
+      Profile
+    </button>
+  </span>
 
   <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
     <button style="float: right;" mat-button routerLink="../pharmacist/profile">

@@ -21,7 +21,7 @@ export class AuthService {
     return this._http.post(Constants.loginUrl, user, {responseType: 'text', withCredentials: true});
   }
   register(user : UserRegisterDto){
-    return this._http.post(Constants.registerUrl, user , {responseType: 'json', withCredentials: true})
+    return this._http.post(Constants.registerUrl, user , {responseType: 'text', withCredentials: true})
   }
   changePassword(user : UserPasswordChangeDto){
     return this._http.post(Constants.changePasswordUrl, user,  {responseType: 'text', withCredentials: true} )
