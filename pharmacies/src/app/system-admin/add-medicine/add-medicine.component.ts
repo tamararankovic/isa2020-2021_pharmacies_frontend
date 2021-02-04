@@ -44,6 +44,7 @@ export class AddMedicineComponent implements OnInit {
     else {
       this.withPrescription= false;
     }
+    if(!(this.advisedDailyDose >=1 && this.advisedDailyDose <=10)) this.openSnackBar("Advised daily dose must be between 1 and 10.", "Okay"); else {
    this.adminService.addNewMedicine(new MedicineDTO(this.code, this.nameOfMedicine, this.type, this.forme, this.dataSource, this.manufacturer, this.withPrescription, this.additionalInfo, this.codes, this.points, this.sideEffects, this.advisedDailyDose)).subscribe(
           (data) => {
             let message = this.nameOfMedicine + " "  + "medicine is added. ";
@@ -54,7 +55,7 @@ export class AddMedicineComponent implements OnInit {
             
           }
         );
-
+        }
 }
   OnClick(){
 

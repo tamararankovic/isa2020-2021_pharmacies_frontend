@@ -35,7 +35,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   register(){
     if(this.password != this.confirmePassword) this.openSnackBar("Please make sure your passwords match.", "Okay")
-    else if(this.password.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
+    else if(this.password.length < 4) this.openSnackBar("Please enter at least 4 characters for password.", "Okay")
     else {
       this.authService.register(new UserRegisterDto(this.email, this.password, this.nameOfUser, this.surname,
         this.address, this.city, this.country, this.phone)).subscribe(
@@ -45,14 +45,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
             this.openSnackBar(message + visibleMessage, "Okay");
           },
           error => {
-            if (error.status = 400){
-              let message = "This email has already been taken. ";
-              this.openSnackBar(message, "Okay");
-              
-            }else if (error.status = 403){
-              let forbidden = "You cannot register while being loged in.";
-              this.openSnackBar(forbidden, "Okay");
-            }
+            this.openSnackBar(error.error, "Okay");
           }
         );
     }
