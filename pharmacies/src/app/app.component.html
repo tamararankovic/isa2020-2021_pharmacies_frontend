@@ -74,6 +74,12 @@
     <button style="float: right;" mat-button routerLink="../register" *ngIf="!this.authService.isAuthenticated()">
       Register
     </button>
+    <button style="float: right;" mat-button routerLink="../pharmacies" *ngIf="!this.authService.isAuthenticated()">
+      Pharmacies
+    </button>
+    <button style="float: right;" mat-button routerLink="../medicine" *ngIf="!this.authService.isAuthenticated()">
+      Medicine
+    </button>
     <button style="float: right;" mat-button routerLink="../" *ngIf="this.authService.isAuthenticated()" (click) = "this.authService.logOut()">
       Log Out
     </button>

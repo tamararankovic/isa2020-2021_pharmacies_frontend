@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MedicineSearchComponent } from './medicine-search/medicine-search.component';
+import { PharmaciesSearchComponent } from './pharmacies-search/pharmacies-search.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
+  {path: 'pharmacies', component: PharmaciesSearchComponent},
+  {path: 'medicine', component: MedicineSearchComponent},
   {path: '', component: LandingPageComponent},
   {path:'**', component: PageNotFoundComponent}
 ];
@@ -17,4 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class UnauthenticatedUserRoutingModule { }
-export const routingComponents = [LoginPageComponent, RegisterPageComponent, LandingPageComponent, PageNotFoundComponent]
+export const routingComponents = [LoginPageComponent, RegisterPageComponent,MedicineSearchComponent, PharmaciesSearchComponent, LandingPageComponent, PageNotFoundComponent]
