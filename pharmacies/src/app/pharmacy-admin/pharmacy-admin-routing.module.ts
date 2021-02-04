@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RouteGuardService } from '../shared/helpers/route-guard.service';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { AdminBasicInfoComponent } from './admin-basic-info/admin-basic-info.component';
+import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-promotions.component';
 import { DermatologistsComponent } from './dermatologists/dermatologists.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -15,6 +16,7 @@ import { PharmacistsComponent } from './pharmacists/pharmacists.component';
 import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic-info.component';
 
 const routes: Routes = [
+  {path: 'deals-and-promotions', component: DealsAndPromotionsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'order/:id', component: OrderDetailsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'edit-order/:id', component: EditOrderComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'orders', component: OrdersComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},

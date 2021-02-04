@@ -29,11 +29,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { EditOrderComponent } from './edit-order/edit-order.component'; 
+import { EditOrderComponent } from './edit-order/edit-order.component';
+import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-promotions.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
