@@ -77,6 +77,10 @@ export class Constants {
     public static pharmacistReservationValidUrl = Constants.baseUrl + "/pharm/reservationValid";
     //pharmacist reservation received
     public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
+    //pharmacist appointment check
+    public static pharmacistCheckAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
+    //pharmacist save appointment
+    public static pharmacistSaveAppointmentUrl = Constants.baseUrl + "/pharm/saveAppointment";
     
     //patients profile
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";

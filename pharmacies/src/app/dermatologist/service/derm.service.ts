@@ -18,6 +18,8 @@ import { MedicineDetailsDTO } from '../DTOs/med-details-dto';
 })
 export class DermService {
 
+  public appointmentId : number = 0;
+
   constructor(private _http : HttpClient) { }
 
   getDermatologist() : Observable<DermDTO> {

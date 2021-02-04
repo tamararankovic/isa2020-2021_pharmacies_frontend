@@ -22,6 +22,7 @@ export class ReportComponent implements OnInit {
   withPrescription = true;
   details : MedicineDetailsDTO;
 
+  reportDone = false;
   diagnosis = "";
   hasMedicine = false;
   duration = "";
@@ -215,9 +216,13 @@ export class ReportComponent implements OnInit {
     else{
       this.report = new DermReportDTO(this.dermAppDTO.appointmentId, this.diagnosis, this.therapyList);
       this.dermService.saveReport(this.report).subscribe(
-        data => console.log("izvestaj je upisan u bazu")
+        data => {
+          console.log("izvestaj je upisan u bazu");
+          this.dermService.appointmentId = this.dermAppDTO.appointmentId;
+          this.openSnackBar("Report is saved.", "Okay");
+          this.reportDone = true;
+        }
       );
-      this.openSnackBar("Report is saved.", "Okay");
     }
   }
 

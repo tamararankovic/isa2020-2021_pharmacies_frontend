@@ -1,6 +1,6 @@
 <h2 style="text-align: center; margin-top: 30px;">Fill Report</h2>
 <mat-card style="width: 50%; margin: 0 auto;">
-    <form style="padding: 30px;" *ngIf="!showMedicineDetails">
+    <form style="padding: 30px;" *ngIf="!showMedicineDetails && !reportDone">
         <div class="example-full-width" style="padding-bottom: 20px;">
             <label matInput class="static-label" name="imelabela">Patient name: </label>
             <label matInput class="normal-label" name="imelabela1">{{dermAppDTO.patientName}}</label>
@@ -130,7 +130,7 @@
             <div style="height: 30px;" *ngIf="hasTherapy"></div>
         </div>
     </form>
-    <form style="padding: 30px;" *ngIf="showMedicineDetails">
+    <form style="padding: 30px;" *ngIf="showMedicineDetails && !reportDone">
         <h3 style="text-align: center; margin-top: 0px; font-weight: 500; color:  rgb(93, 147, 235);">MEDICINE DETAILS</h3>
         <div class="example-full-width" style="padding-bottom: 20px;">
             <label matInput class="static-label" name="imelabela">Medicine name: </label>

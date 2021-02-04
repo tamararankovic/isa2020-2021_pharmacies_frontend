@@ -7,6 +7,7 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { ProfileComponent } from './profile/profile.component';
 import { ReportComponent } from './report/report.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { SchedulingComponent } from './scheduling/scheduling.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'search', component: PatientSearchComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'report', component: ReportComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'reservation', component: ReservationComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
+  {path: 'scheduling', component: SchedulingComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 
