@@ -1,8 +1,8 @@
 export class DealPromotionDTO {
     constructor(
         public text : string,
-        public deal : boolean,
-        public startDate : Date,
-        public endDate : Date
+        public type : number,
+        public startDateTime : Date,
+        public endDateTime : Date
      ){}
 }
