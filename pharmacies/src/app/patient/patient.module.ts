@@ -18,9 +18,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { AgmCoreModule } from '@agm/core';
 import { PharmaciesSearchPatientComponent } from './pharmacies-search-patient/pharmacies-search-patient.component';
 import { ReservationsPageComponent } from './reservations-page/reservations-page.component';
+import { MedicineSearchPatientComponent } from './medicine-search-patient/medicine-search-patient.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent],
   imports: [
     CommonModule,
     PatientRoutingModule,
