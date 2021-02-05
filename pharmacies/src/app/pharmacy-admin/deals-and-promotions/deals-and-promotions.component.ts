@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DealPromotionDTO } from '../DTOs/deal-promotion-dto';
+import { PharmacyAdminService } from '../service/pharmacy-admin.service';
 
 @Component({
   selector: 'app-deals-and-promotions',
@@ -9,7 +11,7 @@ import { DealPromotionDTO } from '../DTOs/deal-promotion-dto';
 })
 export class DealsAndPromotionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service : PharmacyAdminService, private snackBar : MatSnackBar) { }
 
   text : string = "";
   option : number = 3;
@@ -19,12 +21,23 @@ export class DealsAndPromotionsComponent implements OnInit {
   endDate = new FormControl(new Date());
 
   ngOnInit(): void {
-  
   }
 
   send() {
-    let dto : DealPromotionDTO = new DealPromotionDTO(this.text, this.option == 1 ? true : false, new Date(this.startDate.value), new Date(this.endDate.value));
-    console.log(dto);
+    let year = new Date(this.endDate.value).getFullYear();
+    let month = new Date(this.endDate.value).getMonth();
+    let day = new Date(this.endDate.value).getDate();
+    let end = new Date(year, month, day+1, 0, 0, 0);
+    let dto : DealPromotionDTO = new DealPromotionDTO(this.text, this.option == 1 ? 1 : 0, new Date(this.startDate.value), end);
+    this.service.sendDealPromotion(dto).subscribe(
+      (val) => this.openSnackBar("Emails successfully sent to all subscribed users!", "Okay"),
+      error => this.openSnackBar(error.error.message, "Okay")
+    )
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
+    });
+  }
 }
