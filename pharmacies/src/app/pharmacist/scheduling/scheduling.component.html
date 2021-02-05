@@ -1,0 +1,16 @@
+<h2 style="text-align: center; margin-top: 30px;">Schedule Counseling</h2>
+<mat-card style="width: 30%; margin: 0 auto;">
+    <form style="padding: 30px;">
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Pick date and time: </label>
+        </div>
+        <mat-form-field appearance="outline" style="width: 70%; float: left; margin-left: 15%;">
+            <input matInput type="datetime-local" name="pick" [(ngModel)]="appointmentDateTime" placeholder="2017-06-01T08:30" value="2017-06-01T08:30">
+        </mat-form-field>
+        <div style="height: 70px;" class="example-full-width"></div>
+        <div class="example-full-width" style="display: block; margin-top: 30px;">
+            <button mat-raised-button (click)="checkIfAvailable()" style="width: 40%; height: 50px; font-size: 16px; color: white; background-color: rgb(93, 147, 235);">Save</button>
+            <button mat-raised-button routerLink=".." style="width: 40%; height: 50px; font-size: 16px; float: right; color: gray;">Cancel</button>
+        </div>
+    </form> 
+</mat-card>

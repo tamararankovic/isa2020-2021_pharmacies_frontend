@@ -13,11 +13,15 @@ import { IsAllergicDTO } from 'src/app/dermatologist/DTOs/is-allergic-dto';
 import { MedQuanDTO } from 'src/app/dermatologist/DTOs/med-quan-dto';
 import { MedicineDetailsDTO } from 'src/app/dermatologist/DTOs/med-details-dto';
 import { ResValidDTO } from '../DTOs/res-valid-dto';
+import { AppAvailableDTO } from '../DTOs/app-available-dto';
+import { SaveAppDTO } from '../DTOs/save-app-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PharmService {
+
+  public appointmentId : number = 0;
 
   constructor(private _http : HttpClient) { }
 
@@ -72,4 +76,13 @@ export class PharmService {
   reservationReceived(reservationId : number) {
     return this._http.get(Constants.pharmacistReservationUrl + "/" + reservationId, {withCredentials: true});
   }
+
+  isAppointmentAvailable(dto : SaveAppDTO) : Observable<AppAvailableDTO>{
+    return this._http.post<AppAvailableDTO>(Constants.pharmacistCheckAppointmentUrl, dto, {withCredentials: true});
+  }
+
+  saveAppointment(dto : SaveAppDTO){
+    return this._http.post(Constants.pharmacistSaveAppointmentUrl, dto, {withCredentials: true});
+  }
+
 }
