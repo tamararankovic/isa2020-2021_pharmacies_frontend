@@ -26,70 +26,48 @@ export class Constants {
     public static getAllMedicinesUrl = Constants.baseUrl + "/admin/getMedicines";
     public static addNewMedicineUrl = Constants.baseUrl + "/admin/addNewMedicine";
 
+    //supplier
+    public static supplierProfileUrl = Constants.baseUrl + "/supplier/get";
+    public static supplierUpdateUrl = Constants.baseUrl + "/supplier/update";
+    public static supplierPasswordUrl = Constants.baseUrl + "/supplier/changePassword";
+
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
 
     //patient
     public static getPharmacyInfoUrl = Constants.baseUrl + "/pharmacy/info/";
 
-    //dermatologist profile
+    //dermatologist
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";
-    //dermatologist change password
     public static dermatologistPasswordUrl = Constants.baseUrl + "/derm/changePassword";
-    //dermatologist personal info update
     public static dermatologistUpdateUrl = Constants.baseUrl + "/derm/update";
-    //dermatologist patient search
     public static dermatologistSearchUrl = Constants.baseUrl + "/derm/patients";
-    //dermatologist appointment dto
     public static dermatologistAppointmentUrl = Constants.baseUrl + "/derm/appointment";
-    //dermatologist get medicine list
     public static dermatologistGetMedicineUrl = Constants.baseUrl + "/derm/medicine";
-    //dermatologist fill report
     public static dermatologistSaveReportUrl = Constants.baseUrl + "/derm/report";
-    //dermatologist if patient is allergic
     public static dermatologistAllergicUrl = Constants.baseUrl + "/derm/allergies";
-    //dermatologist check medicine quantity
     public static dermatologistCheckMedicineQuantityUrl = Constants.baseUrl + "/derm/medicine/isAvailable";
-    //dermatologist check for compatible medicine
     public static dermatologistCompatibleUrl = Constants.baseUrl + "/derm/medicine/compatible";
-    //dermatologist and pharmacist medicine details
     public static dermatologistMedicineDetailsUrl = Constants.baseUrl + "/derm/medicineDetails";
-    //dermatologist appointment check
     public static dermatologistCheckAppointmentUrl = Constants.baseUrl + "/derm/appointment";
-    //dermatologist save appointment
     public static dermatologistSaveAppointmentUrl = Constants.baseUrl + "/derm/saveAppointment";
-    //dermatologist get existing appointments
     public static dermatologistExistingAppointmentsUrl = Constants.baseUrl + "/derm/appointments";
-    //dermatologist save existing appointment
     public static dermatologistSaveExistingAppointmentUrl = Constants.baseUrl + "/derm/saveExistingAppointment";
 
-    //pharmacist profile
+    //pharmacist
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
-    //pharmacist personal info update
     public static pharmacistUpdateUrl = Constants.baseUrl + "/pharm/update";
-    //pharmacist change password
     public static pharmacistPasswordUrl = Constants.baseUrl + "/pharm/changePassword";
-    //pharmacist appointment dto
     public static pharmacistAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
-    //pharmacist get medicine list
     public static pharmacistGetMedicineUrl = Constants.baseUrl + "/pharm/medicine";
-    //pharmacist fill report
     public static pharmacistSaveReportUrl = Constants.baseUrl + "/pharm/report";
-    //pharmacist if patient is allergic
     public static pharmacistAllergicUrl = Constants.baseUrl + "/pharm/allergies";
-    //pharmacist check medicine quantity
     public static pharmacistCheckMedicineQuantityUrl = Constants.baseUrl + "/pharm/medicine/isAvailable";
-    //pharmacist check for compatible medicine
     public static pharmacistCompatibleUrl = Constants.baseUrl + "/pharm/medicine/compatible";
-    //pharmacist check for compatible medicine
     public static pharmacistReservationValidUrl = Constants.baseUrl + "/pharm/reservationValid";
-    //pharmacist reservation received
     public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
-    //pharmacist appointment check
     public static pharmacistCheckAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
-    //pharmacist save appointment
     public static pharmacistSaveAppointmentUrl = Constants.baseUrl + "/pharm/saveAppointment";
-    //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
     
     //patients profile
@@ -100,6 +78,8 @@ export class Constants {
     public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
     //get medicine for allergies
     public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
+
+    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId"
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
