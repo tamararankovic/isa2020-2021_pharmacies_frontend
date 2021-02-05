@@ -1,1 +1,74 @@
-<p>new-medicine works!</p>
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 3%;">Add medicines to the pharmacy's offer</h1>
+<h2 style="text-align: center;">Select medicines</h2>
+
+<div class="mat-elevation-z8" style="margin-left: 10%; width: 80%;">
+    <table mat-table [dataSource]="dataSource" style=" margin-top: 1%; width: 100%;">
+
+        <ng-container matColumnDef="Select">
+          <th mat-header-cell *matHeaderCellDef>SELECT</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"></mat-checkbox>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Code">
+          <th mat-header-cell *matHeaderCellDef> CODE </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Type">
+          <th mat-header-cell *matHeaderCellDef> TYPE </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Manufacturer">
+          <th mat-header-cell *matHeaderCellDef> MANUFACTURER </th>
+          <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            (click)="selection.toggle(row)">
+        </tr>
+      </table>
+      <mat-paginator #pag1 [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+</div>
+
+<h2 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Selected medicines</h2>
+
+<div class="mat-elevation-z8" style="margin-left: 10%; width: 80%;">
+    <table mat-table [dataSource]="selection.selected" style=" margin-top: 1%; width: 100%;">
+    
+        <ng-container matColumnDef="Code">
+          <th mat-header-cell *matHeaderCellDef> CODE </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Type">
+          <th mat-header-cell *matHeaderCellDef> TYPE </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Manufacturer">
+          <th mat-header-cell *matHeaderCellDef> MANUFACTURER </th>
+          <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+</div>
+
+<button mat-raised-button color="primary" style="margin-left: 40%; width: 20%; height: 50px; margin-bottom: 50px; margin-top: 3%;" [disabled]="selection.selected.length == 0" (click)="add()">Add</button>

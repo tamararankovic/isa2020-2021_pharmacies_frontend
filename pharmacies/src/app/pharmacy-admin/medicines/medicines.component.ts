@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { MedicineInPharmacyDTO } from '../DTOs/medicine-in-pharmacy-dto';
 import { SearchMedicineDTO } from '../DTOs/search-medicine-dto';
 import { MedicineService } from '../service/medicine.service';
@@ -35,7 +36,7 @@ export class MedicinesComponent implements OnInit {
     step: 1
   };
   
-  constructor(private medicineService : MedicineService, private pharmacyService : PharmacyService, private snackBar : MatSnackBar) { }
+  constructor(private medicineService : MedicineService, private pharmacyService : PharmacyService, private snackBar : MatSnackBar, private router : Router) { }
 
   ngOnInit(): void {
     this.medicineService.getAllOffered().subscribe(
@@ -111,7 +112,12 @@ export class MedicinesComponent implements OnInit {
         max = medicine.quantity
       }
     }
+    this.maxValue = max;
     return max;
+  }
+
+  addNew() {
+    this.router.navigate(["pharmacy-admin/new-medicine"]);
   }
 
   openSnackBar(message: string, action: string) {
