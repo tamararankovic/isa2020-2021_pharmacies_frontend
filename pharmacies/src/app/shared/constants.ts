@@ -110,4 +110,5 @@ export class Constants {
     public static getAllNotOfferedMedicinesForPharmacyAdminUrl = Constants.baseUrl + "/medicine/not-offered-by-pharmacy";
     public static deleteMedicineUrl = Constants.baseUrl + "/pharmacy/delete-medicine/";
     public static addMedicinesToPharmacyUrl = Constants.baseUrl + "/pharmacy/add-medicines";
+    public static searchMedicinesInPharmacyUrl = Constants.baseUrl + "/medicine/search";
 }
