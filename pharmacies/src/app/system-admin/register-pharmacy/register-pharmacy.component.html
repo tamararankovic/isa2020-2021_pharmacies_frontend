@@ -8,19 +8,19 @@
             <div class="item1">
                 <mat-form-field style="width:100%;">
                     <mat-label>Name</mat-label>
-                    <input matInput required id="nameInput" #name = "ngModel" name="c1"  [(ngModel)] = "nameOfPharmacy" style="height: 40%;"/>
+                    <input matInput required pattern = "[a-zA-Z ]+" maxlength="30" minlength="2" placeholder="Name must have between 2 and 30 characters and contain only letters and blank spaces" id="nameInput" #name = "ngModel" name="c1"  [(ngModel)] = "nameOfPharmacy" style="height: 40%;"/>
                 </mat-form-field>
             </div>
             <div class="item2">
                 <mat-form-field style="width:100%;">
                     <mat-label>Description</mat-label>
-                    <input matInput required id="descriptionInput" #name1 = "ngModel" name="c2"  [(ngModel)] = "description" style="height: 40%;"/>
+                    <input matInput required id="descriptionInput" maxlength="30" minlength="2" placeholder="Description must have between 2 and 30 characters " #name1 = "ngModel" name="c2"  [(ngModel)] = "description" style="height: 40%;"/>
                 </mat-form-field>
             </div>
             <div class="item3">
                 <mat-form-field style="width:100%;">
                     <mat-label>Address</mat-label>
-                    <input matInput required id="addressInput" #name2 = "ngModel" name="c3"  [(ngModel)] = "address" style="height: 40%;"/>
+                    <input matInput required id="addressInput" maxlength="30" minlength="2" placeholder="Address must have between 2 and 30 characters" #name2 = "ngModel" name="c3"  [(ngModel)] = "address" style="height: 40%;"/>
                 </mat-form-field>
             </div>
         

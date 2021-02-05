@@ -16,9 +16,12 @@ import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import { AgmCoreModule } from '@agm/core';
+import { PharmaciesSearchPatientComponent } from './pharmacies-search-patient/pharmacies-search-patient.component';
+import { ReservationsPageComponent } from './reservations-page/reservations-page.component';
+import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, SubscribedPharmaciesComponent],
   imports: [
     CommonModule,
     PatientRoutingModule,
