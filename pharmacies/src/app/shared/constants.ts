@@ -72,6 +72,10 @@ export class Constants {
     public static pharmacistCheckAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
     public static pharmacistSaveAppointmentUrl = Constants.baseUrl + "/pharm/saveAppointment";
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+    public static pharmacistWeekUrl = Constants.baseUrl + "/pharm/week";
+    public static pharmacistMonthUrl = Constants.baseUrl + "/pharm/month";
+    public static pharmacistYearUrl = Constants.baseUrl + "/pharm/year";
+    public static pharmacistNotPresentUrl = Constants.baseUrl + "/pharm/notPresent";
     
     //patients profile
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";

@@ -22,10 +22,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent, SchedulingComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent, SchedulingComponent, CalendarComponent],
   imports: [
     CommonModule,
     PharmacistRoutingModule,

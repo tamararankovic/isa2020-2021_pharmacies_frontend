@@ -17,6 +17,9 @@
     <button style="float: right;" mat-button routerLink="../dermatologist/report">
       Start Appointment
     </button>
+    <button style="float: right;" mat-button routerLink="../dermatologist/calendar">
+      Calendar
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="patient" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PATIENT'">
@@ -47,11 +50,11 @@
     <button style="float: right;" mat-button routerLink="../pharmacist/search">
       Patients
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacist/report">
-      Start Appointment
-    </button>
     <button style="float: right;" mat-button routerLink="../pharmacist/reservation">
       Reservation
+    </button>
+    <button style="float: right;" mat-button routerLink="../pharmacist/calendar">
+      Calendar
     </button>
   </span>
 
