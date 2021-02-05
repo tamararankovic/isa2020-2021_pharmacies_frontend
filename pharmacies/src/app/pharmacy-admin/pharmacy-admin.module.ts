@@ -24,10 +24,17 @@ import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.componen
 import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic-info.component'; 
 import { AgmCoreModule } from '@agm/core';
 import { AdminBasicInfoComponent } from './admin-basic-info/admin-basic-info.component';
+import { NewOrderComponent } from './new-order/new-order.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditOrderComponent } from './edit-order/edit-order.component';
+import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-promotions.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
@@ -47,6 +54,8 @@ import { AdminBasicInfoComponent } from './admin-basic-info/admin-basic-info.com
     MatCardModule,
     NgxMaterialTimepickerModule,
     MatCheckboxModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArX13dkqG1oKxB4wnrinrHr7pzuNrR2wQ',
       libraries: ['places']

@@ -1,0 +1,28 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Write deals and promotions</h1>
+<div>
+    <mat-card class="mat-elevation-z8" style="margin-top: 20px; margin-left: 20%; width: 60%; min-height: 430px; max-height: 43.0px;">
+        <div style=" width: 80%; margin-left: 10%; margin-top: 10px;">
+            <mat-radio-group [(ngModel)]="option" #r="ngModel">
+                <mat-radio-button value="1">Deal</mat-radio-button>
+                <mat-radio-button value="2" style="margin-left: 10px;">Promotion</mat-radio-button>
+            </mat-radio-group>              
+            <mat-form-field class="example-form-field" style="width: 100%;">
+                <mat-label>Deal/promotion text</mat-label>
+                <textarea matInput required #d="ngModel" style="height: 150px;" maxlength="1000" matInput placeholder="Text can contain up to 1000 characters" [(ngModel)]="text"></textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                <mat-label>Choose start date</mat-label>
+                <input matInput readonly [min]="minDate" [matDatepicker]="picker" [formControl]="startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                <mat-label>Choose end date</mat-label>
+                <input matInput readonly [min]="startDate.value" [matDatepicker]="picker2" [formControl]="endDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" style="margin-left: 45%; width: 10%;" (click)="send()" [disabled]="d.invalid || (option != 1 && option != 2)">Send</button>
+    </mat-card>
+</div>

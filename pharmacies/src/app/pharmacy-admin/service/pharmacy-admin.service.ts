@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants';
 import { ChangePasswordDTO } from '../DTOs/change-password-dto';
+import { DealPromotionDTO } from '../DTOs/deal-promotion-dto';
 import { PharmacyAdminDTO } from '../DTOs/pharmacy-admin-dto';
 
 @Injectable({
@@ -22,5 +23,9 @@ export class PharmacyAdminService {
 
   changePassword(dto : ChangePasswordDTO) {
     return this.http.post(Constants.changePasswordPharmacyAdmin, dto, {withCredentials : true});
+  }
+
+  sendDealPromotion(dto : DealPromotionDTO) {
+    return this.http.post(Constants.dealsPromotionsCreateUrl, dto, {withCredentials : true});
   }
 }
