@@ -18,4 +18,12 @@ export class PharmacyService {
   update(dto : PharmacyBasicInfoDTO) {
     return this.http.post(Constants.updatePharmacyBasicInfoUrl, dto, {withCredentials : true});
   }
+
+  addMedicines(dto : number[]) {
+    return this.http.post(Constants.addMedicinesToPharmacyUrl, dto, {withCredentials : true});
+  }
+
+  deleteMedicine(id : number) {
+    return this.http.post(Constants.deleteMedicineUrl + id, null, {withCredentials : true});
+  }
 }

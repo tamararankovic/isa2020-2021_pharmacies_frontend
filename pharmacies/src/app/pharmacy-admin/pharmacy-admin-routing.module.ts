@@ -7,6 +7,7 @@ import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-pr
 import { DermatologistsComponent } from './dermatologists/dermatologists.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MedicinesComponent } from './medicines/medicines.component';
 import { NewDermatologistComponent } from './new-dermatologist/new-dermatologist.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component';
@@ -16,6 +17,8 @@ import { PharmacistsComponent } from './pharmacists/pharmacists.component';
 import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic-info.component';
 
 const routes: Routes = [
+  {path: 'medicines', component: MedicinesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
+  {path: 'new-medicine', component: MedicinesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'deals-and-promotions', component: DealsAndPromotionsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'order/:id', component: OrderDetailsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'edit-order/:id', component: EditOrderComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},

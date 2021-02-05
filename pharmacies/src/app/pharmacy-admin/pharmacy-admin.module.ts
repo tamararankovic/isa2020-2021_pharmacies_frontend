@@ -30,11 +30,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
-import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-promotions.component'; 
+import { DealsAndPromotionsComponent } from './deals-and-promotions/deals-and-promotions.component';
+import { MedicinesComponent } from './medicines/medicines.component';
+import { NewMedicineComponent } from './new-medicine/new-medicine.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,

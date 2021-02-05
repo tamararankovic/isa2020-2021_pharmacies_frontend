@@ -14,4 +14,12 @@ export class MedicineService {
   getAll() : Observable<MedicineToOrderDTO[]> {
     return this.http.get<MedicineToOrderDTO[]>(Constants.getAllMedicinesForPharmacyAdminUrl, {withCredentials : true});
   }
+
+  getAllOffered() : Observable<MedicineToOrderDTO[]> {
+    return this.http.get<MedicineToOrderDTO[]>(Constants.getAllOfferedMedicinesForPharmacyAdminUrl, {withCredentials : true});
+  }
+
+  getAllNotOffered() : Observable<MedicineToOrderDTO[]> {
+    return this.http.get<MedicineToOrderDTO[]>(Constants.getAllNotOfferedMedicinesForPharmacyAdminUrl, {withCredentials : true});
+  }
 }
