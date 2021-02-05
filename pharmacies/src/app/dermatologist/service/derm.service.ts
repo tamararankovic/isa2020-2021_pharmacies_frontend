@@ -12,11 +12,16 @@ import { MedAllDTO } from '../DTOs/medicine-allergy-dto';
 import { IsAllergicDTO } from '../DTOs/is-allergic-dto';
 import { MedQuanDTO } from '../DTOs/med-quan-dto';
 import { MedicineDetailsDTO } from '../DTOs/med-details-dto';
+import { SaveAppDTO } from '../DTOs/save-app-dto';
+import { AppAvailableDTO } from 'src/app/pharmacist/DTOs/app-available-dto';
+import { ExistingAppDTO } from '../DTOs/existing-app-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DermService {
+
+  public appointmentId : number = 0;
 
   constructor(private _http : HttpClient) { }
 
@@ -64,4 +69,19 @@ export class DermService {
     return this._http.get<MedicineDetailsDTO>(Constants.dermatologistMedicineDetailsUrl + "/" + medicineId, {withCredentials: true});
   }
 
+  isAppointmentAvailable(dto : SaveAppDTO) : Observable<AppAvailableDTO>{
+    return this._http.post<AppAvailableDTO>(Constants.dermatologistCheckAppointmentUrl, dto, {withCredentials: true});
+  }
+
+  saveAppointment(dto : SaveAppDTO){
+    return this._http.post(Constants.dermatologistSaveAppointmentUrl, dto, {withCredentials: true});
+  }
+
+  getExistingAppointments(appointmentId : number) : Observable<ExistingAppDTO[]>{
+    return this._http.get<ExistingAppDTO[]>(Constants.dermatologistExistingAppointmentsUrl + "/" + appointmentId, {withCredentials: true});
+  }
+
+  saveExistingAppointment(appointmentId : number, newAppointmentId : number){
+    return this._http.get(Constants.dermatologistSaveExistingAppointmentUrl + "/" + appointmentId + "/" + newAppointmentId, {withCredentials: true});
+  }
 }
