@@ -97,6 +97,7 @@ export class SchedulingComponent implements OnInit {
       data => {
         this.existingAppointment();
         this.openSnackBar("Appointment is saved.", "Okay");
+        this.existingChosen = false;
       },
       (error) =>{
         this.openSnackBar("Appointment is not saved.", "Okay");
