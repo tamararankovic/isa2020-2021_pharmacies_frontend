@@ -54,6 +54,14 @@ export class Constants {
     public static dermatologistCompatibleUrl = Constants.baseUrl + "/derm/medicine/compatible";
     //dermatologist and pharmacist medicine details
     public static dermatologistMedicineDetailsUrl = Constants.baseUrl + "/derm/medicineDetails";
+    //dermatologist appointment check
+    public static dermatologistCheckAppointmentUrl = Constants.baseUrl + "/derm/appointment";
+    //dermatologist save appointment
+    public static dermatologistSaveAppointmentUrl = Constants.baseUrl + "/derm/saveAppointment";
+    //dermatologist get existing appointments
+    public static dermatologistExistingAppointmentsUrl = Constants.baseUrl + "/derm/appointments";
+    //dermatologist save existing appointment
+    public static dermatologistSaveExistingAppointmentUrl = Constants.baseUrl + "/derm/saveExistingAppointment";
 
     //pharmacist profile
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
@@ -81,6 +89,8 @@ export class Constants {
     public static pharmacistCheckAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
     //pharmacist save appointment
     public static pharmacistSaveAppointmentUrl = Constants.baseUrl + "/pharm/saveAppointment";
+    //pharmacist patient search
+    public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
     
     //patients profile
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
@@ -90,8 +100,6 @@ export class Constants {
     public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
     //get medicine for allergies
     public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
-    //pharmacist patient search
-    public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

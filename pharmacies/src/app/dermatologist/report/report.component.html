@@ -186,5 +186,9 @@
         <button mat-raised-button (click)="cancelDetails()" style="float: right; width: 150px; color: white; background-color: rgb(93, 147, 235);">Back</button>
         <div style="height: 30px;"></div>
     </form>
+    <form style="padding: 30px;" *ngIf="reportDone">
+        <button mat-raised-button type="button" routerLink=".." style="width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(93, 147, 235);">Done</button>
+        <button mat-raised-button type="button" routerLink="../scheduling" style="float: right; width: 200px; height: 70px; font-size: 16px; color: white; background-color: rgb(145, 187, 106);">+ New appointment</button>
+    </form>
 </mat-card>
 <div style="height: 30px;"></div>
