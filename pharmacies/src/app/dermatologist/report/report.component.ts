@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { DermAppDTO } from '../DTOs/derm-app-dto';
 import { DermReportDTO } from '../DTOs/derm-report-dto';
 import { MedicineDetailsDTO } from '../DTOs/med-details-dto';
@@ -46,11 +47,17 @@ export class ReportComponent implements OnInit {
   medicineList : MedicineDTO[] = [];
   translatedMedicineList : MedicineDTO[] = [];
 
-  constructor(private dermService : DermService, private _snackBar: MatSnackBar) { }
+  constructor(private dermService : DermService, private _snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit(): void {
-    this.dermService.getAppointmentData(1).subscribe(
-      data => this.dermAppDTO = data
+    if(this.dermService.chosenAppointmnetDto == 0){
+      this.router.navigate(['']);
+    }
+    this.dermService.getAppointmentData(this.dermService.chosenAppointmnetDto).subscribe(
+      data => {
+        this.dermAppDTO = data;
+        this.dermService.chosenAppointmnetDto = 0;
+      }
     );
   }
 

@@ -56,6 +56,11 @@ export class Constants {
     public static dermatologistSaveAppointmentUrl = Constants.baseUrl + "/derm/saveAppointment";
     public static dermatologistExistingAppointmentsUrl = Constants.baseUrl + "/derm/appointments";
     public static dermatologistSaveExistingAppointmentUrl = Constants.baseUrl + "/derm/saveExistingAppointment";
+    public static dermatologistPharmaciesUrl = Constants.baseUrl + "/derm/pharmacies";
+    public static dermatologistWeekUrl = Constants.baseUrl + "/derm/week";
+    public static dermatologistMonthUrl = Constants.baseUrl + "/derm/month";
+    public static dermatologistYearUrl = Constants.baseUrl + "/derm/year";
+    public static dermatologistNotPresentUrl = Constants.baseUrl + "/derm/notPresent";
 
     //pharmacist
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";

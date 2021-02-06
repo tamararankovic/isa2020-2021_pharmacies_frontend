@@ -1,1 +1,73 @@
-<p>calendar works!</p>
+<h2 style="text-align: center; margin-top: 30px;">Working Calendar</h2>
+<mat-card style="width: 70%; margin: 0 auto;">
+    <form style="padding: 10px; width: 30%; margin: 0 auto;">
+        <table mat-table [dataSource]="pharmData" matSort class="mat-elevation-z0">
+    
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Pharmacy name </th>
+              <td mat-cell *matCellDef="let element" style="color: red; border-color: white; font-weight: 500; text-align: center;" (click)="choosePharmacy(element)"> {{element.name.toUpperCase()}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2" style="display: none;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+    </form>
+    <form style="padding: 30px;" *ngIf="pharmChosen">
+        <div class="example-full-width" style="padding-bottom: 10px;">
+            <button mat-button [disabled]="timeSpan === 'w'" (click)="setTimeSpan('w')" color="warn" style="width: 100px; height: 35px;">WEEK</button>
+            <button mat-button [disabled]="timeSpan === 'm'" (click)="setTimeSpan('m')" color="warn"style="width: 100px; height: 35px;">MONTH</button>
+            <button mat-button [disabled]="timeSpan === 'y'" (click)="setTimeSpan('y')" color="warn" style="width: 100PX; height: 35px;">YEAR</button>
+
+            <button mat-button color="warn" (click)="next()" style="float: right; font-size: 20px; font-weight: 500; width: 50px; height: 35px;">&rarr;</button>
+            <span style="padding-top: 20px; height: 40px;">
+                <label matInput style="float: right; color: gray; text-align: justify; padding-top: 10px; font-size: 20px; font-weight: 300;" name="imelabela">{{currentSpan}}</label>
+            </span>
+            <button mat-button color="warn" (click)="previous()" style="float: right; font-size: 20px; font-weight: 500; width: 50PX; height: 35px;">&larr;</button>
+        </div>
+    </form>
+    <form *ngIf="pharmChosen">
+        <table mat-table [dataSource]="appData" matSort class="mat-elevation-z8">
+    
+            <ng-container matColumnDef="startTime">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start time </th>
+              <td mat-cell *matCellDef="let element" (click)="start(element)"> {{element.startTime}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="durationInMinutes">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration in mintes </th>
+                <td mat-cell *matCellDef="let element" (click)="start(element)"> {{element.durationInMinutes}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="patientName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient name </th>
+                <td mat-cell *matCellDef="let element" (click)="start(element)"> {{element.patientName}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div style="height: 40px;"></div>
+    </form>
+    <form style="padding-left: 30px; padding-bottom: 30px; padding-right: 30px;" *ngIf="isChosen && isValid && pharmChosen">
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput name="imelabela" class="normal-label">Start appointment? </label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Start time: </label>
+            <label matInput class="normal-label" name="imelabela">{{chosenAppointmentDTO.startTime}} </label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Duration in minutes: </label>
+            <label matInput class="normal-label" name="imelabela">{{chosenAppointmentDTO.durationInMinutes}} </label>
+        </div>
+        <div class="example-full-width" style="padding-bottom: 20px;">
+            <label matInput class="static-label" name="imelabela">Patient name: </label>
+            <label matInput class="normal-label" name="imelabela">{{chosenAppointmentDTO.patientName}} </label>
+        </div>
+        <button mat-raised-button (click)="startButton()" style="float: left; width: 20%; color: rgb(93, 147, 235);">Start</button>
+        <button mat-stroked-button type="button" (click)="notPresent()" color="warn" style="float: left; margin-left: 40px; width: 40%;">Patient did not show up</button>
+        <button mat-raised-button type="button" (click)="cancel()" style="float: right; width: 20%; color: gray;">Back</button>
+        <div style="height: 40px;"></div>
+    </form>
+
+</mat-card>
