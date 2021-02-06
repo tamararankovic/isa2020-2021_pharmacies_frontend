@@ -17,10 +17,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ReportComponent } from './report/report.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent, CalendarComponent],
   imports: [
     CommonModule,
     DermatologistRoutingModule,

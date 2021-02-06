@@ -58,6 +58,8 @@ export class SchedulingComponent implements OnInit {
               data => {
                 console.log(data + "Appointment saved.");
                 this.openSnackBar("Appointment is saved.", "Okay");
+                this.dermService.appointmentId = 0;
+                this.router.navigate(['dermatologist/calendar']);
               }
             );
           }
@@ -98,6 +100,8 @@ export class SchedulingComponent implements OnInit {
         this.existingAppointment();
         this.openSnackBar("Appointment is saved.", "Okay");
         this.existingChosen = false;
+        this.dermService.appointmentId = 0;
+        this.router.navigate(['dermatologist/calendar']);
       },
       (error) =>{
         this.openSnackBar("Appointment is not saved.", "Okay");

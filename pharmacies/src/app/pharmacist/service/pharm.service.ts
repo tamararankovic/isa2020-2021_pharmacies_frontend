@@ -15,6 +15,10 @@ import { MedicineDetailsDTO } from 'src/app/dermatologist/DTOs/med-details-dto';
 import { ResValidDTO } from '../DTOs/res-valid-dto';
 import { AppAvailableDTO } from '../DTOs/app-available-dto';
 import { SaveAppDTO } from '../DTOs/save-app-dto';
+import { AppWeekDTO } from '../DTOs/app-week-dto';
+import { PharmAppDTO } from '../DTOs/pharm-app-dto';
+import { AppMonthDTO } from '../DTOs/app-month-dto';
+import { AppYearDTO } from '../DTOs/app-year-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +26,7 @@ import { SaveAppDTO } from '../DTOs/save-app-dto';
 export class PharmService {
 
   public appointmentId : number = 0;
+  public chosenAppointmnetDto : number = 0;
 
   constructor(private _http : HttpClient) { }
 
@@ -85,4 +90,19 @@ export class PharmService {
     return this._http.post(Constants.pharmacistSaveAppointmentUrl, dto, {withCredentials: true});
   }
 
+  getByWeek(dto : AppWeekDTO) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.pharmacistWeekUrl, dto, {withCredentials: true});
+  }
+
+  getByMonth(dto : AppMonthDTO) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.pharmacistMonthUrl, dto, {withCredentials: true});
+  }
+
+  getByYear(dto : AppYearDTO) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.pharmacistYearUrl, dto, {withCredentials: true});
+  }
+
+  notPresent(){
+    return this._http.get(Constants.pharmacistNotPresentUrl + "/" + this.chosenAppointmnetDto, {withCredentials: true});
+  }
 }

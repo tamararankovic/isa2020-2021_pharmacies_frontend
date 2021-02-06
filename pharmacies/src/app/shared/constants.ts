@@ -60,6 +60,11 @@ export class Constants {
     public static dermatologistSaveAppointmentUrl = Constants.baseUrl + "/derm/saveAppointment";
     public static dermatologistExistingAppointmentsUrl = Constants.baseUrl + "/derm/appointments";
     public static dermatologistSaveExistingAppointmentUrl = Constants.baseUrl + "/derm/saveExistingAppointment";
+    public static dermatologistPharmaciesUrl = Constants.baseUrl + "/derm/pharmacies";
+    public static dermatologistWeekUrl = Constants.baseUrl + "/derm/week";
+    public static dermatologistMonthUrl = Constants.baseUrl + "/derm/month";
+    public static dermatologistYearUrl = Constants.baseUrl + "/derm/year";
+    public static dermatologistNotPresentUrl = Constants.baseUrl + "/derm/notPresent";
 
     //pharmacist
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
@@ -76,6 +81,10 @@ export class Constants {
     public static pharmacistCheckAppointmentUrl = Constants.baseUrl + "/pharm/appointment";
     public static pharmacistSaveAppointmentUrl = Constants.baseUrl + "/pharm/saveAppointment";
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
+    public static pharmacistWeekUrl = Constants.baseUrl + "/pharm/week";
+    public static pharmacistMonthUrl = Constants.baseUrl + "/pharm/month";
+    public static pharmacistYearUrl = Constants.baseUrl + "/pharm/year";
+    public static pharmacistNotPresentUrl = Constants.baseUrl + "/pharm/notPresent";
     
     //patient
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
@@ -116,4 +125,7 @@ export class Constants {
     public static searchMedicinesInPharmacyUrl = Constants.baseUrl + "/medicine/search";
     public static getPriceListUrl = Constants.baseUrl + "/pharmacy/current-price-list";
     public static editPriceListUrl = Constants.baseUrl + "/pharmacy/new-price-list";
+    public static getLeaveRequest = Constants.baseUrl + "/leave";
+    public static acceptLeaveRequest = Constants.baseUrl + "/leave/accept/";
+    public static declineLeaveRequest = Constants.baseUrl + "/leave/decline/";
 }

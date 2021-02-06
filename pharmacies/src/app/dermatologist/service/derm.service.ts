@@ -15,6 +15,11 @@ import { MedicineDetailsDTO } from '../DTOs/med-details-dto';
 import { SaveAppDTO } from '../DTOs/save-app-dto';
 import { AppAvailableDTO } from 'src/app/pharmacist/DTOs/app-available-dto';
 import { ExistingAppDTO } from '../DTOs/existing-app-dto';
+import { AppWeekDTO } from 'src/app/pharmacist/DTOs/app-week-dto';
+import { AppYearDTO } from 'src/app/pharmacist/DTOs/app-year-dto';
+import { AppMonthDTO } from 'src/app/pharmacist/DTOs/app-month-dto';
+import { PharmAppDTO } from 'src/app/pharmacist/DTOs/pharm-app-dto';
+import { DermPharmacyDTO } from '../DTOs/derm-pharmacy-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +27,7 @@ import { ExistingAppDTO } from '../DTOs/existing-app-dto';
 export class DermService {
 
   public appointmentId : number = 0;
+  public chosenAppointmnetDto : number = 0;
 
   constructor(private _http : HttpClient) { }
 
@@ -83,5 +89,25 @@ export class DermService {
 
   saveExistingAppointment(appointmentId : number, newAppointmentId : number){
     return this._http.get(Constants.dermatologistSaveExistingAppointmentUrl + "/" + appointmentId + "/" + newAppointmentId, {withCredentials: true});
+  }
+
+  getByWeek(dto : AppWeekDTO, pharmacyId : number) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.dermatologistWeekUrl + "/" + pharmacyId, dto, {withCredentials: true});
+  }
+
+  getByMonth(dto : AppMonthDTO, pharmacyId : number) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.dermatologistMonthUrl + "/" + pharmacyId, dto, {withCredentials: true});
+  }
+
+  getByYear(dto : AppYearDTO, pharmacyId : number) : Observable<PharmAppDTO[]>{
+    return this._http.post<PharmAppDTO[]>(Constants.dermatologistYearUrl + "/" + pharmacyId, dto, {withCredentials: true});
+  }
+
+  notPresent(){
+    return this._http.get(Constants.dermatologistNotPresentUrl + "/" + this.chosenAppointmnetDto, {withCredentials: true});
+  }
+
+  getAllPharmacies() : Observable<DermPharmacyDTO[]>{
+    return this._http.get<DermPharmacyDTO[]>(Constants.dermatologistPharmaciesUrl, {withCredentials: true});
   }
 }

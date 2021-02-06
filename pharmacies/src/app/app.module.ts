@@ -18,6 +18,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Dialog } from './pharmacy-admin/leave-requests/leave-requests.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
+  entryComponents: [Dialog],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
