@@ -1,0 +1,28 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Price list</h1>
+<div style="width: 60%; margin-left: 20%;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 5%; padding-top: 2%;">
+        <h3 style="text-align: center;">Medicine prices</h3>
+        <mat-selection-list #dermList [multiple]="false">
+            <mat-list-option *ngFor="let medicine of priceList.medicinePrices">
+                <div>
+                    <span style="width: 50%; display: inline;">{{medicine.itemName}}</span>
+                    <span style="width: 30%; display: inline; float: right; text-align: right;">{{medicine.undefined && 'UNDEFINED' || medicine.price}}</span>
+                </div>
+            </mat-list-option>
+          </mat-selection-list>
+    </mat-card>
+</div>
+<div style="width: 60%; margin-left: 20%;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 5%; padding-top: 2%;">
+        <h3 style="text-align: center;">Examination prices</h3>
+        <div style="margin-bottom: 25px; margin-top: 10px; margin-left: 15px; margin-right: 15px;">
+            <span style="width: 50%; display: inline; font-size: large;">Examination with a dermatologist</span>
+            <span style="width: 30%; display: inline; float: right; text-align: right; font-size: large">{{priceList.dermatologistAppointmentPrice.undefined && 'UNDEFINED' || priceList.dermatologistAppointmentPrice.price}}</span>
+        </div>
+        <div style="margin-bottom: 20px; margin-left: 15px; margin-right: 15px;">
+            <span style="width: 50%; display: inline; font-size: large">Consultations with a pharmacist</span>
+            <span style="width: 30%; display: inline; float: right; text-align: right; font-size: large">{{priceList.pharmacistAppointmentPrice.undefined && 'UNDEFINED' || priceList.pharmacistAppointmentPrice.price}}</span>
+        </div>
+    </mat-card>
+</div>
+<button mat-raised-button color="primary" style="margin-right: 20%; float: right; margin-top: 2%; width: 10%; margin-bottom: 3%;" routerLink="../edit-price-list">Edit</button>
