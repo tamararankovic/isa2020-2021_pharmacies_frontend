@@ -29,14 +29,22 @@
     <button style="float: right;" mat-button routerLink="../patient/medicine-reservations">
       Medicine reservations
     </button>
+<<<<<<< HEAD
     <button style="float: right;" mat-button routerLink="../patient/medicine-search">
       Medicine search
+=======
+    <button style="float: right;" mat-button routerLink="../patient/subscribed-pharmacies">
+      Subscribed pharmacies
+>>>>>>> master
     </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
     <button style="float: right;" mat-button routerLink="../supplier/profile">
       Profile
+    </button>
+    <button style="float: right;" mat-button routerLink="../supplier/offer">
+      Give offer
     </button>
   </span>
 
@@ -62,10 +70,10 @@
     <button mat-button routerLink="../pharmacy-admin/basic-info">
       Personal information
     </button>
-    <button mat-button>
+    <button mat-button routerLink="../pharmacy-admin/orders">
       Orders
     </button>
-    <button mat-button>
+    <button mat-button routerLink="../pharmacy-admin/deals-and-promotions">
       Deals and promotions
     </button>
     <button mat-button>
@@ -82,17 +90,17 @@
   <span style="flex: 1 1 auto;" name="system-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SYSTEM_ADMIN'">
   </span>
 
-  <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed">
+  <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed && !this.authService.registerPageDisplayed">
     <button style="float: right;" mat-button routerLink="../login" *ngIf="!this.authService.isAuthenticated()">
       Log In
     </button>
     <button style="float: right;" mat-button routerLink="../register" *ngIf="!this.authService.isAuthenticated()">
       Register
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacies" *ngIf="!this.authService.isAuthenticated()">
+    <button style="float: left;" mat-button routerLink="../pharmacies" *ngIf="!this.authService.isAuthenticated()">
       Pharmacies
     </button>
-    <button style="float: right;" mat-button routerLink="../medicine" *ngIf="!this.authService.isAuthenticated()">
+    <button style="float: left;" mat-button routerLink="../medicine" *ngIf="!this.authService.isAuthenticated()">
       Medicine
     </button>
     <button style="float: right;" mat-button routerLink="../" *ngIf="this.authService.isAuthenticated()" (click) = "this.authService.logOut()">

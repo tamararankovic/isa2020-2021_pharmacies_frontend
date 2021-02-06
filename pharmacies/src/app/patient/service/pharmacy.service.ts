@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants';
 import { PharmacyDTO } from 'src/app/system-admin/DTOs/pharmacy-dto';
 import { MedicineInfoDto } from 'src/app/unauthenticated-user/DTOs/medicine-info-dto';
+import { PharmacyAddAdminDTO } from 'src/app/system-admin/DTOs/pharmacy-add-admin-dto';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
 
@@ -30,4 +31,12 @@ export class PharmacyService {
   setReservationInfo(reservation){
     this.reservation = reservation;
   }
+  getAllSubscribedPharmacies() : Observable<PharmacyAddAdminDTO[]>{
+    return this._http.get<PharmacyAddAdminDTO[]>(Constants.getAllSubscribedPharmaciesUrl,  {responseType: 'json', withCredentials: true});
+  }
+
+  subscribeToPharmacy(pharmacyId) : Observable<string>{ 
+    return this._http.get(Constants.subscribeToPharmacy + pharmacyId, {responseType: 'text', withCredentials: true});
+  }
+ 
 }

@@ -120,7 +120,7 @@
                     </mat-card-content>
                 </mat-card>
 
-                <mat-card class="mat-elevation-z8" style="width: 25%; margin-left: 4%; display: inline-block;">
+                <mat-card [class.color1]="isSelected === 'color1'" (click)="Subscribe('color1')" class="mat-elevation-z8" style="width: 25%; margin-left: 4%; display: inline-block;">
                     <mat-card-content style="text-align: center;">
                         <img src="assets/subscribe.png">
                         <p>Subscribe to pharmacy's deals and promotions</p>

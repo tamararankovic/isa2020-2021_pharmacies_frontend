@@ -17,10 +17,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ReportComponent } from './report/report.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { SchedulingComponent } from './scheduling/scheduling.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent, SchedulingComponent],
   imports: [
     CommonModule,
     PharmacistRoutingModule,
@@ -32,7 +37,11 @@ import { ReservationComponent } from './reservation/reservation.component';
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class PharmacistModule { }

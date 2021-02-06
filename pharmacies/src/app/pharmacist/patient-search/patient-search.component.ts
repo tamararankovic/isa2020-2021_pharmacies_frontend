@@ -23,6 +23,7 @@ export class PatientSearchComponent implements OnInit {
     this.pharmService.searchPatients(this.criteria).subscribe(
       data => this.dataSource = data
     );
+    console.log(this.pharmService.appointmentId);
   }
 
   searchPatients(){

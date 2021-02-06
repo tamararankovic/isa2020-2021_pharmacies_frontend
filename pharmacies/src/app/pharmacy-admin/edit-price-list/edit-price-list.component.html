@@ -1,0 +1,78 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 1%;">Edit price list</h1>
+<h4 style="text-align: center;">Note: If there is a price list set on the same date as the one you send, the overlapping items' prices will be overwritten</h4>
+<h2 style="text-align: center;">Medicines</h2>
+
+<div class="mat-elevation-z8" style="margin-left: 10%; width: 80%;">
+    <table mat-table [dataSource]="dataSource" style=" margin-top: 1%; width: 100%;">
+
+        <ng-container matColumnDef="Select">
+          <th mat-header-cell *matHeaderCellDef>SELECT</th>
+          <td mat-cell *matCellDef="let row" (click)="selection.toggle(row)">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"></mat-checkbox>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef> PRICE </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-form-field class="example-form-field" style="width: 20%; float: right;" *ngIf="selection.isSelected(element)">
+                    <input required matInput [(ngModel)]="element.price" type="number" min="1" max="999" pattern="[1-9][0-9]?[0-9]?[0-9]?[0-9]?" placeholder="Enter a number between 1 and 99999">
+                </mat-form-field>    
+            </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+      <mat-paginator #pag1 [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+</div>
+<h2 style="text-align: center; margin-bottom: 2%; margin-top: 2%;">Examinations</h2>
+<div class="mat-elevation-z8" style="margin-left: 10%; width: 80%;">
+    <table mat-table [dataSource]="dataSource2" style=" margin-top: 1%; width: 100%;">
+
+        <ng-container matColumnDef="Select">
+          <th mat-header-cell *matHeaderCellDef>SELECT</th>
+          <td mat-cell *matCellDef="let row" (click)="selection2.toggle(row)">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection2.toggle(row) : null"
+                          [checked]="selection2.isSelected(row)"></mat-checkbox>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef> PRICE </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-form-field class="example-form-field" style="width: 20%; float: right;" *ngIf="selection2.isSelected(element)">
+                    <input required matInput [(ngModel)]="element.price" type="number" min="1" max="999" pattern="[1-9][0-9]?[0-9]?[0-9]?[0-9]?" placeholder="Enter a number between 1 and 99999">
+                </mat-form-field>    
+            </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+</div>
+<h2 style="text-align: center; width: 100%; margin-top: 2%;">Select start date: </h2>
+    <div style="width: 40%; margin-left: 30%;">
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+            <mat-label>Choose a date</mat-label>
+            <input matInput readonly [min]="minDate" [matDatepicker]="picker" [formControl]="selectedDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+<button mat-raised-button color="primary" style="margin-left: 40%; margin-top: 2%; width: 20%; margin-bottom: 3%; height: 50px; " (click)="save()">Save</button>

@@ -7,6 +7,7 @@ import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
 import { MedicineInfoDto } from 'src/app/unauthenticated-user/DTOs/medicine-info-dto';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
+import { PharmacyAddAdminDTO } from 'src/app/system-admin/DTOs/pharmacy-add-admin-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,8 @@ export class PatientService {
     return this._http.post(Constants.patientMakeReservationUrl,dto,{withCredentials: true});
   }
 
+  
+  cancelSubscription(pharmacyId) : Observable<string> {
+    return this._http.get(Constants.cancelSubscriptionDto + pharmacyId, {responseType: 'text' ,withCredentials: true});
+  }
 }

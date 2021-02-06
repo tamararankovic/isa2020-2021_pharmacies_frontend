@@ -4,6 +4,7 @@ import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { PharmacyProfileExaminationDto } from '../DTOs/pharmacy-profile-examination-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
 import { PharmacyService } from '../service/pharmacy.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pharmacy-page',
@@ -31,7 +32,8 @@ export class PharmacyPageComponent implements OnInit {
 
   private geocoder;
 
-  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private router:Router) {
+  public isSelected:string;
+  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private _snackBar: MatSnackBar,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -87,5 +89,25 @@ export class PharmacyPageComponent implements OnInit {
     console.log();
     this.reservation  = new  ReservationDto(this.data.id, name, this.data.name, null, null, true);
     this.pharmacyService.setReservationInfo(this.reservation);
+  }
+  Subscribe(value) {
+    this.isSelected=value;
+    console.log('radii');
+    this.pharmacyService.subscribeToPharmacy(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+      (data) => {
+        let message = "Your are successfully subscribed to actions and benefits of this pharmacy. ";
+        this.openSnackBar(message, "Okay");
+      },
+      error => {
+          this.openSnackBar(error.error, "Okay");
+        
+      }
+    );
+   
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+    });
   }
 }
