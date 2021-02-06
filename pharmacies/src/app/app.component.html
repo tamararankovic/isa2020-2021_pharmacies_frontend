@@ -8,6 +8,9 @@
   <span style="width: 20px;"></span>
 
   <span style="flex: 1 1 auto;" name="dermatologist"  *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'DERMATOLOGIST'">
+    <button style="float: right;" mat-button routerLink="../dermatologist/leave">
+      Leave Request
+    </button>
     <button style="float: right;" mat-button routerLink="../dermatologist/profile">
       Profile
     </button>
@@ -44,6 +47,9 @@
   </span>
 
   <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
+    <button style="float: right;" mat-button routerLink="../pharmacist/leave">
+      Leave Request
+    </button>
     <button style="float: right;" mat-button routerLink="../pharmacist/profile">
       Profile
     </button>

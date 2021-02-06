@@ -18,10 +18,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { ReportComponent } from './report/report.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
 import { CalendarComponent } from './calendar/calendar.component';
-
+import { LeaveComponent } from './leave/leave.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent, CalendarComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent, CalendarComponent, LeaveComponent],
   imports: [
     CommonModule,
     DermatologistRoutingModule,
@@ -33,7 +37,11 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
   ]
 })
 export class DermatologistModule { }

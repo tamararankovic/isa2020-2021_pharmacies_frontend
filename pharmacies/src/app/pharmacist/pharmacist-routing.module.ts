@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LeaveComponent } from './leave/leave.component';
 import { RouteGuardService } from '../shared/helpers/route-guard.service';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'reservation', component: ReservationComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'scheduling', component: SchedulingComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'calendar', component: CalendarComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
+  {path: 'leave', component: LeaveComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 

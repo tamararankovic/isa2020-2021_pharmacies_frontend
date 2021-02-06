@@ -19,6 +19,8 @@ import { AppWeekDTO } from '../DTOs/app-week-dto';
 import { PharmAppDTO } from '../DTOs/pharm-app-dto';
 import { AppMonthDTO } from '../DTOs/app-month-dto';
 import { AppYearDTO } from '../DTOs/app-year-dto';
+import { LeaveViewDTO } from '../DTOs/leave-view-dto';
+import { LeaveDTO } from '../DTOs/leave-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -104,5 +106,13 @@ export class PharmService {
 
   notPresent(){
     return this._http.get(Constants.pharmacistNotPresentUrl + "/" + this.chosenAppointmnetDto, {withCredentials: true});
+  }
+
+  allLeave() : Observable<LeaveViewDTO[]>{
+    return this._http.get<LeaveViewDTO[]>(Constants.pharmacistAllLeaveUrl, {withCredentials: true});
+  }
+
+  newLeave(dto : LeaveDTO){
+    return this._http.post(Constants.pharmacistNewLeaveUrl, dto, {withCredentials: true});
   }
 }
