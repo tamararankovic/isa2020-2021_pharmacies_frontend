@@ -66,4 +66,7 @@ export class MedicineSearchPatientComponent implements OnInit {
     this.reservation.date = null;
     this.makeReservation = false;
   }
+  search(){
+    
+  }
 }
