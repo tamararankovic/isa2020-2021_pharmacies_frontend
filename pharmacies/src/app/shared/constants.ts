@@ -30,6 +30,10 @@ export class Constants {
     public static supplierProfileUrl = Constants.baseUrl + "/supplier/get";
     public static supplierUpdateUrl = Constants.baseUrl + "/supplier/update";
     public static supplierPasswordUrl = Constants.baseUrl + "/supplier/changePassword";
+    public static getOrdersSupplierUrl = Constants.baseUrl + "/order/getOrdersSupplier";
+    public static createOfferUrl = Constants.baseUrl + "/offer/createOffer";
+    public static getAllOffersUrl = Constants.baseUrl + "/offer/getOffers";
+    public static supplierUpdateOfferUrl = Constants.baseUrl + "/offer/supplierUpdateOfferUrl";
 
     //authenticated user
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
@@ -106,4 +110,6 @@ export class Constants {
     public static updateOrderUrl = Constants.baseUrl + "/order/update";
     public static deleteOrderUrl = Constants.baseUrl + "/order/delete/";
     public static dealsPromotionsCreateUrl = Constants.baseUrl + "/pharmacy-admin/deals-promotions";
+
+    
 }

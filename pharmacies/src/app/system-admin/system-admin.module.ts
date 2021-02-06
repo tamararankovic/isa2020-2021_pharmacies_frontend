@@ -17,6 +17,7 @@ import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy
 import { RegisterDermatologistComponent } from './register-dermatologist/register-dermatologist.component';
 import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/register-pharmacy-admin.component';
 import { AddMedicineComponent } from './add-medicine/add-medicine.component';
+import { MatListModule } from '@angular/material/list'; 
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AddMedicineComponent } from './add-medicine/add-medicine.component';
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ]
 })
 export class SystemAdminModule { }
