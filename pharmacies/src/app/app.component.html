@@ -71,7 +71,7 @@
     <button mat-button routerLink="../pharmacy-admin/deals-and-promotions">
       Deals and promotions
     </button>
-    <button mat-button>
+    <button mat-button routerLink="../pharmacy-admin/leave-requests">
       Leave requests
     </button>
     <button mat-button>
@@ -79,10 +79,10 @@
     </button>
   </span>
 
-  <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
-  </span>
-
   <span style="flex: 1 1 auto;" name="system-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SYSTEM_ADMIN'">
+    <button mat-button routerLink="../system-admin/leave-requests">
+      Leave requests
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed && !this.authService.registerPageDisplayed">

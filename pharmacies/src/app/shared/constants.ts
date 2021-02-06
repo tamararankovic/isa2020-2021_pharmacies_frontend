@@ -126,4 +126,7 @@ export class Constants {
     public static searchMedicinesInPharmacyUrl = Constants.baseUrl + "/medicine/search";
     public static getPriceListUrl = Constants.baseUrl + "/pharmacy/current-price-list";
     public static editPriceListUrl = Constants.baseUrl + "/pharmacy/new-price-list";
+    public static getLeaveRequest = Constants.baseUrl + "/leave";
+    public static acceptLeaveRequest = Constants.baseUrl + "/leave/accept/";
+    public static declineLeaveRequest = Constants.baseUrl + "/leave/decline/";
 }
