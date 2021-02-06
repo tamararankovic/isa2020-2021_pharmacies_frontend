@@ -15,6 +15,7 @@ import { NewExaminationComponent } from './new-examination/new-examination.compo
 import { NewMedicineComponent } from './new-medicine/new-medicine.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { NewPharmacistComponent } from './new-pharmacist/new-pharmacist.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PharmacistsComponent } from './pharmacists/pharmacists.component';
@@ -22,6 +23,7 @@ import { PharmacyBasicInfoComponent } from './pharmacy-basic-info/pharmacy-basic
 import { PriceListComponent } from './price-list/price-list.component';
 
 const routes: Routes = [
+  {path: 'notifications', component: NotificationsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'new-examination', component: NewExaminationComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'leave-requests', component: LeaveRequestsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},
   {path: 'edit-price-list', component: EditPriceListComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PHARMACY_ADMIN"]}},

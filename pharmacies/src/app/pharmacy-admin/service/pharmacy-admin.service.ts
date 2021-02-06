@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants';
 import { ChangePasswordDTO } from '../DTOs/change-password-dto';
 import { DealPromotionDTO } from '../DTOs/deal-promotion-dto';
+import { NotificationDTO } from '../DTOs/notification-dto';
 import { PharmacyAdminDTO } from '../DTOs/pharmacy-admin-dto';
 
 @Injectable({
@@ -27,5 +28,9 @@ export class PharmacyAdminService {
 
   sendDealPromotion(dto : DealPromotionDTO) {
     return this.http.post(Constants.dealsPromotionsCreateUrl, dto, {withCredentials : true});
+  }
+
+  getNotifications() : Observable<NotificationDTO[]> {
+    return this.http.get<NotificationDTO[]>(Constants.getNotificationsUrl, {withCredentials : true});
   }
 }
