@@ -109,7 +109,12 @@ export class Constants {
     public static chooseOrderWinnerUrl = Constants.baseUrl + "/order/choose-winner";
     public static updateOrderUrl = Constants.baseUrl + "/order/update";
     public static deleteOrderUrl = Constants.baseUrl + "/order/delete/";
-    public static dealsPromotionsCreateUrl = Constants.baseUrl + "/pharmacy-admin/deals-promotions";
-
-    
+    public static dealsPromotionsCreateUrl = Constants.baseUrl + "/pharmacy/send-deals-promotions";
+    public static getAllOfferedMedicinesForPharmacyAdminUrl = Constants.baseUrl + "/medicine/offered-by-pharmacy";
+    public static getAllNotOfferedMedicinesForPharmacyAdminUrl = Constants.baseUrl + "/medicine/not-offered-by-pharmacy";
+    public static deleteMedicineUrl = Constants.baseUrl + "/pharmacy/delete-medicine/";
+    public static addMedicinesToPharmacyUrl = Constants.baseUrl + "/pharmacy/add-medicines";
+    public static searchMedicinesInPharmacyUrl = Constants.baseUrl + "/medicine/search";
+    public static getPriceListUrl = Constants.baseUrl + "/pharmacy/current-price-list";
+    public static editPriceListUrl = Constants.baseUrl + "/pharmacy/new-price-list";
 }
