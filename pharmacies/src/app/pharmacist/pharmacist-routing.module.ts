@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouteGuardService } from '../shared/helpers/route-guard.service';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'report', component: ReportComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'reservation', component: ReservationComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'scheduling', component: SchedulingComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
+  {path: 'calendar', component: CalendarComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 
