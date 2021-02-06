@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { PharmacyProfileExaminationDto } from '../DTOs/pharmacy-profile-examination-dto';
+import { ReservationDto } from '../DTOs/reservation-dto';
 import { PharmacyService } from '../service/pharmacy.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { PharmacyService } from '../service/pharmacy.service';
 export class PharmacyPageComponent implements OnInit {
 
   public data : PharmacyInfoDto = new PharmacyInfoDto(0,"", "", "", 0, [], [], [], []);
+  public reservation :ReservationDto;
 
   public displayedColumnsMedicine = ["Name", "Reserve"];
   public displayedColumnsPharmacist = ["Name"];
@@ -29,7 +31,7 @@ export class PharmacyPageComponent implements OnInit {
 
   private geocoder;
 
-  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute) {
+  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -78,5 +80,12 @@ export class PharmacyPageComponent implements OnInit {
     this.showPharmacists = false;
     this.showDermatologists = false;
     this.showMedicines = false;
+  }
+
+  goToPage(name){
+    this.router.navigateByUrl("patient/make-reservation");
+    console.log();
+    this.reservation  = new  ReservationDto(this.data.id, name, this.data.name, null, null, true);
+    this.pharmacyService.setReservationInfo(this.reservation);
   }
 }

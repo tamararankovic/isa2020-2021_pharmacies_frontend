@@ -5,6 +5,8 @@ import { PatientDto } from '../DTOs/patient-dto';
 import { Constants } from 'src/app/shared/constants';
 import { PasswordDTO } from 'src/app/dermatologist/DTOs/password-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
+import { MedicineInfoDto } from 'src/app/unauthenticated-user/DTOs/medicine-info-dto';
+import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,14 @@ export class PatientService {
 
   getResrvations() : Observable<ReservationDto[]>{
     return this._http.get<ReservationDto[]>(Constants.patientReservationsUrl, {withCredentials: true})
+  }
+
+  cancelReservation(dto : ReservationDto) : Observable<ReservationDto[]>{
+    return this._http.post<ReservationDto[]>(Constants.patientCancelReservationUrl, dto,{withCredentials: true})
+  }
+
+  makeReservation(dto:ReservationDto){
+    return this._http.post(Constants.patientMakeReservationUrl,dto,{withCredentials: true});
   }
 
 }

@@ -83,17 +83,16 @@ export class Constants {
     //pharmacist reservation received
     public static pharmacistReservationUrl = Constants.baseUrl + "/pharm/reservation";
     
-    //patients profile
+    //patient
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
-    //edit patient profile
     public static patientEditUrl = Constants.baseUrl + "/patient/edit";
-    //change password
     public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
-    //get medicine for allergies
     public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
-    //pharmacist patient search
     public static pharmacistSearchUrl = Constants.baseUrl + "/pharm/patients";
-    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId"
+    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId";
+    public static patientCancelReservationUrl = Constants.baseUrl + "/reserv/cancel";
+    public static patientPharmaciesByMedicineUrl = Constants.baseUrl + "/pharmacy/getByMedicine";
+    public static patientMakeReservationUrl = Constants.baseUrl + "/reserv/make";
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
