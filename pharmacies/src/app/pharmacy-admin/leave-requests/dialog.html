@@ -1,0 +1,10 @@
+<h1 mat-dialog-title style="text-align: center;">Write the reason this leave request is declined</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 80%; margin-left: 10%;">
+    <mat-label>Reason</mat-label>
+    <textarea #t matInput required [(ngModel)]="data" style="height: 200px;" maxlength="500"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="float: right;">
+  <button mat-button [mat-dialog-close]="data" [disabled]="t.pristine || t.invalid">Ok</button>
+</div>

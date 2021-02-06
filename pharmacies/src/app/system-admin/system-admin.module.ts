@@ -17,11 +17,14 @@ import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy
 import { RegisterDermatologistComponent } from './register-dermatologist/register-dermatologist.component';
 import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/register-pharmacy-admin.component';
 import { AddMedicineComponent } from './add-medicine/add-medicine.component';
-import { MatListModule } from '@angular/material/list'; 
+import { MatListModule } from '@angular/material/list';
+import { Dialog, LeaveRequestsComponent } from './leave-requests/leave-requests.component'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
-  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent, AddMedicineComponent],
+  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent, AddMedicineComponent, LeaveRequestsComponent, Dialog],
   imports: [
     CommonModule,
     SystemAdminRoutingModule,
@@ -34,7 +37,11 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatTableModule,
     MatSelectModule,
-    MatListModule
-  ]
+    MatListModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatPaginatorModule
+  ], entryComponents: [Dialog]
 })
 export class SystemAdminModule { }
