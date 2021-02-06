@@ -36,11 +36,12 @@ import { NewMedicineComponent } from './new-medicine/new-medicine.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { EditPriceListComponent } from './edit-price-list/edit-price-list.component';
 import { Dialog, LeaveRequestsComponent } from './leave-requests/leave-requests.component'; 
-import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewExaminationComponent } from './new-examination/new-examination.component'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog, NewExaminationComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,

@@ -1,0 +1,42 @@
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Create examination</h1>
+<mat-card class="mat-elevation-z8" style="margin-top: 40px; margin-left: 20%; width: 60%;">
+    <mat-form-field appearance="fill" style="margin-left: 25%; width: 50%;">
+        <mat-label>Dermatologist</mat-label>
+        <mat-select [formControl]="selectedDermatologist">
+          <mat-option *ngFor="let dermatologist of dermatologists" [value]="dermatologist.id">
+            {{dermatologist.name}} {{dermatologist.surname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="margin-left: 25%; width: 50%;">
+          <h4 style="text-align: center; width: 100%;">Date: </h4>
+          <div style="width: 100%;">
+              <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput readonly [min]="minDate" [matDatepicker]="picker" [formControl]="selectedDate" (dateChange)="checkMinTime()">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+          <h4 style="text-align: center; width: 100%;">Start time: </h4>
+          <div class="time-range-example" style=" width: 100%; display: inline-block;">
+              <mat-form-field class="example-form-field" style="width: 100%; display: inline-block;">
+                  <input matInput [ngxTimepicker]="timepicker" readonly [min]="minTime" [(ngModel)]="selectedTime" [format]="24">
+                </mat-form-field>    
+              <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+          </div>
+      </div>
+      <div style="margin-left: 25%; width: 50%;">
+          <mat-form-field class="example-form-field" style="width: 100%;">
+              <mat-label>Duration in minutes</mat-label>
+              <input required matInput [(ngModel)]="duration" type="text" pattern="[1-9][0-9]?[0-9]?"  maxlength="3" placeholder="Enter a number greater than 0">
+          </mat-form-field>    
+      </div>
+      <div style="margin-left: 25%; width: 50%;">
+          <mat-form-field class="example-form-field" style="width: 100%;">
+              <mat-label>Price</mat-label>
+              <input required matInput [(ngModel)]="price" type="text" pattern="[1-9][0-9]?[0-9]?[0-9]?[0-9]?"  maxlength="5" placeholder="Enter a number greater than 0">
+          </mat-form-field>    
+      </div>
+      <button mat-raised-button color="primary" (click)="create()" style="width: 20%; margin-left: 40%;">Create</button>
+</mat-card>
