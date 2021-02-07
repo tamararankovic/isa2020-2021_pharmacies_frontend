@@ -8,10 +8,10 @@ import { PharmaciesService } from 'src/app/unauthenticated-user/service/pharmaci
 import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
-import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 import { PatientService } from '../service/patient.service';
 import { PharmacyService } from '../service/pharmacy.service';
 import { Options } from '@angular-slider/ngx-slider';
+import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 
 @Component({
   selector: 'app-medicine-search-patient',
@@ -48,13 +48,13 @@ export class MedicineSearchPatientComponent implements OnInit {
         if (!this.statuses.some(s => s == order.type)) {
           this.statuses.push(order.type);
         }
-      }  
+      } this.filter();
       });
     console.log(this.dataSource);
   }
   search(){
     this.criteria = new SearchMedicineByNameDTO(this.name);
-    this.patientService.getMedicinesByName(this.criteria).subscribe(data => this.filteredSource = data);
+    this.patientService.getMedicinesByName(this.criteria).subscribe((data) => {this.dataSource = data; this.filteredSource = this.dataSource; this.filter()});
   }
   viewPharmacies(id : number) {
   this.router.navigate(['patient/med-specification/' + id]);
@@ -63,7 +63,7 @@ export class MedicineSearchPatientComponent implements OnInit {
   filter() {
     this.filteredSource = [];
     let selected : string[] = this.selectedStatuses.value;
-    if (selected.length == 0) {this.filteredSource = this.dataSource;}
+    if (this.selectedStatuses.value == null) {this.filteredSource = this.dataSource;}
     else {
       for(let order of this.dataSource) {
         if(selected.some(s => s == order.type)) {
