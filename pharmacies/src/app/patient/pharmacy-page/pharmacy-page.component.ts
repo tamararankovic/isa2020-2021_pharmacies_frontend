@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { PharmacyProfileExaminationDto } from '../DTOs/pharmacy-profile-examination-dto';
+import { ReservationDto } from '../DTOs/reservation-dto';
 import { PharmacyService } from '../service/pharmacy.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PharmacyPageComponent implements OnInit {
 
   public data : PharmacyInfoDto = new PharmacyInfoDto(0,"", "", "", 0, [], [], [], []);
+  public reservation :ReservationDto;
 
   public displayedColumnsMedicine = ["Name", "Reserve"];
   public displayedColumnsPharmacist = ["Name"];
@@ -31,7 +33,7 @@ export class PharmacyPageComponent implements OnInit {
   private geocoder;
 
   public isSelected:string;
-  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private _snackBar: MatSnackBar) {
+  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private _snackBar: MatSnackBar,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -80,6 +82,13 @@ export class PharmacyPageComponent implements OnInit {
     this.showPharmacists = false;
     this.showDermatologists = false;
     this.showMedicines = false;
+  }
+
+  goToPage(name){
+    this.router.navigateByUrl("patient/make-reservation");
+    console.log();
+    this.reservation  = new  ReservationDto(this.data.id, name, this.data.name, null, null, true);
+    this.pharmacyService.setReservationInfo(this.reservation);
   }
   Subscribe(value) {
     this.isSelected=value;
