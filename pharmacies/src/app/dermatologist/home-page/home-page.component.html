@@ -1,1 +1,51 @@
-<p>dermatologist home-page works!</p>
+<html>
+    <body style="background-color: rgb(246, 248, 250);">
+        <div style="display: flex; justify-content: center; background-color: rgb(58, 117, 211);">
+            <p style="color: white; margin: 50px; font-size: 30px; font-weight: 300;">D E R M A T O L O G I S T</p>
+        </div>
+        <div class="content" fxLayout="row wrap">
+            <div fxFlex="30%">
+                    <mat-card class="mat1" routerLink="profile">
+                        <mat-card-content style="text-align: center;">
+                            <img src="assets/derm-profile.png">
+                            <p id = "text">Profile</p>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+            <div fxFlex="30%">
+                <mat-card class="mat1" routerLink="calendar">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/derm-calendar.png">
+                        <p id = "text">Calendar</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div>
+                <mat-card class="mat1">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/derm-patients.png">
+                        <p id = "text">My Patients</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="content" fxLayout="row wrap">
+            <div fxFlex="30%">
+                <mat-card class="mat1" routerLink="leave" style="width: 260px;">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/derm-leave.png">
+                        <p id = "text">Leave Request</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div>
+                <mat-card class="mat1" routerLink="search" style="width: 260px;">
+                    <mat-card-content style="text-align: center;">
+                        <img src="assets/derm-patients1.png">
+                        <p id = "text">All Patients</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </body>
+</html>
