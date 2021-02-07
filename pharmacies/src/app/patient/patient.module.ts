@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { PatientRoutingModule } from './patient-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,12 +23,14 @@ import { MedicineSearchPatientComponent } from './medicine-search-patient/medici
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
+import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,
+    NgxSliderModule,
     FormsModule,
     MatButtonModule,
     MatDatepickerModule,

@@ -8,6 +8,8 @@ import { ReservationDto } from '../DTOs/reservation-dto';
 import { MedicineInfoDto } from 'src/app/unauthenticated-user/DTOs/medicine-info-dto';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { PharmacyAddAdminDTO } from 'src/app/system-admin/DTOs/pharmacy-add-admin-dto';
+import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
+import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +49,9 @@ export class PatientService {
   
   cancelSubscription(pharmacyId) : Observable<string> {
     return this._http.get(Constants.cancelSubscriptionDto + pharmacyId, {responseType: 'text' ,withCredentials: true});
+  }
+
+  getMedicinesByName(dto: SearchMedicineByNameDTO) : Observable<MedicineSearchDTO[]>{
+    return this._http.post<MedicineSearchDTO[]>(Constants.searchMedicineByNameUrl, dto, {withCredentials: true});
   }
 }
