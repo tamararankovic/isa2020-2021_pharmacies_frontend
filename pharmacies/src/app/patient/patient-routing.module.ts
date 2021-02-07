@@ -12,11 +12,13 @@ import { ReservationsPageComponent } from './reservations-page/reservations-page
 import { MedicineSearchPatientComponent } from './medicine-search-patient/medicine-search-patient.component';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
+import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
 
 const routes: Routes = [
   {path: 'subscribed-pharmacies', component: SubscribedPharmaciesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'dermatologists', component: DermatologistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacists', component: PharmacistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'pharmacist-counseling', component: PharmacistCounselingComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacy-search', component: PharmaciesSearchPatientComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'medicine-reservations', component: ReservationsPageComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'make-reservation', component: ReservMedicineComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},

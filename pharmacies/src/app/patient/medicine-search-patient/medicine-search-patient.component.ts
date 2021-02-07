@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PharmacyDTO } from 'src/app/system-admin/DTOs/pharmacy-dto';
 import { MedicineInfoDto } from 'src/app/unauthenticated-user/DTOs/medicine-info-dto';
 import { PharmaciesService } from 'src/app/unauthenticated-user/service/pharmacies.service';
@@ -30,10 +31,13 @@ export class MedicineSearchPatientComponent implements OnInit {
   public reservation: ReservationDto = new ReservationDto(0,"","","","",true);
   public forms = ["","CAPSULE","TABLET","POWDER","CREAM","OIL","SYRUP"]
   public types = ["","ANTIBIOTIC","ANESTHETIC","ANTIHISTAMINE"]
+  public minDate = new Date()
     
   
   public criteria : MedicineInfoDto;
-  constructor(private pharmaciesService : PharmaciesService, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe ) { }
+  constructor(private pharmaciesService : PharmaciesService,private router:Router, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe ) { 
+    this.minDate.setDate(this.minDate.getDate() +2);
+  }
 
   ngOnInit(): void {
     this.criteria = new MedicineInfoDto(null,this.name, null,null, this.form,this.manufacturer, this.type, null);
@@ -47,11 +51,9 @@ export class MedicineSearchPatientComponent implements OnInit {
     this.reservation.medicine = element.name;
     this.pharmacyService.getPharmaciesForReservation(element).subscribe(data => this.pharmacies = data);
     console.log(this.pharmacies);
-    this.makeReservation = true;
-    
+    this.makeReservation = true; 
 
   }
-  
   
   makeReservations(){
     this.reservation.id = null;
@@ -59,12 +61,14 @@ export class MedicineSearchPatientComponent implements OnInit {
     this.reservation.received = null;
     this.reservation.date = this.datepipe.transform(this.date, 'dd-MM-yyyy HH:mm');
     this.patientService.makeReservation(this.reservation).subscribe();
+    this.router.navigateByUrl("patient/medicine-reservations");
 
   }
   cancel(){
     this.reservation.pharmacy = "";
     this.reservation.date = null;
     this.makeReservation = false;
+    this.medicine =[];
   }
   search(){
     

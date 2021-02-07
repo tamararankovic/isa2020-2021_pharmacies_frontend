@@ -23,9 +23,10 @@ import { MedicineSearchPatientComponent } from './medicine-search-patient/medici
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
+import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, PharmacistCounselingComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,

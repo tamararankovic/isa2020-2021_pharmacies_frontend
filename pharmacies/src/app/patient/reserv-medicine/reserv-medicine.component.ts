@@ -14,7 +14,10 @@ export class ReservMedicineComponent implements OnInit {
 
   public reservation: ReservationDto;
   public date : Date;
-  constructor(private pharmacyService : PharmacyService, private patientService: PatientService, private router:Router, private datepipe : DatePipe) { }
+  public minDate = new Date();
+  constructor(private pharmacyService : PharmacyService, private patientService: PatientService, private router:Router, private datepipe : DatePipe) { 
+    this.minDate.setDate(this.minDate.getDate() +2); 
+  }
 
   ngOnInit(): void {
     this.reservation =  this.pharmacyService.getReservationInfo();
