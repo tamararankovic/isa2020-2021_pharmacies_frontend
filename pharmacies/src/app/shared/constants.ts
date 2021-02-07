@@ -129,4 +129,6 @@ export class Constants {
     public static getLeaveRequest = Constants.baseUrl + "/leave";
     public static acceptLeaveRequest = Constants.baseUrl + "/leave/accept/";
     public static declineLeaveRequest = Constants.baseUrl + "/leave/decline/";
+    public static createExamination = Constants.baseUrl + "/derm/new-predefined";
+    public static getNotificationsUrl = Constants.baseUrl + "/pharmacy-admin/notifications";
 }

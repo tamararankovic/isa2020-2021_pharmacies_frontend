@@ -36,11 +36,14 @@ import { NewMedicineComponent } from './new-medicine/new-medicine.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { EditPriceListComponent } from './edit-price-list/edit-price-list.component';
 import { Dialog, LeaveRequestsComponent } from './leave-requests/leave-requests.component'; 
-import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewExaminationComponent } from './new-examination/new-examination.component';
+import { NotificationsComponent } from './notifications/notifications.component'; 
+import { MatChipsModule } from '@angular/material/chips'; 
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog, NewExaminationComponent, NotificationsComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
@@ -63,6 +66,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatChipsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArX13dkqG1oKxB4wnrinrHr7pzuNrR2wQ',
       libraries: ['places']
