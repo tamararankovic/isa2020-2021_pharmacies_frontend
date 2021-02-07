@@ -54,4 +54,7 @@ export class PatientService {
   getMedicinesByName(dto: SearchMedicineByNameDTO) : Observable<MedicineSearchDTO[]>{
     return this._http.post<MedicineSearchDTO[]>(Constants.searchMedicineByNameUrl, dto, {withCredentials: true});
   }
+  sendQrCode(qr : FormData){
+    return this._http.post(Constants.sendQrCode, qr, {withCredentials: true});
+  }
 }

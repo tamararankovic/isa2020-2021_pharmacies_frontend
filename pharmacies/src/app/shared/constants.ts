@@ -44,6 +44,7 @@ export class Constants {
     public static getAllSubscribedPharmaciesUrl =  Constants.baseUrl + "/patient/getSubscribedPharmacies";
     public static cancelSubscriptionDto = Constants.baseUrl + "/patient/cancel/";
     public static searchMedicineByNameUrl = Constants.baseUrl + "/medicine/searchMedicine";
+    public static sendQrCode = Constants.baseUrl + "/patient/sendQr";
 
     //dermatologist
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";

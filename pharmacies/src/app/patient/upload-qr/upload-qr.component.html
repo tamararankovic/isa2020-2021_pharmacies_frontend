@@ -1,1 +1,16 @@
-<p>upload-qr works!</p>
+<h2 style="text-align: center; padding-top: 10px;">Upload qr code</h2>   
+<div style="margin-top: 22px; margin-bottom: 1%; margin-left: 40%;">
+<label matInput  name="imelabela" style="  font-weight: 500; font-size: 16px;margin-right: 5%;">Upload your code: </label>
+<input style="display: none;" type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput>
+                    <span class="phone-in-line" style="max-width: 35%;">
+                      <button mat-raised-button color="accent" type="button" style="padding: 12px 32px; margin-right: 1%;" (click)="fileInput.click()">
+                        <mat-label [hidden]="!selectedFileHide">Pick image</mat-label>
+                        <mat-label [hidden]="selectedFileHide">{{fileName}}</mat-label>
+                      </button>
+                    </span>
+</div>                   
+<div style="margin-left: 40%;"> 
+                    <span  style="max-width: 50%;">
+                        <button mat-raised-button color="accent" (click)="submit()" style="padding: 12px 32px; margin-left: 0%; width: 40%;"  >Submit</button>
+                    </span>
+</div>  
