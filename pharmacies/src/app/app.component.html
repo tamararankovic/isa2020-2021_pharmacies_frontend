@@ -108,5 +108,9 @@
       Log Out
     </button>
   </span>
+
+  <button mat-button routerLink="../pharmacy-admin/notifications" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACY_ADMIN'">
+    <img src="assets/notification.png">
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

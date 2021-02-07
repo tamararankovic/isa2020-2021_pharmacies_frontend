@@ -1,0 +1,17 @@
+.mat-header-cell {
+  background-color: rgb(66, 65, 68);
+  font-size: larger;
+  color: white;
+}
+table {
+  width: 80%;
+  margin-top: 5%;
+}
+
+.bg {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

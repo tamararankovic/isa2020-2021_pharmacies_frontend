@@ -13,8 +13,10 @@ import { MedicineSearchPatientComponent } from './medicine-search-patient/medici
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
 import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
+import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 
 const routes: Routes = [
+  {path: 'med-specification/:id', component: MedicineSpecificationComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT", "SYSTEM_ADMIN", "DERMATOLOGIST", "PHARMACIST","PHARMACY_ADMIN"]}},
   {path: 'subscribed-pharmacies', component: SubscribedPharmaciesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'dermatologists', component: DermatologistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacists', component: PharmacistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
@@ -22,7 +24,7 @@ const routes: Routes = [
   {path: 'pharmacy-search', component: PharmaciesSearchPatientComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'medicine-reservations', component: ReservationsPageComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'make-reservation', component: ReservMedicineComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
-  {path: 'medicine-search', component: MedicineSearchPatientComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'medicine-search', component: MedicineSearchPatientComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT",  "SYSTEM_ADMIN", "DERMATOLOGIST", "PHARMACIST","PHARMACY_ADMIN"]}},
   {path: 'pharmacy/:id', component: PharmacyPageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
   {path: '', component: HomePageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},
   {path: 'profile', component: ProfileComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PATIENT"]}},

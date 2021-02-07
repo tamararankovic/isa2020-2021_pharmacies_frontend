@@ -1,74 +1,74 @@
 <div class="bg" style="background-image: url(assets/efe-1\.jpg); height: 100%;">
     
-<h2 style="text-align: center; padding-top: 30px;">Medicine search and reservation</h2>    
+<h2 style="text-align: center; padding-top: 10px;">Medicine search and reservation</h2>    
     <div *ngIf ="!makeReservation" style="display: flex; justify-content: center; ">
         <form class="example-form"  >            
-            <mat-form-field class="example-full-width" style="margin-right: 20px;">
+            <mat-form-field class="example-full-width" style="margin-right: 10px;">
                 <input matInput placeholder="Insert medicine name" id="imelabela" name="imetekst" [(ngModel)]="name">
             </mat-form-field>
-            <mat-form-field class="example-full-width" style="margin-right: 20px;">
-                <input matInput placeholder="Insert manufacturer" id="prezimelabela" name="prezimetekst" [(ngModel)]="manufacturer">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill" style="margin-right: 20px;">
-                <mat-label>Medicine form</mat-label>
-                <mat-select [(ngModel)]= "form" name = "formm">
-                  <mat-option *ngFor="let f of forms" [value]= "f">
-                    {{f}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="example-full-width" appearance="fill" style="margin-right: 20px;">
-                <mat-label>Medicine type</mat-label>
-                <mat-select [(ngModel)]= "type" name = "tip">
-                  <mat-option *ngFor="let t of types" [value]= "t">
-                    {{t}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
             <button mat-raised-button style="width: auto; color: rgb(50, 102, 185); height: 40px;" (click)="search()" >Search</button>
         </form>  
+        <mat-form-field appearance="fill" style="width: 30%; margin-left: 10%;">
+          <mat-label>Filter by type</mat-label>
+          <mat-select [formControl]="selectedStatuses" multiple (selectionChange)="filter()">
+            <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+          </mat-select>
+        </mat-form-field>      
     </div>
-<div *ngIf ="!makeReservation" style="display: flex; justify-content: center; margin-top: 30px;">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div *ngIf ="!makeReservation" style="display: flex; justify-content: center; margin-top: 0px;">
+<table mat-table [dataSource]="filteredSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef  > Medicine name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
-  
-    <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef > Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.info}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="dose">
-      <th mat-header-cell *matHeaderCellDef > Daily dose </th>
-      <td mat-cell *matCellDef="let element"> {{element.dose}} </td>
-    </ng-container>
-  
- 
-    <ng-container matColumnDef="form">
-      <th mat-header-cell *matHeaderCellDef  > Medicine form </th>
-      <td mat-cell *matCellDef="let element"> {{element.form}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="manufacturer">
-        <th mat-header-cell *matHeaderCellDef  > Manufacturer </th>
-        <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
-      </ng-container>
 
       <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef  > Medicine type </th>
         <td mat-cell *matCellDef="let element"> {{element.type}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="points">
-        <th mat-header-cell *matHeaderCellDef > Points </th>
-        <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+      <ng-container matColumnDef="averageRating">
+        <th mat-header-cell *matHeaderCellDef > Rating </th>
+        <td mat-cell *matCellDef="let element"> {{element.averageRating}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="SideEffects">
+        <th mat-header-cell *matHeaderCellDef> Side effects </th>
+        <td mat-cell *matCellDef="let element"> {{element.specification.sideEffects}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="AdvisedDose">
+        <th mat-header-cell *matHeaderCellDef> Advised daily dose </th>
+        <td mat-cell *matCellDef="let element"> {{element.specification.advisedDailyDose}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Ingredients">
+          <th mat-header-cell *matHeaderCellDef> Ingredients </th>
+          <td mat-cell *matCellDef="let element">
+              <mat-list role="list">
+                  <mat-list-item *ngFor="let ingredient of element.specification.ingredients" role="listitem">{{ ingredient }}</mat-list-item>
+                </mat-list>                  
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="compatibleMedicines">
+        <th mat-header-cell *matHeaderCellDef> Compatible medicine </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-list role="list">
+                <mat-list-item *ngFor="let compatible of element.specification.compatibleMedicines" role="listitem">{{ compatible.medicineName }}, {{compatible.medicineCode}}</mat-list-item>
+              </mat-list>                  
+        </td>
+    </ng-container>
+
+    
+      <ng-container matColumnDef="pharmacies">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Pharmacy </th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)= "viewPharmacies(element.id)">Pharmacies</button> </td> 
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Action </th>
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Reserve </th>
         <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)= "reserve(element)">Reserve</button> </td> 
       </ng-container>
   
@@ -82,41 +82,21 @@
         <div style="display: flex; justify-content: center; margin-top: 8px;" >
             <table mat-table [dataSource]="medicine" style="width: 100%;" class="mat-elevation-z8">
 
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef  > Medicine name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
+              <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef  > Medicine name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef  > Medicine type </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="averageRating">
+                <th mat-header-cell *matHeaderCellDef > Daily Dose </th>
+                <td mat-cell *matCellDef="let element"> {{element.specification.advisedDailyDose}} </td>
+              </ng-container>
             
-                <ng-container matColumnDef="info">
-                    <th mat-header-cell *matHeaderCellDef > Description </th>
-                    <td mat-cell *matCellDef="let element"> {{element.info}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="dose">
-                    <th mat-header-cell *matHeaderCellDef > Daily dose </th>
-                    <td mat-cell *matCellDef="let element"> {{element.dose}} </td>
-                </ng-container>
-            
-            
-                <ng-container matColumnDef="form">
-                    <th mat-header-cell *matHeaderCellDef  > Medicine form </th>
-                    <td mat-cell *matCellDef="let element"> {{element.form}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="manufacturer">
-                    <th mat-header-cell *matHeaderCellDef  > Manufacturer </th>
-                    <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef  > Medicine type </th>
-                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="points">
-                    <th mat-header-cell *matHeaderCellDef > Points </th>
-                    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
-                </ng-container>
             
                 <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
