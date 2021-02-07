@@ -7,18 +7,21 @@
   <span font-color="white" style="margin-left: 10px;">PharmCenter</span>
   <span style="width: 20px;"></span>
 
-  <span style="flex: 1 1 auto;" name="dermatologist"  *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'DERMATOLOGIST'">
-    <button style="float: right;" mat-button routerLink="../dermatologist/leave">
-      Leave Request
-    </button>
-    <button style="float: right;" mat-button routerLink="../dermatologist/profile">
+  <span style="flex: 1 1 auto; margin-left: 30px;" name="dermatologist"  *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'DERMATOLOGIST'">
+    <button style="float: left;" mat-button routerLink="../dermatologist/profile">
       Profile
     </button>
-    <button style="float: right;" mat-button routerLink="../dermatologist/search">
-      Patients
-    </button>
-    <button style="float: right;" mat-button routerLink="../dermatologist/calendar">
+    <button style="float: left;" mat-button routerLink="../dermatologist/calendar">
       Calendar
+    </button>
+    <button style="float: left;" mat-button>
+      My Patients
+    </button>
+    <button style="float: left;" mat-button routerLink="../dermatologist/leave">
+      Leave Request
+    </button>
+    <button style="float: left;" mat-button routerLink="../dermatologist/search">
+      All Patients
     </button>
   </span>
 
@@ -46,21 +49,24 @@
     </button>
   </span>
 
-  <span style="flex: 1 1 auto;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
-    <button style="float: right;" mat-button routerLink="../pharmacist/leave">
-      Leave Request
+  <span style="flex: 1 1 auto; margin-left: 30px;" name="pharmacist" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACIST'">
+    <button style="float: left;" mat-button routerLink="../pharmacist/calendar">
+      Calendar
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacist/profile">
+    <button style="float: left;" mat-button routerLink="../pharmacist/profile">
       Profile
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacist/search">
-      Patients
+    <button style="float: left;" mat-button routerLink="../pharmacist/leave">
+      Leave Request
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacist/reservation">
+    <button style="float: left;" mat-button>
+      My Patients
+    </button>
+    <button style="float: left;" mat-button routerLink="../pharmacist/reservation">
       Reservation
     </button>
-    <button style="float: right;" mat-button routerLink="../pharmacist/calendar">
-      Calendar
+    <button style="float: left;" mat-button routerLink="../pharmacist/search">
+      All Patients
     </button>
   </span>
 
