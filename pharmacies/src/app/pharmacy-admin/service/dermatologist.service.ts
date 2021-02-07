@@ -5,6 +5,7 @@ import { Constants } from 'src/app/shared/constants';
 import { DermatologistDTO } from '../DTOs/dermatologist-dto';
 import { DermatologistToEmployDTO } from '../DTOs/dermatologist-to-employ-dto';
 import { NewDermatologistDTO } from '../DTOs/new-dermatologist-dto';
+import { PredefinedExaminationDTO } from '../DTOs/predefined-examination-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class DermatologistService {
 
   postNewDermatologist(d : NewDermatologistDTO) {
     return this.http.post(Constants.newDermUrl, d, {withCredentials : true});
+  }
+
+  createExamination(dto : PredefinedExaminationDTO) {
+    return this.http.post(Constants.createExamination, dto, {withCredentials : true});
   }
 }
