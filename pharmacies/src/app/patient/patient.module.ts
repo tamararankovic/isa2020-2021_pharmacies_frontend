@@ -24,9 +24,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
+import { UploadQrComponent } from './upload-qr/upload-qr.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,
