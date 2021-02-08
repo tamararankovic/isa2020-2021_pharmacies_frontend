@@ -1,4 +1,4 @@
-<mat-toolbar color="primary"> 
+<mat-toolbar color="primary" style="min-width: 100%; max-width: max-content;"> 
   <span style="width: 10px;"></span>
 
   <button mat-icon-button routerLink="../">
@@ -34,6 +34,9 @@
     </button>
     <button style="float: right;" mat-button routerLink="../patient/medicine-reservations">
       Medicine reservations
+    </button>
+    <button style="float: right;" mat-button routerLink="../patient/medicine-search">
+      Medicine search
     </button>
     <button style="float: right;" mat-button routerLink="../patient/subscribed-pharmacies">
       Subscribed pharmacies
@@ -83,18 +86,18 @@
     <button mat-button routerLink="../pharmacy-admin/deals-and-promotions">
       Deals and promotions
     </button>
-    <button mat-button>
+    <button mat-button routerLink="../pharmacy-admin/leave-requests">
       Leave requests
     </button>
-    <button mat-button>
+    <button mat-button routerLink="../pharmacy-admin/statistics">
       Statistics
     </button>
   </span>
 
-  <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
-  </span>
-
   <span style="flex: 1 1 auto;" name="system-admin" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SYSTEM_ADMIN'">
+    <button mat-button routerLink="../system-admin/leave-requests">
+      Leave requests
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="unauthenticated-user" *ngIf="!this.authService.loginPageDisplayed && !this.authService.registerPageDisplayed">
@@ -114,5 +117,9 @@
       Log Out
     </button>
   </span>
+
+  <button mat-button routerLink="../pharmacy-admin/notifications" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PHARMACY_ADMIN'">
+    <img src="assets/notification.png">
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

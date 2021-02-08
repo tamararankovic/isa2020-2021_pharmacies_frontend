@@ -24,13 +24,13 @@ export class MedicineSearchComponent implements OnInit {
   constructor(private pharmaciesService : PharmaciesService ) { }
 
   ngOnInit(): void {
-    this.criteria = new MedicineInfoDto(this.name, null,null, this.form,this.manufacturer, this.type, null);
+    this.criteria = new MedicineInfoDto(null,this.name, null,null, this.form,this.manufacturer, this.type, null);
     this.pharmaciesService.getMedicine(this.criteria).subscribe(data => this.dataSource = data);
     console.log(this.dataSource);
   }
 
   search(){
-    this.criteria = new MedicineInfoDto(this.name, null,null, this.form,  this.manufacturer,this.type, null);
+    this.criteria = new MedicineInfoDto(null,this.name, null,null, this.form,  this.manufacturer,this.type, null);
     this.pharmaciesService.getMedicine(this.criteria).subscribe(data => this.dataSource = data);
     console.log(this.name,this.form,this.manufacturer);
   }

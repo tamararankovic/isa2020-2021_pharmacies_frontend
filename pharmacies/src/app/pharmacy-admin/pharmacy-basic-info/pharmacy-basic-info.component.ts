@@ -26,7 +26,7 @@ export class PharmacyBasicInfoComponent implements OnInit {
   public zoom = 16;
   private geoCoder;
 
-  public data : PharmacyBasicInfoDTO = new PharmacyBasicInfoDTO("", "", "");
+  public data : PharmacyBasicInfoDTO = new PharmacyBasicInfoDTO("", "", "", 0);
 
   public addressValid : boolean = false;
 

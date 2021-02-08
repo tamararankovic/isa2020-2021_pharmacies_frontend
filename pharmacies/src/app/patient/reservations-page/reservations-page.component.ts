@@ -24,6 +24,6 @@ export class ReservationsPageComponent implements OnInit {
 
   
   cancel(element){
-    this.dataSource = this.dataSource.filter(item => item !== element);
+    this.patientService.cancelReservation(element).subscribe(data => this.dataSource = data);
   }
 }

@@ -9,8 +9,9 @@
                 </mat-form-field>
                 <mat-form-field class="example-form-field" style="width: 100%;">
                     <mat-label>Enter pharmacy description</mat-label>
-                    <textarea #d="ngModel" style="height: 200px;" maxlength="1000" matInput placeholder="Description can contain up to 1000 characters" [(ngModel)]="data.description"></textarea>
+                    <textarea #d="ngModel" style="height: 180px;" maxlength="1000" matInput placeholder="Description can contain up to 1000 characters" [(ngModel)]="data.description"></textarea>
                 </mat-form-field>
+                <mat-label>Average rating : {{data.avgRating}}</mat-label>
             </div>
         </mat-card>
     </span>
