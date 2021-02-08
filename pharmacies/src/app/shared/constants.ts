@@ -131,4 +131,19 @@ export class Constants {
     public static declineLeaveRequest = Constants.baseUrl + "/leave/decline/";
     public static createExamination = Constants.baseUrl + "/derm/new-predefined";
     public static getNotificationsUrl = Constants.baseUrl + "/pharmacy-admin/notifications";
+    public static pharmAppCountByMonthUrl = Constants.baseUrl + "/pharmacy/pharm-app-month";
+    public static pharmAppCountByQuarterUrl = Constants.baseUrl + "/pharmacy/pharm-app-quarter";
+    public static pharmAppCountByYearUrl = Constants.baseUrl + "/pharmacy/pharm-app-year";
+    public static dermAppCountByMonthUrl = Constants.baseUrl + "/pharmacy/derm-app-month";
+    public static dermAppCountByQuarterUrl = Constants.baseUrl + "/pharmacy/derm-app-quarter";
+    public static dermAppCountByYearUrl = Constants.baseUrl + "/pharmacy/derm-app-year";
+    public static appCountByMonthUrl = Constants.baseUrl + "/pharmacy/app-month";
+    public static appCountByQuarterUrl = Constants.baseUrl + "/pharmacy/app-quarter";
+    public static appCountByYearUrl = Constants.baseUrl + "/pharmacy/app-year";
+    public static medConsumptionByMonthUrl = Constants.baseUrl + "/pharmacy/med-consumption-month";
+    public static medConsumptionByQuarterUrl = Constants.baseUrl + "/pharmacy/med-consumption-quarter";
+    public static medConsumptionByYearUrl = Constants.baseUrl + "/pharmacy/med-consumption-year";
+    public static incomePharmAppUrl = Constants.baseUrl + "/pharmacy/income-pharm-app";
+    public static incomeDermAppUrl = Constants.baseUrl + "/pharmacy/income-derm-app";
+    public static incomeMedConsumptionUrl = Constants.baseUrl + "/pharmacy/income-med-cons";
 }
