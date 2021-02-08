@@ -11,11 +11,8 @@ import { ReservationDto } from '../DTOs/reservation-dto';
 import { PatientService } from '../service/patient.service';
 import { PharmacyService } from '../service/pharmacy.service';
 import { Options } from '@angular-slider/ngx-slider';
-<<<<<<< HEAD
 import { MatSnackBar } from '@angular/material/snack-bar';
-=======
 import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
->>>>>>> master
 
 @Component({
   selector: 'app-medicine-search-patient',
@@ -41,22 +38,16 @@ export class MedicineSearchPatientComponent implements OnInit {
   public medicine : MedicineInfoDto[] = [];
   public makeReservation :boolean = false;
   public reservation: ReservationDto = new ReservationDto(0,"","","","",true);
-<<<<<<< HEAD
   public forms = ["","CAPSULE","TABLET","POWDER","CREAM","OIL","SYRUP"]
   public types = ["","ANTIBIOTIC","ANESTHETIC","ANTIHISTAMINE"]
   public minDate = new Date();
   public selectedPharmacy = "";
+  public sideEffectsValues : string[] = [];
     
 
   constructor(private pharmaciesService : PharmaciesService,private router:Router, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe , private _snackBar:MatSnackBar) { 
     this.minDate.setDate(this.minDate.getDate() +2);
   }
-=======
- 
-  public sideEffectsValues : string[] = [];
- 
-  constructor(private router : Router,private pharmaciesService : PharmaciesService, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe ) { }
->>>>>>> master
 
   ngOnInit(): void {
     this.criteria = new SearchMedicineByNameDTO(this.name);

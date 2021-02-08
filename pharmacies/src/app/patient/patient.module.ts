@@ -23,20 +23,16 @@ import { MedicineSearchPatientComponent } from './medicine-search-patient/medici
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
-import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
+
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
-<<<<<<< HEAD
+
+import { UploadQrComponent } from './upload-qr/upload-qr.component';
+import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
 import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent],
-=======
-import { UploadQrComponent } from './upload-qr/upload-qr.component';
-
-@NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent],
->>>>>>> master
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent,UploadQrComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,
