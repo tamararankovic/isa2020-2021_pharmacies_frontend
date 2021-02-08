@@ -25,10 +25,11 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { LeaveComponent } from './leave/leave.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MyPatientsComponent } from './my-patients/my-patients.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent, SchedulingComponent, CalendarComponent, LeaveComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, ReservationComponent, SchedulingComponent, CalendarComponent, LeaveComponent, MyPatientsComponent],
   imports: [
     CommonModule,
     PharmacistRoutingModule,

@@ -3,7 +3,7 @@ export class MyPatientDTO {
         public patientId : number,
         public name : string,
         public surname : string,
-        public appointmentDate : Date,
+        public appointmentDate : string,
 	    public time : string
     ) {}
 }

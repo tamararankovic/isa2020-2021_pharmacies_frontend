@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReportComponent } from './report/report.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
+import { MyPatientsComponent } from './my-patients/my-patients.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'scheduling', component: SchedulingComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'calendar', component: CalendarComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path: 'leave', component: LeaveComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
+  {path: 'my-patients', component: MyPatientsComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["PHARMACIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 

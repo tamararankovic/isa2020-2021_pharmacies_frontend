@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.c
 import { CalendarComponent } from './calendar/calendar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LeaveComponent } from './leave/leave.component';
+import { MyPatientsComponent } from './my-patients/my-patients.component';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReportComponent } from './report/report.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'scheduling', component: SchedulingComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path: 'calendar', component: CalendarComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path: 'leave', component: LeaveComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
+  {path: 'my-patients', component: MyPatientsComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["DERMATOLOGIST"]}},
   {path:'**', component: PageNotFoundComponent}
 ];
 

@@ -23,9 +23,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MyPatientsComponent } from './my-patients/my-patients.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent, CalendarComponent, LeaveComponent],
+  declarations: [HomePageComponent, ProfileComponent, PatientSearchComponent, ReportComponent, SchedulingComponent, CalendarComponent, LeaveComponent, MyPatientsComponent],
   imports: [
     CommonModule,
     DermatologistRoutingModule,
