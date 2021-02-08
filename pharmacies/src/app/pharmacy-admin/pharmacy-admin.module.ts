@@ -39,11 +39,13 @@ import { Dialog, LeaveRequestsComponent } from './leave-requests/leave-requests.
 import { MatDialogModule } from '@angular/material/dialog';
 import { NewExaminationComponent } from './new-examination/new-examination.component';
 import { NotificationsComponent } from './notifications/notifications.component'; 
-import { MatChipsModule } from '@angular/material/chips'; 
+import { MatChipsModule } from '@angular/material/chips';
+import { StatisticsComponent } from './statistics/statistics.component'; 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
-  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog, NewExaminationComponent, NotificationsComponent],
+  declarations: [HomePageComponent, PharmacistsComponent, DermatologistsComponent, NewDermatologistComponent, NewPharmacistComponent, PharmacyBasicInfoComponent, AdminBasicInfoComponent, NewOrderComponent, OrdersComponent, OrderDetailsComponent, EditOrderComponent, DealsAndPromotionsComponent, MedicinesComponent, NewMedicineComponent, PriceListComponent, EditPriceListComponent, LeaveRequestsComponent, Dialog, NewExaminationComponent, NotificationsComponent, StatisticsComponent],
   imports: [
     CommonModule,
     PharmacyAdminRoutingModule,
@@ -67,6 +69,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatDatepickerModule,
     MatDialogModule,
     MatChipsModule,
+    NgxChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArX13dkqG1oKxB4wnrinrHr7pzuNrR2wQ',
       libraries: ['places']

@@ -15,6 +15,7 @@ export class SchedulingComponent implements OnInit {
   appointmentDateTime : Date = new Date();
   dto : SaveAppDTO = new SaveAppDTO(this.pharmService.appointmentId, this.appointmentDateTime);
   appAvailable : AppAvailableDTO;
+
   constructor(private pharmService : PharmService, private _snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit(): void {

@@ -3,17 +3,23 @@
 <h2 style="text-align: center; padding-top: 20px;">Medicine search and reservation</h2>    
     <div *ngIf ="!makeReservation" style="display: flex; justify-content: center; ">
         <form class="example-form"  >            
-            <mat-form-field class="example-full-width" style="margin-right: 10px;">
+            <mat-form-field class="example-full-width" style="margin-right: 10px; margin-left : 1%;">
                 <input matInput placeholder="Insert medicine name" id="imelabela" name="imetekst" [(ngModel)]="name">
             </mat-form-field>
             <button mat-raised-button style="width: auto; color: rgb(50, 102, 185); height: 40px;" (click)="search()" >Search</button>
         </form>  
-        <mat-form-field appearance="fill" style="width: 30%; margin-left: 10%;">
+        <mat-form-field appearance="fill" style="width: 23%; margin-left: 0%;">
           <mat-label>Filter by type</mat-label>
           <mat-select [formControl]="selectedStatuses" multiple (selectionChange)="filter()">
             <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
           </mat-select>
-        </mat-form-field>      
+        </mat-form-field>  
+        <mat-form-field appearance="fill" style="  margin-left: 4px;width: 23%; ">
+          <mat-label>Filter by side effects</mat-label>
+          <mat-select [formControl]="selectedSideEffects" multiple (selectionChange)="filter()">
+            <mat-option *ngFor="let pharmacy of sideEffectsValues" [value]="pharmacy">{{pharmacy}}</mat-option>
+          </mat-select>
+        </mat-form-field>
     </div>
 <div *ngIf ="!makeReservation" style="display: flex; justify-content: center; margin-top: 0px;">
 <table mat-table [dataSource]="filteredSource" class="mat-elevation-z8">

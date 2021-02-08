@@ -12,6 +12,7 @@ import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
 import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
+import { ERecepyDTO } from '../DTOs/erecepy-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -64,4 +65,26 @@ export class PatientService {
   cancelPharmApp(dto : ShowAppointmentDto) : Observable<ShowAppointmentDto[]>{
     return this._http.post<ShowAppointmentDto[]>(Constants.cancelPharmAppUrl,dto,{withCredentials: true} )
   }
+  sendQrCode(qr : FormData) : Observable<ERecepyDTO[]>{
+    return this._http.post<ERecepyDTO[]>(Constants.sendQrCode, qr, {withCredentials: true});
+  }
+  choosePharmacy(pharmacy : ERecepyDTO){
+    return this._http.post(Constants.choosePharmacyForEPrescription, pharmacy, {withCredentials : true});
+  }
+
+  sortByPrice(data : ERecepyDTO[]) : Observable<ERecepyDTO[]>{
+    return this._http.post<ERecepyDTO[]>(Constants.sortByPrice, data, {withCredentials: true});
+  }
+  sortByRating(data : ERecepyDTO[]) : Observable<ERecepyDTO[]>{
+    return this._http.post<ERecepyDTO[]>(Constants.sortByRating, data, {withCredentials: true});
+  }
+  sortByPharmacyAddress(data : ERecepyDTO[]) : Observable<ERecepyDTO[]>{
+    return this._http.post<ERecepyDTO[]>(Constants.sortByPharmacyAddress, data, {withCredentials: true});
+  }
+  sortByPharmacyName(data : ERecepyDTO[]) : Observable<ERecepyDTO[]>{
+    return this._http.post<ERecepyDTO[]>(Constants.sortByPharmacyName, data, {withCredentials: true});
+  }
+  
+
+  
 }

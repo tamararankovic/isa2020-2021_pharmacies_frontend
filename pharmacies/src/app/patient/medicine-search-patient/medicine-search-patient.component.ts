@@ -8,11 +8,14 @@ import { PharmaciesService } from 'src/app/unauthenticated-user/service/pharmaci
 import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacyInfoDto } from '../DTOs/pharmacy-info-dto';
 import { ReservationDto } from '../DTOs/reservation-dto';
-import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 import { PatientService } from '../service/patient.service';
 import { PharmacyService } from '../service/pharmacy.service';
 import { Options } from '@angular-slider/ngx-slider';
+<<<<<<< HEAD
 import { MatSnackBar } from '@angular/material/snack-bar';
+=======
+import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
+>>>>>>> master
 
 @Component({
   selector: 'app-medicine-search-patient',
@@ -25,7 +28,8 @@ export class MedicineSearchPatientComponent implements OnInit {
   public filteredSource : MedicineSearchDTO[] = [];
   public selectedStatuses = new FormControl();
   public statuses : string[] = ["ANTIBIOTIC", "ANESTHETIC", "ANTIHISTAMINE"];
-  
+  public selectedSideEffects = new FormControl();
+
   displayedColumns: string[] = ['name', 'type','averageRating','SideEffects', 'AdvisedDose', 'Ingredients', 'compatibleMedicines','pharmacies','actions'];
   public name = "";
   public criteria : SearchMedicineByNameDTO;
@@ -37,6 +41,7 @@ export class MedicineSearchPatientComponent implements OnInit {
   public medicine : MedicineInfoDto[] = [];
   public makeReservation :boolean = false;
   public reservation: ReservationDto = new ReservationDto(0,"","","","",true);
+<<<<<<< HEAD
   public forms = ["","CAPSULE","TABLET","POWDER","CREAM","OIL","SYRUP"]
   public types = ["","ANTIBIOTIC","ANESTHETIC","ANTIHISTAMINE"]
   public minDate = new Date();
@@ -46,6 +51,12 @@ export class MedicineSearchPatientComponent implements OnInit {
   constructor(private pharmaciesService : PharmaciesService,private router:Router, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe , private _snackBar:MatSnackBar) { 
     this.minDate.setDate(this.minDate.getDate() +2);
   }
+=======
+ 
+  public sideEffectsValues : string[] = [];
+ 
+  constructor(private router : Router,private pharmaciesService : PharmaciesService, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe ) { }
+>>>>>>> master
 
   ngOnInit(): void {
     this.criteria = new SearchMedicineByNameDTO(this.name);
@@ -56,30 +67,51 @@ export class MedicineSearchPatientComponent implements OnInit {
         if (!this.statuses.some(s => s == order.type)) {
           this.statuses.push(order.type);
         }
-      }  
+        else if(!this.sideEffectsValues.some(p => p == order.specification.sideEffects)){
+        this.sideEffectsValues.push(order.specification.sideEffects);
+        }
+      } this.filter();
       });
     console.log(this.dataSource);
   }
+
+
   search(){
     this.criteria = new SearchMedicineByNameDTO(this.name);
-    this.patientService.getMedicinesByName(this.criteria).subscribe(data => this.filteredSource = data);
+    this.patientService.getMedicinesByName(this.criteria).subscribe((data) => {this.dataSource = data; this.filteredSource = this.dataSource; this.filter()});
   }
+
   viewPharmacies(id : number) {
   this.router.navigate(['patient/med-specification/' + id]);
   }
 
-  filter() {
+  filter()   {
     this.filteredSource = [];
     let selected : string[] = this.selectedStatuses.value;
-    if (selected.length == 0) {this.filteredSource = this.dataSource;}
-    else {
+    let selectedSide : string[] = this.selectedSideEffects.value;
+    if (this.selectedStatuses.value == null && this.selectedSideEffects.value == null) {this.filteredSource = this.dataSource;}
+    else if(this.selectedStatuses.value != null && this.selectedSideEffects.value == null){
       for(let order of this.dataSource) {
         if(selected.some(s => s == order.type)) {
           this.filteredSource.push(order);
+        
+  
         }
+      }
+    }else if(this.selectedStatuses.value == null && this.selectedSideEffects.value != null) {
+      for (let data of this.dataSource)
+        if (selectedSide.some(s => s == data.specification.sideEffects))
+        this.filteredSource.push(data);
+    }else {
+      for (let data of this.dataSource){
+          if(selected.some(s => s == data.type) && selectedSide.some(s => s == data.specification.sideEffects)){
+            this.filteredSource.push(data);
+          }
       }
     }
   }
+  
+
 
   reserve(element){
     var med = new MedicineInfoDto(element.id, element.name, "", element.specification.advisedDailyDose, "", "",element.type, 0);

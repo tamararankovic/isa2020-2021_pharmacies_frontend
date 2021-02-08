@@ -15,8 +15,10 @@ import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribe
 import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
+import { UploadQrComponent } from './upload-qr/upload-qr.component';
 
 const routes: Routes = [
+  {path: 'upload-qr', component: UploadQrComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'med-specification/:id', component: MedicineSpecificationComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT", "SYSTEM_ADMIN", "DERMATOLOGIST", "PHARMACIST","PHARMACY_ADMIN"]}},
   {path: 'subscribed-pharmacies', component: SubscribedPharmaciesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'dermatologists', component: DermatologistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
