@@ -21,6 +21,7 @@ import { AppMonthDTO } from '../DTOs/app-month-dto';
 import { AppYearDTO } from '../DTOs/app-year-dto';
 import { LeaveViewDTO } from '../DTOs/leave-view-dto';
 import { LeaveDTO } from '../DTOs/leave-dto';
+import { MyPatientDTO } from 'src/app/dermatologist/DTOs/my-patient-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -114,5 +115,13 @@ export class PharmService {
 
   newLeave(dto : LeaveDTO){
     return this._http.post(Constants.pharmacistNewLeaveUrl, dto, {withCredentials: true});
+  }
+
+  startAppointmentForPatient(patientId : number) : Observable<PharmAppDTO>{
+    return this._http.get<PharmAppDTO>(Constants.pharmacistStartPatientAppointmentUrl + "/" + patientId, {withCredentials: true});
+  }
+
+  getMyPatients() : Observable<MyPatientDTO[]>{
+    return this._http.get<MyPatientDTO[]>(Constants.dermatologistMyPatientsUrl, {withCredentials: true});
   }
 }
