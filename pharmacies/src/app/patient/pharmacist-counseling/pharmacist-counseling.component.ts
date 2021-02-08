@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { constants } from 'buffer';
 import { PharmacistDTO } from 'src/app/pharmacy-admin/DTOs/pharmacist-dto';
 import { PharamciesCounselingDto } from '../DTOs/pharamcies-counseling-dto';
@@ -33,7 +34,7 @@ export class PharmacistCounselingComponent implements OnInit {
 
   public displayedColumns1 = ["name", "address", "rating", "price", "action"];
 
-  constructor(private pharmacyService: PharmacyService, private datepipe : DatePipe,private _snackBar: MatSnackBar) {
+  constructor(private pharmacyService: PharmacyService, private datepipe : DatePipe,private _snackBar: MatSnackBar, private router:Router) {
       this.minDate.setDate(this.minDate.getDate()+ 2);
    }
 
@@ -79,6 +80,7 @@ export class PharmacistCounselingComponent implements OnInit {
     this.appointment.pharmacistId = this.selectedPharmacist;
     this.pharmacyService.saveApp(this.appointment).subscribe(data => this.message = data);
     this.openSnackBar("You have secessfully scheduled counseling.","Okay");
+    this.router.navigateByUrl("patient/incoming-appointments");
     }
   }
   backToTable(){

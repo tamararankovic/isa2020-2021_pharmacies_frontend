@@ -11,6 +11,7 @@ import { PharmacyAddAdminDTO } from 'src/app/system-admin/DTOs/pharmacy-add-admi
 import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
+import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,11 @@ export class PatientService {
     return this._http.post<MedicineSearchDTO[]>(Constants.searchMedicineByNameUrl, dto, {withCredentials: true});
   }
 
+  getIncomingApp() : Observable<ShowAppointmentDto[]>{
+    return this._http.get<ShowAppointmentDto[]>(Constants.incomingAppointmentsUrl,{withCredentials: true} )
+  }
   
+  cancelPharmApp(dto : ShowAppointmentDto) : Observable<ShowAppointmentDto[]>{
+    return this._http.post<ShowAppointmentDto[]>(Constants.cancelPharmAppUrl,dto,{withCredentials: true} )
+  }
 }

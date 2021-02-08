@@ -99,6 +99,10 @@ export class Constants {
     public static pharmaciesCounselingUrl = Constants.baseUrl + "/pharmacy/pharmacies-for-counseling";
     public static availablePharmacistsUrl = Constants.baseUrl + "/pharm/available-pharmacists";
     public static savePharmacistAppUrl = Constants.baseUrl + "/pharm/save-appointment";
+    public static incomingAppointmentsUrl = Constants.baseUrl + "/pharm/incoming-app";
+    public static pastAppointmentsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static cancelPharmAppUrl = Constants.baseUrl + "/pharm/cancel-app";
+    public static cancelDermAppUrl = Constants.baseUrl + "/pharm/cancel-app-derm";
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
