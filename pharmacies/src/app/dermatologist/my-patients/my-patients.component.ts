@@ -20,7 +20,7 @@ export class MyPatientsComponent implements OnInit, AfterViewInit {
   constructor(private dermService : DermService, private _snackBar: MatSnackBar) { }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+    //this.dataSource.sort = this.sort;
   }
 
   ngOnInit(): void {
@@ -34,21 +34,4 @@ export class MyPatientsComponent implements OnInit, AfterViewInit {
       }
     );
   }
-
-  sortSurname(){
-    console.log("Surname sort.");
-  }
-
-  sortName(){
-    console.log("Name sort.");
-  }
-
-  sortDate(){
-    console.log("Date sort.");
-  }
-
-  sortTime(){
-    console.log("Time sort.");
-  }
-
 }

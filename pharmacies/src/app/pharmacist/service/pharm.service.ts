@@ -122,6 +122,6 @@ export class PharmService {
   }
 
   getMyPatients() : Observable<MyPatientDTO[]>{
-    return this._http.get<MyPatientDTO[]>(Constants.dermatologistMyPatientsUrl, {withCredentials: true});
+    return this._http.get<MyPatientDTO[]>(Constants.pharmacistMyPatientsUrl, {withCredentials: true});
   }
 }
