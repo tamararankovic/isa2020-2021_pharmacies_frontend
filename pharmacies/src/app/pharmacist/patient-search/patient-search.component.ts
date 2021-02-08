@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PatientSearchDTO } from 'src/app/dermatologist/DTOs/patient-search-dto';
 import { PharmService } from '../service/pharm.service';
+import { PharmAppDTO } from 'src/app/pharmacist/DTOs/pharm-app-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-search',
@@ -14,23 +16,67 @@ export class PatientSearchComponent implements OnInit {
   surname = "";
   patients : PatientSearchDTO[] = [];
   dataSource : PatientSearchDTO[] = [];
-  criteria : PatientSearchDTO = new PatientSearchDTO("", "");
+  appDTO : PharmAppDTO = new PharmAppDTO(0, "", 0, "");
+  criteria : PatientSearchDTO = new PatientSearchDTO(0, "", "");
   displayedColumns: string[] = ['name', 'surname'];
-  constructor(private pharmService : PharmService, private _snackBar: MatSnackBar) { }
+  
+  newAppointment = false;
+
+  chosenPatient : PatientSearchDTO;
+
+  constructor(private pharmService : PharmService, private _snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit(): void {
-    this.dataSource.push(new PatientSearchDTO("M", "Dj"));
+    this.dataSource.push(new PatientSearchDTO(0, "M", "Dj"));
     this.pharmService.searchPatients(this.criteria).subscribe(
       data => this.dataSource = data
     );
-    console.log(this.pharmService.appointmentId);
   }
 
   searchPatients(){
-    this.criteria = new PatientSearchDTO(this.name, this.surname);
+    this.criteria = new PatientSearchDTO(0, this.name, this.surname);
     this.pharmService.searchPatients(this.criteria).subscribe(
       data => this.dataSource = data
     );
   }
 
+  startAppointment(element){
+    this.newAppointment = false;
+    this.chosenPatient = element;
+    this.pharmService.startAppointmentForPatient(this.chosenPatient.id).subscribe(
+      data => {
+        this.appDTO = data;
+        if(this.appDTO.appointmentId != 0){
+          this.newAppointment = true;
+        } else {
+          this.openSnackBar("You have no scheduled appointments with selected patient.", "Okay");
+        }
+      }
+    );
+  }
+
+  startButton(){
+    this.pharmService.chosenAppointmnetDto = this.appDTO.appointmentId;
+    this.router.navigate(['pharmacist/report']);
+  }
+
+  cancel(){
+    this.newAppointment = false;
+  }
+
+  notPresent(){
+    this.pharmService.chosenAppointmnetDto = this.appDTO.appointmentId;
+    this.pharmService.notPresent().subscribe(
+      data => {
+        console.log("Gotov pregled.");
+        this.newAppointment = false;
+      }
+    );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000
+    });
+  }
 }

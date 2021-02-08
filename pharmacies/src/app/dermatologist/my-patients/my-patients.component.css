@@ -1,5 +1,5 @@
 table {
-    width: 50%;
+    width: 60%;
   }
   
 .example-button-row {
@@ -19,7 +19,7 @@ div {
   background-color: rgb(66, 65, 68);
   font-size: larger;
   color: white;
-  width: 50%;
+  width: 25%;
 }
 
 .mat-row:hover {
