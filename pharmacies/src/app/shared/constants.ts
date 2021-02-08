@@ -136,6 +136,9 @@ export class Constants {
     public static dermAppCountByMonthUrl = Constants.baseUrl + "/pharmacy/derm-app-month";
     public static dermAppCountByQuarterUrl = Constants.baseUrl + "/pharmacy/derm-app-quarter";
     public static dermAppCountByYearUrl = Constants.baseUrl + "/pharmacy/derm-app-year";
+    public static appCountByMonthUrl = Constants.baseUrl + "/pharmacy/app-month";
+    public static appCountByQuarterUrl = Constants.baseUrl + "/pharmacy/app-quarter";
+    public static appCountByYearUrl = Constants.baseUrl + "/pharmacy/app-year";
     public static medConsumptionByMonthUrl = Constants.baseUrl + "/pharmacy/med-consumption-month";
     public static medConsumptionByQuarterUrl = Constants.baseUrl + "/pharmacy/med-consumption-quarter";
     public static medConsumptionByYearUrl = Constants.baseUrl + "/pharmacy/med-consumption-year";

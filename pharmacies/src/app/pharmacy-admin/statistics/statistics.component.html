@@ -1,1 +1,191 @@
-<p>statistics works!</p>
+<h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Pharmacy business reports</h1>
+<div style="width: max-content; height: max-content; margin-left: 170px; margin-right: 170px;">
+  <h2 style="text-align: center; margin-bottom: 30px;">Appointmnt count by month</h2>
+  <ngx-charts-bar-vertical style="display: inline-block;" 
+  [view]="[500, 300]"
+  [results]="pharmAppsMonth"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by months'"
+  [yAxisLabel]="'Pharmacist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display: inline-block; margin-left: 50px;"
+  [view]="[500, 300]"
+  [results]="dermAppsMonth"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by months'"
+  [yAxisLabel]="'Dermatologist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display:block; margin-bottom: 350px;"
+  [view]="[1050, 300]"
+  [results]="appsMonth"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by months'"
+  [yAxisLabel]="'Total appointment count'">
+  </ngx-charts-bar-vertical>
+</div>
+
+<div style="width: max-content; height: max-content; margin-left: 170px; margin-right: 170px;">
+  <h2 style="text-align: center; margin-bottom: 30px;">Appointmnt count by quarter</h2>
+  <ngx-charts-bar-vertical style="display: inline-block;" 
+  [view]="[500, 300]"
+  [results]="pharmAppQuarter"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by quarters'"
+  [yAxisLabel]="'Pharmacist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display: inline-block; margin-left: 50px;"
+  [view]="[500, 300]"
+  [results]="dermAppQuarter"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by quarters'"
+  [yAxisLabel]="'Dermatologist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display:block; margin-bottom: 350px;"
+  [view]="[1050, 300]"
+  [results]="appQuarter"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by quarters'"
+  [yAxisLabel]="'Total appointment count'">
+  </ngx-charts-bar-vertical>
+</div>
+
+<div style="width: max-content; height: max-content; margin-left: 170px; margin-right: 170px;">
+  <h2 style="text-align: center; margin-bottom: 30px;">Appointmnt count by year</h2>
+  <ngx-charts-bar-vertical style="display: inline-block;" 
+  [view]="[500, 300]"
+  [results]="pharmAppYear"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by years'"
+  [yAxisLabel]="'Pharmacist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display: inline-block; margin-left: 50px;"
+  [view]="[500, 300]"
+  [results]="dermAppYear"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by years'"
+  [yAxisLabel]="'Dermatologist appointment count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display:block; margin-bottom: 350px;"
+  [view]="[1050, 300]"
+  [results]="appYear"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by years'"
+  [yAxisLabel]="'Total appointment count'">
+  </ngx-charts-bar-vertical>
+</div>
+
+<div style="width: max-content; height: max-content; margin-left: 170px; margin-right: 170px;">
+  <h2 style="text-align: center; margin-bottom: 30px;">Mediciens sold</h2>
+  <ngx-charts-bar-vertical style="display: inline-block;" 
+  [view]="[500, 300]"
+  [results]="medConsumptionMonth"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by months'"
+  [yAxisLabel]="'Medicines sold count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display: inline-block;" 
+  [view]="[500, 300]"
+  [results]="medConsumptionQuarter"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by quarters'"
+  [yAxisLabel]="'Medicines sold count'">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-bar-vertical style="display: block; margin-left: 275px; margin-bottom: 350px;" 
+  [view]="[500, 300]"
+  [results]="medConsumptionYear"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline by years'"
+  [yAxisLabel]="'Medicines sold count'">
+  </ngx-charts-bar-vertical>
+</div>
+
+<div style="margin-left: 170px; height: max-content; width: max-content; margin-right: 170px;">
+  <h2 style="text-align: center; margin-bottom: 30px;">Income</h2>
+  <div style="margin-bottom: 50px;">
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 35%; display: inline-block;">
+      <mat-label>Choose start date</mat-label>
+      <input matInput readonly [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [formControl]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 35%; margin-left: 5%; display: inline-block;">
+      <mat-label>Choose end date</mat-label>
+      <input matInput readonly [min]="startDate.value" [max]="maxDate" [matDatepicker]="picker2" [formControl]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button color="primary" style="width: 22%; float: right;" (click)="filter()">See income for selected interval</button>
+  </div>
+  <ngx-charts-line-chart
+  [view]="[1050, 300]"
+  [results]="income1"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline'"
+  [yAxisLabel]="'Income from pharmacist appointments'">
+  </ngx-charts-line-chart>
+  <ngx-charts-line-chart
+  [view]="[1050, 300]"
+  [results]="income2"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline'"
+  [yAxisLabel]="'Income from dermatologist appointments'">
+  </ngx-charts-line-chart>
+  <ngx-charts-line-chart style="margin-bottom: 450px;"
+  [view]="[1050, 300]"
+  [results]="income3"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Timeline'"
+  [yAxisLabel]="'Income from medicines'">
+  </ngx-charts-line-chart>
+  <h2 style="text-align: center; margin-bottom: 30px;">Total ncome</h2>
+  <ngx-charts-number-card
+  [view]="[1050, 200]"
+  [cardColor]="'#232837'"
+  [results]="totalIncome">
+  </ngx-charts-number-card>
+</div>

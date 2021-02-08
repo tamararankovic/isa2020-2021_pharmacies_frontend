@@ -61,6 +61,18 @@ export class PharmacyService {
     return this.http.get<StatisticalDataDTO[]>(Constants.dermAppCountByYearUrl, {withCredentials : true});
   }
 
+  getAppCountByMonth() : Observable<StatisticalDataDTO[]> {
+    return this.http.get<StatisticalDataDTO[]>(Constants.appCountByMonthUrl, {withCredentials : true});
+  }
+
+  getAppCountByQuarter() : Observable<StatisticalDataDTO[]> {
+    return this.http.get<StatisticalDataDTO[]>(Constants.appCountByQuarterUrl, {withCredentials : true});
+  }
+
+  getAppCountByYear() : Observable<StatisticalDataDTO[]> {
+    return this.http.get<StatisticalDataDTO[]>(Constants.appCountByYearUrl, {withCredentials : true});
+  }
+
   getMedicineConsumptionByMonth() : Observable<StatisticalDataDTO[]> {
     return this.http.get<StatisticalDataDTO[]>(Constants.medConsumptionByMonthUrl, {withCredentials : true});
   }

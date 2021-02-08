@@ -41,6 +41,7 @@ import { NewExaminationComponent } from './new-examination/new-examination.compo
 import { NotificationsComponent } from './notifications/notifications.component'; 
 import { MatChipsModule } from '@angular/material/chips';
 import { StatisticsComponent } from './statistics/statistics.component'; 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     MatDatepickerModule,
     MatDialogModule,
     MatChipsModule,
+    NgxChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArX13dkqG1oKxB4wnrinrHr7pzuNrR2wQ',
       libraries: ['places']

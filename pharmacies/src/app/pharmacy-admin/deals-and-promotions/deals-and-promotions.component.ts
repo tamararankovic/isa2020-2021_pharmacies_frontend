@@ -17,6 +17,7 @@ export class DealsAndPromotionsComponent implements OnInit {
   option : number = 3;
 
   minDate = new Date();
+  maxDate = new Date();
   startDate = new FormControl(new Date());
   endDate = new FormControl(new Date());
 
