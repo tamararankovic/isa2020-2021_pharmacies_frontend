@@ -96,6 +96,9 @@ export class Constants {
     public static patientCancelReservationUrl = Constants.baseUrl + "/reserv/cancel";
     public static patientPharmaciesByMedicineUrl = Constants.baseUrl + "/pharmacy/getByMedicine";
     public static patientMakeReservationUrl = Constants.baseUrl + "/reserv/make";
+    public static pharmaciesCounselingUrl = Constants.baseUrl + "/pharmacy/pharmacies-for-counseling";
+    public static availablePharmacistsUrl = Constants.baseUrl + "/pharm/available-pharmacists";
+    public static savePharmacistAppUrl = Constants.baseUrl + "/pharm/save-appointment";
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

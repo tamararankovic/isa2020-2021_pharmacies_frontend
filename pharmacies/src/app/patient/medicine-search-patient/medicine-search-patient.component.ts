@@ -12,6 +12,7 @@ import { SearchMedicineByNameDTO } from '../DTOs/search-medicine-by-name-dto';
 import { PatientService } from '../service/patient.service';
 import { PharmacyService } from '../service/pharmacy.service';
 import { Options } from '@angular-slider/ngx-slider';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-medicine-search-patient',
@@ -31,17 +32,18 @@ export class MedicineSearchPatientComponent implements OnInit {
 
   public pharmacies : PharmacyDTO[] =[];
   displayedColumns1: string[] = ['name', 'type','averageRating'];
-  public date = new Date;
+  public date : Date;
   public pharmacyName :string;
   public medicine : MedicineInfoDto[] = [];
   public makeReservation :boolean = false;
   public reservation: ReservationDto = new ReservationDto(0,"","","","",true);
   public forms = ["","CAPSULE","TABLET","POWDER","CREAM","OIL","SYRUP"]
   public types = ["","ANTIBIOTIC","ANESTHETIC","ANTIHISTAMINE"]
-  public minDate = new Date()
+  public minDate = new Date();
+  public selectedPharmacy = "";
     
 
-  constructor(private pharmaciesService : PharmaciesService,private router:Router, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe ) { 
+  constructor(private pharmaciesService : PharmaciesService,private router:Router, private pharmacyService : PharmacyService, private patientService:PatientService, private datepipe : DatePipe , private _snackBar:MatSnackBar) { 
     this.minDate.setDate(this.minDate.getDate() +2);
   }
 
@@ -81,6 +83,7 @@ export class MedicineSearchPatientComponent implements OnInit {
 
   reserve(element){
     var med = new MedicineInfoDto(element.id, element.name, "", element.specification.advisedDailyDose, "", "",element.type, 0);
+    console.log(med);
     this.medicine.push(med);
     this.reservation.medicine = element.name;
     this.pharmacyService.getPharmaciesForReservation(med).subscribe(data => this.pharmacies = data);
@@ -90,12 +93,18 @@ export class MedicineSearchPatientComponent implements OnInit {
   }
 
   makeReservations(){
-    this.reservation.id = null;
-    this.reservation.cancellable = null;
-    this.reservation.received = null;
-    this.reservation.date = this.datepipe.transform(this.date, 'dd-MM-yyyy HH:mm');
-    this.patientService.makeReservation(this.reservation).subscribe();
-    this.router.navigateByUrl("patient/medicine-reservations");
+    if(this.date == undefined || this.selectedPharmacy == "" ){
+      this.openSnackBar("You have to choose pharmacy and date in order to make a reservation.", "Okay");
+    }else{
+      this.reservation.pharmacy = this.selectedPharmacy;
+      this.reservation.id = null;
+      this.reservation.cancellable = null;
+      this.reservation.received = null;
+      this.reservation.date = this.datepipe.transform(this.date, 'dd-MM-yyyy HH:mm');
+      this.patientService.makeReservation(this.reservation).subscribe();
+      this.openSnackBar("You have successfully made a reservation.", "Okay");
+      this.router.navigateByUrl("patient/medicine-reservations");
+    }
 
   }
 
@@ -104,6 +113,12 @@ export class MedicineSearchPatientComponent implements OnInit {
     this.reservation.date = null;
     this.makeReservation = false;
     this.medicine =[];
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000
+    });
   }
   
 }
