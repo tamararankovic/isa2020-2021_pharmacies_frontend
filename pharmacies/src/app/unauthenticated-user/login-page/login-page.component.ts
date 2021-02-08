@@ -46,7 +46,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
   updatePassword() {
     if(this.newPassword != this.newPasswordRepeat) this.openSnackBar("Please make sure your passwords match.", "Okay")
-    else if(this.newPassword.length < 8) this.openSnackBar("Please enter at least 8 characters for password.", "Okay")
+    else if(this.newPassword.length < 4) this.openSnackBar("Please enter at least 4 characters for password.", "Okay")
     else {
       this.authService.changePassword(new UserPasswordChangeDto(this.email, this.password, this.newPassword)).subscribe(
       (data) => {

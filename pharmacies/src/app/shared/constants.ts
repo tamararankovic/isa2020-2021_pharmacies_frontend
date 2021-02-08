@@ -45,6 +45,11 @@ export class Constants {
     public static cancelSubscriptionDto = Constants.baseUrl + "/patient/cancel/";
     public static searchMedicineByNameUrl = Constants.baseUrl + "/medicine/searchMedicine";
     public static sendQrCode = Constants.baseUrl + "/patient/sendQr";
+    public static choosePharmacyForEPrescription = Constants.baseUrl + "/patient/choosePharmacy";
+    public static sortByPrice =  Constants.baseUrl + "/patient/sortByPrice";
+    public static sortByRating =  Constants.baseUrl + "/patient/sortByRating";
+    public static sortByPharmacyName =  Constants.baseUrl + "/patient/sortByPharmacyName";
+    public static sortByPharmacyAddress =  Constants.baseUrl + "/patient/sortByPharmacyAddress";
 
     //dermatologist
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";

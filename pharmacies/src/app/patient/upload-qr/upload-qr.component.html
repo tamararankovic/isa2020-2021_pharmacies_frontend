@@ -11,6 +11,57 @@
 </div>                   
 <div style="margin-left: 40%;"> 
                     <span  style="max-width: 50%;">
-                        <button mat-raised-button color="accent" (click)="submit()" style="padding: 12px 32px; margin-left: 0%; width: 40%;"  >Submit</button>
+                        <button mat-raised-button color="primary" (click)="submit()" style="padding: 12px 32px; margin-left: 0%; width: 40%;"  >Submit</button>
                     </span>
 </div>  
+<h2 style="text-align: center; padding-top: 40px;">Pharmacies in which medicines are available:</h2> 
+
+<label matInput  name="imelabela2" style="margin-top:3%; font-weight: 500; font-size: 16px;margin-right: 2%; margin-left: 10%;">Sort by price: </label> 
+<button mat-stroked-button color="primary" type="button" id="selectButton3"  (click)="sortByPrice()" >Sort</button>  
+
+<label matInput  name="imelabela3" style="font-weight: 500; font-size: 16px;margin-right: 2%; margin-left: 2%;">Sort by average rating: </label> 
+<button mat-stroked-button color="primary" type="button" id="selectButton4"  (click)="sortByRating()" >Sort</button>  
+
+<label matInput  name="imelabela4" style="font-weight: 500; font-size: 16px;margin-right: 2%; margin-left: 2%;">Sort by pharmacy name: </label> 
+<button mat-stroked-button color="primary" type="button" id="selectButton5"  (click)="sortByPharmacyName()" >Sort</button>  
+
+<label matInput  name="imelabela5" style="font-weight: 500; font-size: 16px;margin-right: 2%; margin-left: 2%;">Sort by pharmacy address: </label> 
+<button mat-stroked-button color="primary" type="button" id="selectButton6"  (click)="sortByPharmacyAddress()" >Sort</button>  
+
+
+<div  style="display: flex; justify-content: center; margin-top: 10px;">
+<table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+
+  <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> PHARMACY NAME </th>
+      <td mat-cell *matCellDef="let element"> {{element.nameOfPharmacy}} </td>
+    </ng-container>
+
+
+  <ng-container matColumnDef="Address">
+    <th mat-header-cell *matHeaderCellDef> ADDRESS </th>
+    <td mat-cell *matCellDef="let element"> {{element.addressOfPharmacy}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Rating">
+      <th mat-header-cell *matHeaderCellDef> AVERAGE RATING </th>
+      <td mat-cell *matCellDef="let element"> {{element.averageRating}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef> TOTAL PRICE </th>
+    <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
+</ng-container>
+
+  <ng-container matColumnDef="Choose">
+    <th mat-header-cell *matHeaderCellDef> CHOOSE </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-stroked-button color="primary" type="button" id="selectButton"  (click)="choose(element)" *ngIf="!element.clicked && !showButton">Buy</button>  
+        <button mat-stroked-button color="primary" type="button" id="selectButton2"  *ngIf="!element.clicked && showButton" >Buy</button>             
+    </td>
+</ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
