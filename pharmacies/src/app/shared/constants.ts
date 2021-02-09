@@ -1,5 +1,7 @@
+import {environment} from "../../environments/environment";
+
 export class Constants {
-    public static baseUrl = "http://localhost:8081";
+    public static baseUrl = environment.baseUrl;
 
     //role names
     public static patientRole = "PATIENT";
