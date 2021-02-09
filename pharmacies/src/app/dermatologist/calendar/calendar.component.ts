@@ -226,6 +226,8 @@ export class CalendarComponent implements OnInit {
   }
 
   start(element){
+    this.isChosen = false;
+    this.isValid = false;
     if(element.patientName != ""){
       this.chosenAppointmentDTO = element;
       var splitted = this.chosenAppointmentDTO.startTime.split(", ", 2);
