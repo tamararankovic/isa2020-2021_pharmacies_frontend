@@ -10,7 +10,6 @@ import { NewMedicineQuantityDTO } from '../DTOs/new-medicine-quantity-dto';
 import { NewOrderDTO } from '../DTOs/new-order-dto';
 import { OfferDTO } from '../DTOs/offer-dto';
 import { OrderDTO } from '../DTOs/order-dto';
-import { OrderedMedicineDTO } from '../DTOs/ordered-medicine-dto';
 import { UpdateOrderDTO } from '../DTOs/update-order-dto';
 import { MedicineService } from '../service/medicine.service';
 import { OrderService } from '../service/order.service';
@@ -102,9 +101,9 @@ export class EditOrderComponent implements OnInit {
       for(let data of this.selection.selected) {
         medicines.push(new NewMedicineQuantityDTO(data.id, data['quantity']));
       }
-      let date = new Date(this.selectedDate.value);
-      date.setHours(Number(this.selectedTime.substr(0, 2)) + 1);
-      date.setMinutes(Number(this.selectedTime.substr(3, 2)));
+      let date = this.selectedDate.value;
+      date.setHours(Number(this.selectedTime.split(":")[0]) + 1);
+      date.setMinutes(Number(this.selectedTime.split(":")[1]));
       let order = new UpdateOrderDTO(this.order.id, new NewOrderDTO(medicines, date));
       this.orderService.update(order).subscribe(
         (val) => {this.openSnackBar("Order successfully updated!", "Okay"); this.router.navigate(['pharmacy-admin/orders'])},

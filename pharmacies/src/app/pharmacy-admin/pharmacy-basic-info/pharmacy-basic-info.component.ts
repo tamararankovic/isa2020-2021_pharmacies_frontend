@@ -41,7 +41,7 @@ export class PharmacyBasicInfoComponent implements OnInit {
               this.longitude = +results[0].geometry.location.lng();
               this.zoom = 15;
             } else {
-              alert("Geocode was not successful for the following reason: " + status);
+              this.openSnackBar("Geocode was not successful for the following reason: " + status, "Okay");
             }
           });
       }
@@ -65,10 +65,19 @@ export class PharmacyBasicInfoComponent implements OnInit {
   }
 
   update() {
-    this.pharmacyService.update(this.data).subscribe(
-      (val) => this.openSnackBar("Information successfully changed!", "Okay"),
-      error => this.openSnackBar(error.error, "Okay")
-    );
+    this.geoCoder.geocode({ address: this.data.address }, (results, status) => {
+      if (status === "OK") {
+        this.latitude = +results[0].geometry.location.lat();
+        this.longitude = +results[0].geometry.location.lng();
+        this.zoom = 15;
+        this.pharmacyService.update(this.data).subscribe(
+          (val) => this.openSnackBar("Information successfully changed!", "Okay"),
+          error => this.openSnackBar(error.error, "Okay")
+        );
+      } else {
+        this.openSnackBar("Address couldn't be found, can't update information!", "Okay");
+      }
+    })
   }
 
   openSnackBar(message: string, action: string) {
