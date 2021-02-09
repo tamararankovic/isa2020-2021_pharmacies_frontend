@@ -49,7 +49,8 @@ export class LeaveRequestsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.reasonDeclined = result;
-      if(this.reasonDeclined == "") {
+      console.log(this.reasonDeclined);
+      if(this.reasonDeclined == "" || this.reasonDeclined == undefined || this.reasonDeclined == null) {
         this.openSnackBar("You must write the reason for declining the leave request!", "Okay")
       } else {
         this.leaveService.decline(id, this.reasonDeclined).subscribe(
