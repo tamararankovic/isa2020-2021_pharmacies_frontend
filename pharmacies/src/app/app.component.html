@@ -44,6 +44,9 @@
     <button style="float: right;" mat-button routerLink="../patient/upload-qr">
       ePrescription
     </button>
+    <button style="float: right;" mat-button routerLink="../patient/complaints">
+      Complaints
+    </button>
   </span>
 
   <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">

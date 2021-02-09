@@ -25,9 +25,13 @@ import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.compo
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 import { UploadQrComponent } from './upload-qr/upload-qr.component';
+import { ComplaintsComponent } from './complaints/complaints.component';
+import { DermatologistComplaintComponent } from './dermatologist-complaint/dermatologist-complaint.component';
+import { PharmacistComplaintComponent } from './pharmacist-complaint/pharmacist-complaint.component';
+import { PharmacyComplaintComponent } from './pharmacy-complaint/pharmacy-complaint.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent, ComplaintsComponent, DermatologistComplaintComponent, PharmacistComplaintComponent, PharmacyComplaintComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,

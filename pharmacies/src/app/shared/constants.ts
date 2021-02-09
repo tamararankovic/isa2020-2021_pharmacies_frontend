@@ -25,6 +25,8 @@ export class Constants {
     public static getAllPharmaciesUrl = Constants.baseUrl + "/admin/getPharmacies";
     public static getAllMedicinesUrl = Constants.baseUrl + "/admin/getMedicines";
     public static addNewMedicineUrl = Constants.baseUrl + "/admin/addNewMedicine";
+    public static getAllComplaintsUrl = Constants.baseUrl + "/complaint/getAllComplaints";
+    public static answerOnComplaintUrl = Constants.baseUrl + "/complaint/answerOnComplaint";
 
     //supplier
     public static supplierProfileUrl = Constants.baseUrl + "/supplier/get";
@@ -39,6 +41,14 @@ export class Constants {
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
 
     //patient
+    public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
+    public static patientEditUrl = Constants.baseUrl + "/patient/edit";
+    public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
+    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
+    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId";
+    public static patientCancelReservationUrl = Constants.baseUrl + "/reserv/cancel";
+    public static patientPharmaciesByMedicineUrl = Constants.baseUrl + "/pharmacy/getByMedicine";
+    public static patientMakeReservationUrl = Constants.baseUrl + "/reserv/make";
     public static getPharmacyInfoUrl = Constants.baseUrl + "/pharmacy/info/";
     public static subscribeToPharmacy = Constants.baseUrl + "/patient/benefits/";
     public static getAllSubscribedPharmaciesUrl =  Constants.baseUrl + "/patient/getSubscribedPharmacies";
@@ -50,6 +60,13 @@ export class Constants {
     public static sortByRating =  Constants.baseUrl + "/patient/sortByRating";
     public static sortByPharmacyName =  Constants.baseUrl + "/patient/sortByPharmacyName";
     public static sortByPharmacyAddress =  Constants.baseUrl + "/patient/sortByPharmacyAddress";
+    public static getAllPharmacistsForComplaintUrl = Constants.baseUrl + "/pharm/getAllPharmacists";
+    public static getAllDermatologistsForComplaintUrl =  Constants.baseUrl + "/derm/getAllDermatologists";
+    public static getAllPharmaciesUserUrl = Constants.baseUrl + "/admin/getPharmaciesUser";
+    public static dermatologistComplaintUrl = Constants.baseUrl + "/complaint/complaintDermatologist";
+    public static pharmacistComplaintUrl = Constants.baseUrl + "/complaint/complaintPharmacist";
+    public static pharmacyComplaintUrl = Constants.baseUrl + "/complaint/complaintPharmacy";
+
 
     //dermatologist
     public static dermatologistProfileUrl = Constants.baseUrl + "/derm/get";
@@ -101,15 +118,7 @@ export class Constants {
     public static pharmacistMyPatientsUrl = Constants.baseUrl + "/pharm/myPatients";
     public static pharmacistStartPatientAppointmentUrl = Constants.baseUrl + "/pharm/startAppointment";
     
-    //patient
-    public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
-    public static patientEditUrl = Constants.baseUrl + "/patient/edit";
-    public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
-    public static patientMedicineUrl = Constants.baseUrl + "/patient/medicine";
-    public static patientReservationsUrl = Constants.baseUrl + "/reserv/getByPatientId";
-    public static patientCancelReservationUrl = Constants.baseUrl + "/reserv/cancel";
-    public static patientPharmaciesByMedicineUrl = Constants.baseUrl + "/pharmacy/getByMedicine";
-    public static patientMakeReservationUrl = Constants.baseUrl + "/reserv/make";
+
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
