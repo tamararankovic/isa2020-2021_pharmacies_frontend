@@ -44,7 +44,7 @@ export class EditOrderComponent implements OnInit {
 
   public quantities : number[] = [];
 
-  public order : OrderDTO = new OrderDTO(0, [], new Date(), false, "", false, [], new OfferDTO(0, "", 0));
+  public order : OrderDTO = new OrderDTO(0, [], new Date(), false, "", false, [], new OfferDTO(0, "", 0, new Date()));
   
   ngOnInit(): void {
     this.get();
