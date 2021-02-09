@@ -25,6 +25,6 @@
                 <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
             </agm-map>
         </div>
-        <button mat-raised-button color="primary" style="margin-top: 3%; float: right; margin-right: 10%;" [disabled]="n.invalid || !addressValid" (click)="update()">Save changes</button>
+        <button mat-raised-button color="primary" style="margin-top: 3%; float: right; margin-right: 10%;" [disabled]="(n.invalid || n.pristine) && (d.invalid || d.pristine) && !addressValid" (click)="update()">Save changes</button>
     </span>
 </div>
