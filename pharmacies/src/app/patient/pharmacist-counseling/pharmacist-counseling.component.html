@@ -1,0 +1,97 @@
+<h2 style="text-align: center; padding-top: 20px;">Schedule counseling</h2>  
+<div  style="display: flex; justify-content: center; margin-top: 30px;">
+  <mat-card class="mat-elevation-z8" style="margin-top: 1%; width:50%;  display: flex; justify-content: center; align-items: center; padding: 2%; ">
+      <div style="margin-left:auto; margin-right:auto; width:auto; ">
+        <div *ngIf ="pickDate" style=" margin-top: 30px;">
+          <h2>1. Please choose date and time for counseling</h2>
+          <form class="example-form" style = "display: inline;" >
+            <mat-form-field appearance="fill" style="padding:5px; width: 300px;">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [min] = "minDate" required [(ngModel)]= "date" name = "datum">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+            
+            <mat-form-field appearance="fill" style="width: 300px;">
+            <mat-label>Choose time:</mat-label>
+            <mat-select [(ngModel)]="selectedTime"  name="vreme"  >
+                <mat-option *ngFor="let time of times" [value]="time">
+                {{time}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          </form>   
+          <div >
+            <button mat-raised-button style="width: auto; color: rgb(50, 102, 185); float: right; height: 40px;" (click)="nextStep()" >Next</button>
+          </div>  
+        </div>
+        
+        <div *ngIf = "pickPharmacy" >
+        <h2>2. Please select pharmacy</h2> 
+        <div *ngIf = "pharmacies.length > 0">
+        <table mat-table [dataSource]="pharmacies" style="width: 800px;" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef  > Pharmacy name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef  > Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef > Rating </th>
+            <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef > Counseling price</th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Select </th>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)= "reserve(element)">Select</button> </td> 
+          </ng-container>
+        
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+        </table>
+        </div>
+        <div *ngIf = "pharmacies.length == 0">
+          <p>There are no available pharmacies for selected date and time, please choose another date or time.</p>
+        </div>
+        <div style ="padding-top: 20px;">
+           <button mat-raised-button style="width: auto; color: rgb(192, 11, 11); float: left; height: 40px; " (click)="cancel()" >Back</button>
+        </div>
+        
+      </div>
+      <div  *ngIf = "pickPharm">
+        <h2>3. Please select pharmacist</h2>
+        <form>
+          
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 300px; padding-top: 5px;">
+            <mat-label>Choose pharmacist</mat-label>
+            <mat-select [(ngModel)]= "selectedPharmacist" name = "pharmacists">
+                <mat-option *ngFor="let p of pharm" [value]= "p.id">
+                    {{p.name}} {{p.surname}}, rating: {{p.avgRating}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        </form>  
+        <div >
+          <button mat-raised-button style="width: auto; color: rgb(192, 11, 11); float: left; height: 40px; " (click)="backToTable()" >Back</button>
+          <button mat-raised-button style="width: auto; color: rgb(25, 98, 209); float: right; height: 40px; " (click)="save()" >Schedule Counseling</button>
+      </div>
+      </div>
+      
+    </div>
+    </mat-card>
+    </div>
+    
