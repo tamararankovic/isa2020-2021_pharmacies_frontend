@@ -89,6 +89,13 @@ export class PharmacistCounselingComponent implements OnInit {
     this.selectedPharmacist = 0;
   }
 
+  weekendsDatesFilter = (d: Date): boolean => {
+    const day = d.getDay();
+
+    /* Prevent Saturday and Sunday for select. */
+    return day !== 6 && day !== 0 ;
+}
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000

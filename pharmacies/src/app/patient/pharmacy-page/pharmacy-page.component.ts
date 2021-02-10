@@ -5,6 +5,8 @@ import { PharmacyProfileExaminationDto } from '../DTOs/pharmacy-profile-examinat
 import { ReservationDto } from '../DTOs/reservation-dto';
 import { PharmacyService } from '../service/pharmacy.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DermAppDto } from '../DTOs/derm-app-dto';
+import { NgxMaterialTimepickerHoursFace } from 'ngx-material-timepicker/src/app/material-timepicker/components/timepicker-hours-face/ngx-material-timepicker-hours-face';
 
 @Component({
   selector: 'app-pharmacy-page',
@@ -15,6 +17,8 @@ export class PharmacyPageComponent implements OnInit {
 
   public data : PharmacyInfoDto = new PharmacyInfoDto(0,"", "", "", 0, [], [], [], []);
   public reservation :ReservationDto;
+  public dermApp : DermAppDto;
+  public message: string;
 
   public displayedColumnsMedicine = ["Name", "Reserve"];
   public displayedColumnsPharmacist = ["Name"];
@@ -105,6 +109,13 @@ export class PharmacyPageComponent implements OnInit {
     );
    
   }
+
+  scheduleApp(element){
+    this.dermApp = new DermAppDto(element.id, element.startDateTime, element.dermatologist, element.duration, element.price);
+    this.pharmacyService.scheduleDermApp(this.dermApp).subscribe(data =>this.message = data );
+    this.openSnackBar("You have successfull scheduled appointment.","Okay");
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000,

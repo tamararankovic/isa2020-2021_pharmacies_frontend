@@ -84,7 +84,13 @@ export class PatientService {
   sortByPharmacyName(data : ERecepyDTO[]) : Observable<ERecepyDTO[]>{
     return this._http.post<ERecepyDTO[]>(Constants.sortByPharmacyName, data, {withCredentials: true});
   }
-  
 
+  getPastCounseling() : Observable<ShowAppointmentDto[]>{
+    return this._http.get<ShowAppointmentDto[]>(Constants.pastCounselingsUrl,{withCredentials: true} )
+  }
+
+  getPastApp() : Observable<ShowAppointmentDto[]>{
+    return this._http.get<ShowAppointmentDto[]>(Constants.pastAppUrl,{withCredentials: true} )
+  }
   
 }

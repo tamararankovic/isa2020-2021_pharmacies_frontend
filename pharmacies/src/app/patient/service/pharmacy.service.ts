@@ -10,6 +10,7 @@ import { ReservationDto } from '../DTOs/reservation-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
 import { PharamciesCounselingDto } from '../DTOs/pharamcies-counseling-dto';
 import { PharmacistDTO } from 'src/app/pharmacy-admin/DTOs/pharmacist-dto';
+import { DermAppDto } from '../DTOs/derm-app-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,8 @@ export class PharmacyService {
 
   saveApp(dto:PharmacistAppointmentDto) : Observable<string>{
     return this._http.post<string>(Constants.savePharmacistAppUrl,dto,{withCredentials: true});
+  }
+  scheduleDermApp(dto : DermAppDto) : Observable<string>{
+    return this._http.post<string>(Constants.scheduleDermAppUrl,dto,{withCredentials: true});
   }
 }

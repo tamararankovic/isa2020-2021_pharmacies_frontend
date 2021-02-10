@@ -16,15 +16,20 @@ import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacis
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
 import { UploadQrComponent } from './upload-qr/upload-qr.component';
+import { PastAppointmentsComponent } from './past-appointments/past-appointments.component';
+import { RatingComponent } from './rating/rating.component';
+
 
 const routes: Routes = [
   {path: 'upload-qr', component: UploadQrComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'rating', component: RatingComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'med-specification/:id', component: MedicineSpecificationComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT", "SYSTEM_ADMIN", "DERMATOLOGIST", "PHARMACIST","PHARMACY_ADMIN"]}},
   {path: 'subscribed-pharmacies', component: SubscribedPharmaciesComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'dermatologists', component: DermatologistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacists', component: PharmacistsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacist-counseling', component: PharmacistCounselingComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'pharmacy-search', component: PharmaciesSearchPatientComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'past-appointments', component: PastAppointmentsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'medicine-reservations', component: ReservationsPageComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'incoming-appointments', component: IncomingAppointmentsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'make-reservation', component: ReservMedicineComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},

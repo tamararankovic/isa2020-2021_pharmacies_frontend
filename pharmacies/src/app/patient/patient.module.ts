@@ -29,10 +29,13 @@ import { MedicineSpecificationComponent } from './medicine-specification/medicin
 import { UploadQrComponent } from './upload-qr/upload-qr.component';
 import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
 import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
+import { PastAppointmentsComponent } from './past-appointments/past-appointments.component';
+import { RatingComponent } from './rating/rating.component';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent,UploadQrComponent],
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent,UploadQrComponent, PastAppointmentsComponent, RatingComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,
@@ -42,6 +45,7 @@ import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-
     MatDatepickerModule,
     MatCardModule,
     MatRadioModule,
+    RatingModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,

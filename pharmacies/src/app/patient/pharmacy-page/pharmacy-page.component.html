@@ -97,7 +97,7 @@
                 <ng-container matColumnDef="Schedule">
                   <th mat-header-cell *matHeaderCellDef> SCHEDULE </th>
                   <td mat-cell *matCellDef="let element"> 
-                    <button mat-stroked-button style="color: rgb(22, 155, 189);">Schedule</button>                                      
+                    <button mat-stroked-button (click) = "scheduleApp(element)"style="color: rgb(22, 155, 189);">Schedule</button>                                      
                   </td>
                 </ng-container>
             

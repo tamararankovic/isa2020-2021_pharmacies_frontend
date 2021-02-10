@@ -11,7 +11,7 @@ import { PatientService } from '../service/patient.service';
 export class IncomingAppointmentsComponent implements OnInit {
 
   public appointments : ShowAppointmentDto[];
-  public displayedColumns1 = ["date", "doctor", "type","action"];
+  public displayedColumns1 = ["date", "doctor", "duration","price", "type","action"];
   constructor(private patientService :PatientService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {

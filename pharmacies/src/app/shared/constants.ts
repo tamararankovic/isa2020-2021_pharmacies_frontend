@@ -114,9 +114,10 @@ export class Constants {
     public static availablePharmacistsUrl = Constants.baseUrl + "/pharm/available-pharmacists";
     public static savePharmacistAppUrl = Constants.baseUrl + "/pharm/save-appointment";
     public static incomingAppointmentsUrl = Constants.baseUrl + "/pharm/incoming-app";
-    public static pastAppointmentsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static pastCounselingsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static pastAppUrl = Constants.baseUrl + "/pharm/past-app-derm";
     public static cancelPharmAppUrl = Constants.baseUrl + "/pharm/cancel-app";
-    public static cancelDermAppUrl = Constants.baseUrl + "/pharm/cancel-app-derm";
+    public static scheduleDermAppUrl = Constants.baseUrl + "/derm/schedule";
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
