@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermService } from '../service/derm.service';
 import { PharmAppDTO } from 'src/app/pharmacist/DTOs/pharm-app-dto';
 import { Router } from '@angular/router';
+import { CurrentlyHasAppointmentDTO } from 'src/app/pharmacist/DTOs/currently-free-dto';
 
 @Component({
   selector: 'app-patient-search',
@@ -23,6 +24,10 @@ export class PatientSearchComponent implements OnInit {
   newAppointment = false;
 
   chosenPatient : PatientSearchDTO;
+
+  alreadyStarted = false;
+
+  av : CurrentlyHasAppointmentDTO;
   
   constructor(private dermService : DermService, private _snackBar: MatSnackBar, public router: Router) { }
 
@@ -42,6 +47,7 @@ export class PatientSearchComponent implements OnInit {
 
   startAppointment(element){
     this.newAppointment = false;
+    this.alreadyStarted = false;
     this.chosenPatient = element;
     this.dermService.startAppointmentForPatient(this.chosenPatient.id).subscribe(
       data => {
@@ -56,20 +62,64 @@ export class PatientSearchComponent implements OnInit {
   }
 
   startButton(){
-    this.dermService.chosenAppointmnetDto = this.appDTO.appointmentId;
-    this.router.navigate(['dermatologist/report']);
+    this.dermService.getCurrentlyAvailable().subscribe(
+      data => {
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.dermService.chosenAppointmnetDto = this.appDTO.appointmentId;
+          this.router.navigate(['dermatologist/report']);
+        }
+        else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
+      }
+    );
+  }
+
+  goToStarted(){
+    if(this.dermService.chosenAppointmnetDto != 0){
+      this.router.navigate(['dermatologist/report']);
+    }
+    else {
+      this.openSnackBar("You can only end current appointment.", "Okay");
+    }
+  }
+
+  endCurrent(){
+    this.dermService.endCurrent().subscribe(
+      data => {
+        console.log("Appointment ended.");
+        if(this.dermService.chosenAppointmnetDto != 0){
+          this.dermService.chosenAppointmnetDto = 0;
+        }
+      }
+    );
+    this.alreadyStarted = false;
   }
 
   cancel(){
     this.newAppointment = false;
+    this.alreadyStarted = false;
   }
 
   notPresent(){
-    this.dermService.chosenAppointmnetDto = this.appDTO.appointmentId;
-    this.dermService.notPresent().subscribe(
+    this.dermService.getCurrentlyAvailable().subscribe(
       data => {
-        console.log("Gotov pregled.");
-        this.newAppointment = false;
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.dermService.chosenAppointmnetDto = this.appDTO.appointmentId;
+          this.dermService.notPresent().subscribe(
+            data => {
+              console.log("Gotov pregled.");
+              this.newAppointment = false;
+            }
+          );
+        }
+        else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
       }
     );
   }

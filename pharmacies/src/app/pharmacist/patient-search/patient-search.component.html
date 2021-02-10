@@ -53,5 +53,8 @@
       <button mat-stroked-button type="button" (click)="notPresent()" color="warn" style="float: left; margin-left: 40px; width: 40%;">Patient did not show up</button>
       <button mat-raised-button type="button" (click)="cancel()" style="float: right; width: 20%; color: gray;">Back</button>
       <div style="height: 40px;"></div>
+      <button mat-raised-button type="button" (click)="goToStarted()" *ngIf="alreadyStarted" style="margin-top: 20px; float: left; width: 45%; background-color: rgb(145, 187, 106); color: white;">Go to started appointment</button>
+      <button mat-raised-button type="button" (click)="endCurrent()" *ngIf="alreadyStarted" style="margin-top: 20px; float: right; width: 45%; background-color:rgb(93, 147, 235); color: white;">End started</button>
+      <div style="height: 40px;" *ngIf="alreadyStarted"></div>
     </form> 
   </mat-card>
