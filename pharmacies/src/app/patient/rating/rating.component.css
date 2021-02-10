@@ -15,10 +15,13 @@
         color: #ffd700;
     }
     li.selected1 {
-        color: #61cc2f;
+        color: #dfbe02;
     }
     li.selected2 {
-        color: #1b9cbd;
+        color: #dfbe02;
+    }
+    li.selected3 {
+        color: #dfbe02;
     }
 
     table {

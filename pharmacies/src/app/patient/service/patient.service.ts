@@ -115,5 +115,11 @@ export class PatientService {
   savePharmRating(dto: DoctorRatingDto) : Observable<string>{
     return this._http.post<string>(Constants.savepharmForRatingUrl,dto,{withCredentials: true});
   }
-  
+
+  getPharmacyForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.pharmacyForRatingUrl,{withCredentials: true});
+  }
+  savePharmacyRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savePharmacyForRatingUrl,dto,{withCredentials: true});
+  }
 }

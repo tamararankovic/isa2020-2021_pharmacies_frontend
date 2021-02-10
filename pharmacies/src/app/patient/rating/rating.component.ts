@@ -15,14 +15,17 @@ export class RatingComponent implements OnInit {
   selectedValue: number = 0;
   selectedValue1: number = 0;
   selectedValue2: number = 0;
+  selectedValue3: number = 0;
   public pharms : DoctorRatingDto[];
   public derms : DoctorRatingDto[];
   public meds : DoctorRatingDto[];
+  public pharmacy : DoctorRatingDto[];
   public displayedColumns1 = ["name","ratings","action","action1"];
   public rate = false;
   public rate1 = false;
   public rate2 = false;
   public rate3 = false;
+  public rate4 = false;
 
   public show = false;
   public show1 = true;
@@ -30,6 +33,8 @@ export class RatingComponent implements OnInit {
   public show3 = true;
   public show4 = true;
   public show5 = false;
+  public show6 = true;
+  public show7 = false;
   
   constructor(private patientService :PatientService, private _snackBar: MatSnackBar) { }
 
@@ -37,7 +42,7 @@ export class RatingComponent implements OnInit {
     this.patientService.getDermForRating().subscribe(data => this.derms = data);
     this.patientService.getPharmForRating().subscribe(data => this.pharms = data);
     this.patientService.getMedForRating().subscribe(data => this.meds = data);
-
+    this.patientService.getPharmacyForRating().subscribe(data => this.pharmacy = data);
   }
 
   rateDerm(){
@@ -56,6 +61,12 @@ export class RatingComponent implements OnInit {
     this.rate2 = true;
     this.show5 = true;
     this.show4 = false;
+  }
+
+  ratePharmacy(){
+    this.rate3 = true;
+    this.show7 = true;
+    this.show6 = false;
   }
 
   saveDerm(element){
@@ -108,6 +119,23 @@ export class RatingComponent implements OnInit {
     }
     
   }
+  savePharmacy(element){
+    element.rating = this.selectedValue3;
+    if(this.selectedValue3 == 0){
+      this.show6 = true;
+      this.rate3 = false;
+      this.show7 = false;
+      this.openSnackBar("Rating can not be zero.","Okay");
+    }
+    else{
+      this.selectedValue2 = 0;
+      this.rate3 = false;
+      this.show7 = false;
+      this.patientService.savePharmacyRating(element).subscribe();
+      this.openSnackBar("You have successfully rated medicine " + element.fullName,"Okay");
+    }
+    
+  }
 
 
   countStarDerm(star) {
@@ -119,6 +147,9 @@ export class RatingComponent implements OnInit {
     }
     countStarMed(star) {
       this.selectedValue2 = star;
+    }
+    countStarPharmacy(star){
+      this.selectedValue3 = star;
     }
 
   addClass(star) {
@@ -163,6 +194,21 @@ export class RatingComponent implements OnInit {
     for (let i = star-1; i >= this.selectedValue2; i--) {
       ab = "starId2" + i;
       document.getElementById(ab).classList.remove("selected2");
+    }
+  }
+
+  addClass3(star) {
+    let ab = "";
+    for (let i = 0; i < star; i++) {
+      ab = "starId3" + i;
+      document.getElementById(ab).classList.add("selected3");
+    }
+  }
+  removeClass3(star) {
+    let ab = "";
+    for (let i = star-1; i >= this.selectedValue3; i--) {
+      ab = "starId3" + i;
+      document.getElementById(ab).classList.remove("selected3");
     }
   }
 
