@@ -54,12 +54,6 @@
             
             <div >
                 <mat-form-field style="width:100%;">
-                    <mat-label>Points</mat-label>
-                    <input matInput required id="nameInput" type="number" #name6 = "ngModel" name="c6"  [(ngModel)] = "points" style="height: 40%;"/>
-                </mat-form-field>
-            </div>
-            <div >
-                <mat-form-field style="width:100%;">
                 <mat-label>Prescription type</mat-label>
                 <mat-select [(ngModel)] = "prescripiton"required #name10= "ngModel" name="c10" >
                   <mat-option>--</mat-option>
@@ -75,6 +69,17 @@
                     <input matInput required  maxlength="30" minlength="2" placeholder="Additional info must have between 2 and 30 characters" id="surnameInput" #name7 = "ngModel" name="c7"  [(ngModel)] = "additionalInfo" style="height: 40%;"/>
                 </mat-form-field>
             </div>
+
+            <h3 style="text-align: center; margin-top: 4%;">
+              Loyalty program: medicine points
+            </h3>
+            <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points</mat-label>
+                    <input matInput required id="nameInput" type="number" #name6 = "ngModel" name="c6"  [(ngModel)] = "points" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+
             <h3 style="text-align: center; margin-top: 4%;">
               Medicine specification
             </h3>

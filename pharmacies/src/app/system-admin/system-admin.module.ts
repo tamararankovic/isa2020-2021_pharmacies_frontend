@@ -21,10 +21,11 @@ import { MatListModule } from '@angular/material/list';
 import { Dialog, LeaveRequestsComponent } from './leave-requests/leave-requests.component'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoyaltyProgramComponent } from './loyalty-program/loyalty-program.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent, AddMedicineComponent, LeaveRequestsComponent, Dialog],
+  declarations: [HomePageComponent, RegisterSupplierComponent, RegisterAdminComponent, RegisterPharmacyComponent, RegisterDermatologistComponent, RegisterPharmacyAdminComponent, AddMedicineComponent, LeaveRequestsComponent, Dialog, LoyaltyProgramComponent],
   imports: [
     CommonModule,
     SystemAdminRoutingModule,

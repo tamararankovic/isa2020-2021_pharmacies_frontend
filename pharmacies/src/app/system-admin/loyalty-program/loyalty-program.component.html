@@ -1,0 +1,82 @@
+<div style="height:100%; display: flex; justify-content: center;  ">
+    <mat-card class="mat-elevation-z8" style="margin-top: 4%; width: 60%; height: 60%; display: flex; justify-content: center; align-items: center; height: max-content; padding-top: 5px; ">
+        <form #feedform="ngForm" style="width: 80%;" (submit)="addLoyalty()" novalidate>
+            <h2 style="text-align: center;">
+                Define loyalty program
+            </h2>
+            
+            <div>
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points after each appointment</mat-label>
+                    <input matInput required pattern="^\d+$" placeholder="Point must be integer number"  id="nameInput" type="number" #name = "ngModel" name="c"  [(ngModel)] = "pointsAfterAppointment" style="height: 40%;"/>
+
+                </mat-form-field>
+              </div>
+              
+              <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points after each advising</mat-label>
+                    <input matInput  pattern="^\d+$" placeholder="Point must be integer number" required id="nameInput2" type="number" #name2 = "ngModel" name="c2"  [(ngModel)] = "pointsAfterAdvising" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+          
+              <h3 style="text-align: center; margin-top: 4%;">
+                Define scale for users chategories
+             </h3>
+             <h3 style="text-align: center; margin-top: 4%;">
+                 (Regular are all users when they start using the app, so number of points that they need is 0)
+              </h3>
+              <h4 style="text-align: center; margin-top: 4%;"> REGULAR</h4>
+              <div>
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points needed for regular chategory</mat-label>
+                    <input matInput required id="nameInput3" type="number"  #name3= "ngModel" name="c3"  [(ngModel)] = "pointsForRegular" style="height: 40%;"/>
+
+                </mat-form-field>
+            </div>   
+              <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Procentage of discount on regular chategory users</mat-label>
+                    <input matInput required id="nameInput4" type="number"  #name4 = "ngModel" name="c4" [(ngModel)] = "discountForRegular" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+
+            <h4 style="text-align: center; margin-top: 4%;"> SILVER</h4>
+              <div>
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points needed for silver chategory</mat-label>
+                    <input matInput  pattern="^\d+$" placeholder="Point must be integer number greater than 0"  required id="nameInput5" type="number" #name5= "ngModel" name="c5"   [(ngModel)] = "pointsForSilver" style="height: 40%;"/>
+
+                </mat-form-field>
+              </div>
+              
+              <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Procentage of discount on silver chategory users</mat-label>
+                    <input matInput required id="nameInput6" placeholder="Procentage must be a number greater than 0" type="number"  #name6 = "ngModel" name="c6" [(ngModel)] = "discountForSilver" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+
+            <h4 style="text-align: center; margin-top: 4%;"> GOLD</h4>
+              <div>
+                <mat-form-field style="width:100%;">
+                    <mat-label>Points needed for gold chategory</mat-label>
+                    <input matInput  pattern="^\d+$" placeholder="Point must be integer number"  required id="nameInput7" type="number"  #name7 = "ngModel" name="c7"  [(ngModel)] = "pointsForGold" style="height: 40%;"/>
+
+                </mat-form-field>
+              </div>
+              
+              <div >
+                <mat-form-field style="width:100%;">
+                    <mat-label>Procentage of discount on gold chategory users</mat-label>
+                    <input matInput  required id="nameInput8" type="number"  #name8 = "ngModel" name="c8" [(ngModel)] = "discountForGold" style="height: 40%;"/>
+                </mat-form-field>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button id="registerButton"  [disabled] ="name.invalid || name2.invalid || name3.invalid || name4.invalid || name5.invalid || name6.invalid || name7.invalid || name8.invalid"  mat-raised-button color="primary" type="submit" style="padding: 12px 32px; opacity: 120%;">Save</button>
+              </div>
+
+        </form>
+     </mat-card>
+</div>

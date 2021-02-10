@@ -29,6 +29,7 @@ export class Constants {
     public static addNewMedicineUrl = Constants.baseUrl + "/admin/addNewMedicine";
     public static getAllComplaintsUrl = Constants.baseUrl + "/complaint/getAllComplaints";
     public static answerOnComplaintUrl = Constants.baseUrl + "/complaint/answerOnComplaint";
+    public static addLoyaltyProgramUrl =  Constants.baseUrl + "/admin/addLoyalty";
 
     //supplier
     public static supplierProfileUrl = Constants.baseUrl + "/supplier/get";

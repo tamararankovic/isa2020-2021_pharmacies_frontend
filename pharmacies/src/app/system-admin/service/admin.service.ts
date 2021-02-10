@@ -12,6 +12,7 @@ import { MedicineCodeDTO } from '../DTOs/medicine-code-dto';
 import { MedicineDTO } from '../DTOs/medicine-dto';
 import { AllComplaintsDTO } from '../DTOs/all-complaints-dto';
 import { AnswerOnComplaintDTO } from '../DTOs/answer-on-complaint-dto';
+import { LoyaltyDTO } from '../DTOs/loyalty-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,10 @@ export class AdminService {
   }
   answerOnComplaint(answer : AnswerOnComplaintDTO){
     return this._http.post(Constants.answerOnComplaintUrl, answer , {responseType: 'text', withCredentials: true})
+
+  }
+  addLoyaltyProgram(dto : LoyaltyDTO){
+    return this._http.post(Constants.addLoyaltyProgramUrl, dto , {responseType: 'text', withCredentials: true})
 
   }
 }
