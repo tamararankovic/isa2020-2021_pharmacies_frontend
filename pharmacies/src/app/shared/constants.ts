@@ -118,6 +118,14 @@ export class Constants {
     public static pastAppUrl = Constants.baseUrl + "/pharm/past-app-derm";
     public static cancelPharmAppUrl = Constants.baseUrl + "/pharm/cancel-app";
     public static scheduleDermAppUrl = Constants.baseUrl + "/derm/schedule";
+    public static pharmForRatingUrl = Constants.baseUrl + "/pharm/pharm-rating";
+    public static dermForRatingUrl = Constants.baseUrl + "/derm/derm-rating";
+    public static medForRatingUrl = Constants.baseUrl + "/reserv/med-rating";
+    public static savepharmForRatingUrl = Constants.baseUrl + "/pharm/save-pharm-rating";
+    public static savedermForRatingUrl = Constants.baseUrl + "/derm/save-derm-rating";
+    public static savemedForRatingUrl = Constants.baseUrl + "/reserv/save-med-rating";
+
+
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

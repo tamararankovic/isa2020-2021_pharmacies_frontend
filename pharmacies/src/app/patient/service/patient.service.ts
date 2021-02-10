@@ -13,6 +13,7 @@ import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
 import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
 import { ERecepyDTO } from '../DTOs/erecepy-dto';
+import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,28 @@ export class PatientService {
 
   getPastApp() : Observable<ShowAppointmentDto[]>{
     return this._http.get<ShowAppointmentDto[]>(Constants.pastAppUrl,{withCredentials: true} )
+  }
+
+  getPharmForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.pharmForRatingUrl,{withCredentials: true});
+  }
+
+  getDermForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.dermForRatingUrl,{withCredentials: true});
+  }
+
+  getMedForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.medForRatingUrl,{withCredentials: true});
+  }
+
+  saveMedRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savemedForRatingUrl,dto,{withCredentials: true});
+  }
+  saveDermRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savedermForRatingUrl,dto,{withCredentials: true});
+  }
+  savePharmRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savepharmForRatingUrl,dto,{withCredentials: true});
   }
   
 }
