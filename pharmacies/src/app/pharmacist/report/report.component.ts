@@ -56,7 +56,6 @@ export class ReportComponent implements OnInit {
     this.pharmService.getAppointmentData(this.pharmService.chosenAppointmnetDto).subscribe(
       data => {
         this.dermAppDTO = data;
-        this.pharmService.chosenAppointmnetDto = 0;
       }
     );
   }
@@ -225,6 +224,7 @@ export class ReportComponent implements OnInit {
       this.pharmService.saveReport(this.report).subscribe(
         data => {
           console.log("izvestaj je upisan u bazu");
+          this.pharmService.chosenAppointmnetDto = 0;
           this.pharmService.appointmentId = this.dermAppDTO.appointmentId;
           this.openSnackBar("Report is saved.", "Okay");
           this.reportDone = true;

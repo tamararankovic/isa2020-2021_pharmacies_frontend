@@ -23,6 +23,7 @@ import { DermPharmacyDTO } from '../DTOs/derm-pharmacy-dto';
 import { LeaveViewDTO } from 'src/app/pharmacist/DTOs/leave-view-dto';
 import { LeaveDTO } from 'src/app/pharmacist/DTOs/leave-dto';
 import { MyPatientDTO } from '../DTOs/my-patient-dto';
+import { CurrentlyHasAppointmentDTO } from 'src/app/pharmacist/DTOs/currently-free-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -128,5 +129,13 @@ export class DermService {
 
   getMyPatients() : Observable<MyPatientDTO[]>{
     return this._http.get<MyPatientDTO[]>(Constants.dermatologistMyPatientsUrl, {withCredentials: true});
+  }
+
+  getCurrentlyAvailable() : Observable<CurrentlyHasAppointmentDTO>{
+    return this._http.get<CurrentlyHasAppointmentDTO>(Constants.dermatologistCurrentlyAvailableUrl, {withCredentials: true});
+  }
+
+  endCurrent(){
+    return this._http.get(Constants.dermatologistEndUrl, {withCredentials: true});
   }
 }

@@ -78,6 +78,8 @@ export class Constants {
     public static dermatologistNewLeaveUrl = Constants.baseUrl + "/derm/newLeaveRequest";
     public static dermatologistMyPatientsUrl = Constants.baseUrl + "/derm/myPatients";
     public static dermatologistStartPatientAppointmentUrl = Constants.baseUrl + "/derm/startAppointment";
+    public static dermatologistCurrentlyAvailableUrl = Constants.baseUrl + "/derm/isDermatologistInAppointment";
+    public static dermatologistEndUrl = Constants.baseUrl + "/derm/endCurrent";
 
     //pharmacist
     public static pharmacistProfileUrl = Constants.baseUrl + "/pharm/get";
@@ -102,6 +104,8 @@ export class Constants {
     public static pharmacistNewLeaveUrl = Constants.baseUrl + "/pharm/newLeaveRequest";
     public static pharmacistMyPatientsUrl = Constants.baseUrl + "/pharm/myPatients";
     public static pharmacistStartPatientAppointmentUrl = Constants.baseUrl + "/pharm/startAppointment";
+    public static pharmacistCurrentlyAvailableUrl = Constants.baseUrl + "/pharm/isPharmacistInAppointment";
+    public static pharamcistEndUrl = Constants.baseUrl + "/pharm/endCurrent";
     
     //patient
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";

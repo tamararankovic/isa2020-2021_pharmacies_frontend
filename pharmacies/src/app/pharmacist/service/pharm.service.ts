@@ -22,6 +22,8 @@ import { AppYearDTO } from '../DTOs/app-year-dto';
 import { LeaveViewDTO } from '../DTOs/leave-view-dto';
 import { LeaveDTO } from '../DTOs/leave-dto';
 import { MyPatientDTO } from 'src/app/dermatologist/DTOs/my-patient-dto';
+import { CurrentlyHasAppointmentDTO } from '../DTOs/currently-free-dto';
+import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 @Injectable({
   providedIn: 'root'
@@ -123,5 +125,13 @@ export class PharmService {
 
   getMyPatients() : Observable<MyPatientDTO[]>{
     return this._http.get<MyPatientDTO[]>(Constants.pharmacistMyPatientsUrl, {withCredentials: true});
+  }
+
+  getCurrentlyAvailable() : Observable<CurrentlyHasAppointmentDTO>{
+    return this._http.get<CurrentlyHasAppointmentDTO>(Constants.pharmacistCurrentlyAvailableUrl, {withCredentials: true});
+  }
+
+  endCurrent(){
+    return this._http.get(Constants.pharamcistEndUrl, {withCredentials: true});
   }
 }
