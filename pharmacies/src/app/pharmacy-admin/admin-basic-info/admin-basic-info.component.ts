@@ -24,7 +24,7 @@ export class AdminBasicInfoComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.get().subscribe(
       (val) => {this.admin = val; this.name = this.admin.name; this.surname = this.admin.surname; this.email = this.admin.email;},
-      error => this.openSnackBar(error.error, "Okay")
+      error => this.openSnackBar(error.error.message, "Okay")
     )
   }
 
