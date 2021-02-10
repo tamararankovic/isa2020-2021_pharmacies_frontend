@@ -23,16 +23,20 @@ import { MedicineSearchPatientComponent } from './medicine-search-patient/medici
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReservMedicineComponent } from './reserv-medicine/reserv-medicine.component';
 import { SubscribedPharmaciesComponent } from './subscribed-pharmacies/subscribed-pharmacies.component';
+
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
+
 import { UploadQrComponent } from './upload-qr/upload-qr.component';
 import { ComplaintsComponent } from './complaints/complaints.component';
 import { DermatologistComplaintComponent } from './dermatologist-complaint/dermatologist-complaint.component';
 import { PharmacistComplaintComponent } from './pharmacist-complaint/pharmacist-complaint.component';
 import { PharmacyComplaintComponent } from './pharmacy-complaint/pharmacy-complaint.component';
+import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacist-counseling.component';
+import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent, ComplaintsComponent, DermatologistComplaintComponent, PharmacistComplaintComponent, PharmacyComplaintComponent],
- imports: [
+  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, UploadQrComponent, ComplaintsComponent, DermatologistComplaintComponent, PharmacistComplaintComponent, PharmacyComplaintComponent,  PharmacistCounselingComponent, IncomingAppointmentsComponent],
+  imports: [
     CommonModule,
     PatientRoutingModule,
     NgxSliderModule,

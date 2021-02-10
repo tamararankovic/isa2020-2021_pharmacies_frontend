@@ -1,5 +1,7 @@
+import {environment} from "../../environments/environment";
+
 export class Constants {
-    public static baseUrl = "http://localhost:8081";
+    public static baseUrl = environment.baseUrl;
 
     //role names
     public static patientRole = "PATIENT";
@@ -41,6 +43,13 @@ export class Constants {
     public static logoutUrl = Constants.baseUrl + "/auth/logout";
 
     //patient
+    public static pharmaciesCounselingUrl = Constants.baseUrl + "/pharmacy/pharmacies-for-counseling";
+    public static availablePharmacistsUrl = Constants.baseUrl + "/pharm/available-pharmacists";
+    public static savePharmacistAppUrl = Constants.baseUrl + "/pharm/save-appointment";
+    public static incomingAppointmentsUrl = Constants.baseUrl + "/pharm/incoming-app";
+    public static pastAppointmentsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static cancelPharmAppUrl = Constants.baseUrl + "/pharm/cancel-app";
+    public static cancelDermAppUrl = Constants.baseUrl + "/pharm/cancel-app-derm";
     public static patientsProfileUrl = Constants.baseUrl + "/patient/get";
     public static patientEditUrl = Constants.baseUrl + "/patient/edit";
     public static patientPasswordUrl = Constants.baseUrl + "/patient/changePassword";
@@ -118,7 +127,7 @@ export class Constants {
     public static pharmacistMyPatientsUrl = Constants.baseUrl + "/pharm/myPatients";
     public static pharmacistStartPatientAppointmentUrl = Constants.baseUrl + "/pharm/startAppointment";
     
-
+   
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";
