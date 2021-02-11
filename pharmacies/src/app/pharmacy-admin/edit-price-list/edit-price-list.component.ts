@@ -18,7 +18,7 @@ export class EditPriceListComponent implements OnInit {
 
   displayedColumns: string[] = ['Select', 'Name', 'Price'];
 
-  public priceList : PriceListDTO = new PriceListDTO([], new ItemPriceDto(0, "", 0, false), new ItemPriceDto(0, "", 0, false), new Date());
+  public priceList : PriceListDTO = new PriceListDTO([], new ItemPriceDto(0, "", 0, false), new ItemPriceDto(0, "", 0, false), new Date(), 0);
 
   dataSource = new MatTableDataSource<ItemPriceDto>(this.priceList.medicinePrices);
   dataSource2 = new MatTableDataSource<ItemPriceDto>([this.priceList.dermatologistAppointmentPrice, this.priceList.pharmacistAppointmentPrice]);
