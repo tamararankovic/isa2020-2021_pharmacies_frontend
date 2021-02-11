@@ -76,7 +76,7 @@
             <div >
                 <mat-form-field style="width:100%;">
                     <mat-label>Points</mat-label>
-                    <input matInput required id="nameInput" type="number" #name6 = "ngModel" name="c6"  [(ngModel)] = "points" style="height: 40%;"/>
+                    <input matInput required id="nameInput" placeholder="Points must be integer number"  pattern="^\d+$"  type="number" #name6 = "ngModel" name="c6"  [(ngModel)] = "points" style="height: 40%;"/>
                 </mat-form-field>
             </div>
 
@@ -92,7 +92,7 @@
           <div >
               <mat-form-field style="width:100%;">
                   <mat-label>Advised daily dose</mat-label>
-                  <input matInput required id="nameInput" placeholder="Advised daily dose must have be between 1 and 10" type="number" pattern = "[1-9]|10" #name5 = "ngModel" name="c5"  [(ngModel)] = "advisedDailyDose" style="height: 40%;"/>
+                  <input matInput required id="nameInput"  pattern="^\d+$" placeholder="Advised daily dose must have be integer number between 1 and 10" type="number"  #name5 = "ngModel" name="c5"  [(ngModel)] = "advisedDailyDose" style="height: 40%;"/>
               </mat-form-field>
           </div>
           <h3 style="text-align: center; margin-top: 4%;">
