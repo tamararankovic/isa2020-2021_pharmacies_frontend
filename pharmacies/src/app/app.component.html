@@ -44,12 +44,7 @@
     <button style="float: right;" mat-button routerLink="../patient/subscribed-pharmacies">
       Subscribed pharmacies
     </button>
-    <button style="float: right;" mat-button routerLink="../patient/incoming-appointments">
-      Incoming appointments
-    </button>
-    <button style="float: right;" mat-button routerLink="../patient/past-appointments">
-      Appointment history
-    </button>
+    
     <button style="float: right;" mat-button routerLink="../patient/upload-qr">
       ePrescription
     </button>
@@ -57,6 +52,17 @@
       Rating
     </button>
   </span>
+  <button mat-button *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'PATIENT'" [matMenuTriggerFor]="afterMenu">Appointments</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button style="float: right;" mat-menu-item routerLink="../patient/incoming-appointments">
+        Incoming appointments
+      </button>
+      <button style="float: right;" mat-menu-item routerLink="../patient/past-appointments">
+        Appointment history
+      </button>
+    </mat-menu>
+    
+  
 
   <span style="flex: 1 1 auto;" name="supplier" *ngIf="this.authService.isAuthenticated() && this.authService.getRole() == 'SUPPLIER'">
     <button style="float: right;" mat-button routerLink="../supplier/profile">
