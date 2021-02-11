@@ -76,6 +76,17 @@ export class Constants {
     public static dermatologistComplaintUrl = Constants.baseUrl + "/complaint/complaintDermatologist";
     public static pharmacistComplaintUrl = Constants.baseUrl + "/complaint/complaintPharmacist";
     public static pharmacyComplaintUrl = Constants.baseUrl + "/complaint/complaintPharmacy";
+    public static pastCounselingsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static pastAppUrl = Constants.baseUrl + "/pharm/past-app-derm";
+    public static scheduleDermAppUrl = Constants.baseUrl + "/derm/schedule";
+    public static pharmForRatingUrl = Constants.baseUrl + "/pharm/pharm-rating";
+    public static dermForRatingUrl = Constants.baseUrl + "/derm/derm-rating";
+    public static medForRatingUrl = Constants.baseUrl + "/reserv/med-rating";
+    public static pharmacyForRatingUrl = Constants.baseUrl + "/reserv/pharmacy-rating";
+    public static savepharmForRatingUrl = Constants.baseUrl + "/pharm/save-pharm-rating";
+    public static savedermForRatingUrl = Constants.baseUrl + "/derm/save-derm-rating";
+    public static savemedForRatingUrl = Constants.baseUrl + "/reserv/save-med-rating";
+    public static savePharmacyForRatingUrl = Constants.baseUrl + "/pharmacy/save-pharmacy-rating";
 
 
     //dermatologist
@@ -128,7 +139,6 @@ export class Constants {
     public static pharmacistMyPatientsUrl = Constants.baseUrl + "/pharm/myPatients";
     public static pharmacistStartPatientAppointmentUrl = Constants.baseUrl + "/pharm/startAppointment";
     
-   
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

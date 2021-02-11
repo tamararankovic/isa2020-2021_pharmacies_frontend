@@ -1,0 +1,166 @@
+<div class="bg">
+<h2 style="text-align: center; padding-top: 20px;">Rate us</h2>
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <mat-card class="mat-elevation-z8" style="margin-top: 1%; width:70%; background-color: rgba(255, 255, 255, 0.4); height:auto; display: flex; justify-content: center; align-items: center; padding: 2%; ">
+            <div style="margin-left:auto; margin-right:auto; width:auto;">
+                <div style="display: flex;">
+                    <div style = "padding-bottom: 20px;">
+                        <table mat-table [dataSource]="derms" style="width: 600px;" class="mat-elevation-z8">
+                    
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef  > Dermatologist name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="ratings">
+                                <th mat-header-cell *matHeaderCellDef  > Rating </th>
+                                <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="action" >
+                                <th mat-header-cell *matHeaderCellDef  mat-sort-header> Rate </th>
+                                <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0 && show1" mat-raised-button color="primary" (click)= "rateDerm()">Rate</button> </td> 
+                            </ng-container>
+
+                            <ng-container matColumnDef="action1" >
+                                <th mat-header-cell *matHeaderCellDef  mat-sort-header> Save </th>
+                                <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0 && show"  mat-raised-button color="primary" (click)= "saveDerm(element)">Save</button> </td> 
+                            </ng-container>
+                        
+                            
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        </table>
+                    </div>
+                    <div *ngIf = "rate" class="row" style="padding-top: 70px;">
+                        <div class="col-sm-12">
+                            <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block"> 
+                                <li (click)="countStarDerm(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}" 
+                                (mouseover)="addClass(star)" (mouseout)="removeClass(star)"> ★
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div>
+                        <table mat-table [dataSource]="pharms" style="width: 600px;" class="mat-elevation-z8">
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef  > Pharmacist name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="ratings">
+                            <th mat-header-cell *matHeaderCellDef  > Rating </th>
+                            <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+                            </ng-container>
+                            
+                            
+                            <ng-container matColumnDef="action" >
+                            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Rate </th>
+                            <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0  && show3" mat-raised-button color="primary" (click)= "ratePharm()">Rate</button> </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="action1" >
+                                <th mat-header-cell *matHeaderCellDef  mat-sort-header> Save </th>
+                                <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0 && show2"  mat-raised-button color="primary" (click)= "savePharm(element)">Save</button> </td> 
+                            </ng-container>
+                        
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        </table>
+                    </div>
+                    <div *ngIf = "rate1" class="row" style="padding-top: 70px;">
+                        <div class="col-sm-12">
+                            <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block"> 
+                                <li (click)="countStarPharm(star)" id="{{'starId1'+i}}" [ngClass]="{'selected1': (star <= selectedValue1)}" 
+                                (mouseover)="addClass1(star)" (mouseout)="removeClass1(star)"> ★
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div>
+                        <table mat-table [dataSource]="meds" style="width: 600px;" class="mat-elevation-z8">
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef  > Medicine name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="ratings">
+                            <th mat-header-cell *matHeaderCellDef  > Rating </th>
+                            <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+                            </ng-container>
+                            
+                            
+                            <ng-container matColumnDef="action" >
+                            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Rate </th>
+                            <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0  && show4" mat-raised-button color="primary" (click)= "rateMed()">Rate</button> </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="action1" >
+                                <th mat-header-cell *matHeaderCellDef  mat-sort-header> Save </th>
+                                <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0 && show5"  mat-raised-button color="primary" (click)= "saveMed(element)">Save</button> </td> 
+                            </ng-container>
+                        
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        </table>
+                    </div>
+                    <div *ngIf = "rate2" class="row" style="padding-top: 70px;">
+                        <div class="col-sm-12">
+                            <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block"> 
+                                <li (click)="countStarMed(star)" id="{{'starId2'+i}}" [ngClass]="{'selected2': (star <= selectedValue2)}" 
+                                (mouseover)="addClass2(star)" (mouseout)="removeClass2(star)"> ★
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div>
+                        <table mat-table [dataSource]="pharmacy" style="width: 600px;" class="mat-elevation-z8">
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef  > Medicine name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="ratings">
+                            <th mat-header-cell *matHeaderCellDef  > Rating </th>
+                            <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+                            </ng-container>
+                            
+                            
+                            <ng-container matColumnDef="action" >
+                            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Rate </th>
+                            <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0  && show6" mat-raised-button color="primary" (click)= "ratePharmacy()">Rate</button> </td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="action1" >
+                                <th mat-header-cell *matHeaderCellDef  mat-sort-header> Save </th>
+                                <td mat-cell  *matCellDef="let element"> <button *ngIf= "element.rating == 0 && show7"  mat-raised-button color="primary" (click)= "savePharmacy(element)">Save</button> </td> 
+                            </ng-container>
+                        
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        </table>
+                    </div>
+                    <div *ngIf = "rate3" class="row" style="padding-top: 70px;">
+                        <div class="col-sm-12">
+                            <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block"> 
+                                <li (click)="countStarPharmacy(star)" id="{{'starId3'+i}}" [ngClass]="{'selected3': (star <= selectedValue3)}" 
+                                (mouseover)="addClass3(star)" (mouseout)="removeClass3(star)"> ★
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </mat-card>
+    </div>        
+</div>
+    

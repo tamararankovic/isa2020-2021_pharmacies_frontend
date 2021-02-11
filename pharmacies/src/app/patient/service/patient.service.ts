@@ -15,6 +15,7 @@ import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
 import { ERecepyDTO } from '../DTOs/erecepy-dto';
 import { UserDTO } from '../DTOs/user-dto';
 import { ComplaintDTO } from '../DTOs/complaint-dto';
+import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -108,4 +109,40 @@ export class PatientService {
     return this._http.post<string>(Constants.pharmacyComplaintUrl, data, {withCredentials : true});
   }
   
+  getPastCounseling() : Observable<ShowAppointmentDto[]>{
+    return this._http.get<ShowAppointmentDto[]>(Constants.pastCounselingsUrl,{withCredentials: true} )
+  }
+
+  getPastApp() : Observable<ShowAppointmentDto[]>{
+    return this._http.get<ShowAppointmentDto[]>(Constants.pastAppUrl,{withCredentials: true} )
+  }
+
+  getPharmForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.pharmForRatingUrl,{withCredentials: true});
+  }
+
+  getDermForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.dermForRatingUrl,{withCredentials: true});
+  }
+
+  getMedForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.medForRatingUrl,{withCredentials: true});
+  }
+
+  saveMedRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savemedForRatingUrl,dto,{withCredentials: true});
+  }
+  saveDermRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savedermForRatingUrl,dto,{withCredentials: true});
+  }
+  savePharmRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savepharmForRatingUrl,dto,{withCredentials: true});
+  }
+
+  getPharmacyForRating() : Observable<DoctorRatingDto[]>{
+    return this._http.get<DoctorRatingDto[]>(Constants.pharmacyForRatingUrl,{withCredentials: true});
+  }
+  savePharmacyRating(dto: DoctorRatingDto) : Observable<string>{
+    return this._http.post<string>(Constants.savePharmacyForRatingUrl,dto,{withCredentials: true});
+  }
 }
