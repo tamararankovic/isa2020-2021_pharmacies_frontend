@@ -7,6 +7,7 @@ import { PharmacyService } from '../service/pharmacy.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermAppDto } from '../DTOs/derm-app-dto';
 import { NgxMaterialTimepickerHoursFace } from 'ngx-material-timepicker/src/app/material-timepicker/components/timepicker-hours-face/ngx-material-timepicker-hours-face';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pharmacy-page',
@@ -111,9 +112,18 @@ export class PharmacyPageComponent implements OnInit {
   }
 
   scheduleApp(element){
-    this.dermApp = new DermAppDto(element.id, element.startDateTime, element.dermatologist, element.duration, element.price);
+    this.dermApp = new DermAppDto(element.id, element.startDateTime, element.dermatologist, element.duration, element.price, this.findVersionById(element.id));
     this.pharmacyService.scheduleDermApp(this.dermApp).subscribe(data =>this.message = data );
     this.openSnackBar("You have successfull scheduled appointment.","Okay");
+  }
+
+  findVersionById(id) {
+    for(let app of this.data.examinations) {
+      if (app.id == id) {
+        return app.version;
+      }
+    }
+    return -1;
   }
 
   openSnackBar(message: string, action: string) {
