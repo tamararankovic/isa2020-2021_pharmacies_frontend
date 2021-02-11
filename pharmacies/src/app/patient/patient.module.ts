@@ -35,7 +35,7 @@ import { PastAppointmentsComponent } from './past-appointments/past-appointments
 import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
-  declarations: [HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent,UploadQrComponent, PastAppointmentsComponent, RatingComponent],
+  declarations: [PharmacyComplaintComponent,ComplaintsComponent,PharmacistComplaintComponent,DermatologistComplaintComponent,HomePageComponent, ProfileComponent, PharmacyPageComponent, PharmaciesSearchPatientComponent, ReservationsPageComponent, MedicineSearchPatientComponent, ReservMedicineComponent, SubscribedPharmaciesComponent, MedicineSpecificationComponent, PharmacistCounselingComponent, IncomingAppointmentsComponent,UploadQrComponent, PastAppointmentsComponent, RatingComponent],
  imports: [
     CommonModule,
     PatientRoutingModule,
