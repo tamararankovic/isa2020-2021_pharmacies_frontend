@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.c
 import { AddMedicineComponent } from './add-medicine/add-medicine.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LeaveRequestsComponent } from './leave-requests/leave-requests.component';
+import { LoyaltyProgramComponent } from './loyalty-program/loyalty-program.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { RegisterDermatologistComponent } from './register-dermatologist/register-dermatologist.component';
 import { RegisterPharmacyAdminComponent } from './register-pharmacy-admin/register-pharmacy-admin.component';
@@ -12,6 +13,7 @@ import { RegisterPharmacyComponent } from './register-pharmacy/register-pharmacy
 import { RegisterSupplierComponent } from './register-supplier/register-supplier.component';
 
 const routes: Routes = [
+  {path: 'loyalty', component: LoyaltyProgramComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["SYSTEM_ADMIN"]}},
   {path: 'leave-requests', component: LeaveRequestsComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["SYSTEM_ADMIN"]}},
   {path: 'medicine', component: AddMedicineComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["SYSTEM_ADMIN"]}},
   {path: 'pharmacyAdmin', component: RegisterPharmacyAdminComponent, canActivate: [RouteGuardService], data: { expectedRoles: ["SYSTEM_ADMIN"]}},

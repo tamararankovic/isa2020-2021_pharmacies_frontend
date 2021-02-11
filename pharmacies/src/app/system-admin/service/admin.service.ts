@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 import { PharmacyAdminRegisterDTO } from '../DTOs/pharmacy-admin-register-dto';
 import { MedicineCodeDTO } from '../DTOs/medicine-code-dto';
 import { MedicineDTO } from '../DTOs/medicine-dto';
+import { AllComplaintsDTO } from '../DTOs/all-complaints-dto';
+import { AnswerOnComplaintDTO } from '../DTOs/answer-on-complaint-dto';
+import { LoyaltyDTO } from '../DTOs/loyalty-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +50,18 @@ export class AdminService {
 
   registerPharmacyAdmin(user : PharmacyAdminRegisterDTO){
     return this._http.post(Constants.registerPharmacyAdminUrl, user , {responseType: 'text', withCredentials: true})
+
+  }
+  getAllComplaints() : Observable<AllComplaintsDTO[]>{
+    return this._http.get<AllComplaintsDTO[]>(Constants.getAllComplaintsUrl,  {responseType: 'json', withCredentials: true});
+
+  }
+  answerOnComplaint(answer : AnswerOnComplaintDTO){
+    return this._http.post(Constants.answerOnComplaintUrl, answer , {responseType: 'text', withCredentials: true})
+
+  }
+  addLoyaltyProgram(dto : LoyaltyDTO){
+    return this._http.post(Constants.addLoyaltyProgramUrl, dto , {responseType: 'text', withCredentials: true})
 
   }
 }

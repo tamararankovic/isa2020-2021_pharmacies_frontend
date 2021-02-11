@@ -1,0 +1,78 @@
+<div class="bg" style="background-image: url(assets/efe-1\.jpg); height: 130%">
+<h2 style="text-align: center; padding-top: 20px;">Appointment history</h2>
+<div style="display: flex; justify-content: center; margin-top: 30px;">
+    <mat-card class="mat-elevation-z8" style="margin-top: 1%; width:70%; height: auto;  background-color: rgba(255, 255, 255, 0.4); height:auto; display: flex; justify-content: center; align-items: center; padding: 2%; ">
+   <div style="margin-left:auto; margin-right:auto; width:auto; ">
+        <div>
+            <h2>Past dermatologist appointments</h2>
+        <table mat-table [dataSource]="appointments" style="width:1000px" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef  > Date and time </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="doctor">
+        <th mat-header-cell *matHeaderCellDef  > Doctor </th>
+        <td mat-cell *matCellDef="let element"> {{element.pharmacistName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef > Appointment duration </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef > Appointment price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef > Appointment type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+    </table>
+    </div>
+    <div>
+        <h2>Past pharmacist counselings</h2>
+    <table mat-table [dataSource]="counselings" style="width: 1000px;" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef  > Date and time </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+  
+        <ng-container matColumnDef="doctor">
+          <th mat-header-cell *matHeaderCellDef  > Doctor </th>
+          <td mat-cell *matCellDef="let element"> {{element.pharmacistName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef > Appointment duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef > Appointment price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef > Appointment type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+  
+       
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+      </table>
+    </div>
+</div>
+    </mat-card>
+    </div>
+</div>
+

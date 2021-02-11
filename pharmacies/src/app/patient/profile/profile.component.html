@@ -1,8 +1,8 @@
-<div style="display:block; justify-content:center;">
+<div class="bg" style="background-image: url(assets/efe-1\.jpg); height: 100%;">
     <div style="height:100%; display: flex; justify-content:center;">
-        <mat-card class="mat-elevation-z8" style="margin: 30px; width: 35%; height: 80%; display: flex; justify-content: center; align-items: center; padding: 20px;">
-            <form style="padding: 20px;">
-                <h2 style="text-align: center; padding-bottom: 10px;">My Profile</h2>
+        <mat-card class="mat-elevation-z8" style="margin: 30px; width: 35%; height: 80%; background-color: rgba(255, 255, 255, 0.9); display: flex; justify-content: center; align-items: center; padding-right: 20px; padding-left: 20px;">
+            <form >
+                <h2 style="text-align: center; padding-bottom: 40px;">My Profile</h2>
                     <mat-form-field style="width: 100%;">
                         <mat-label >Name:</mat-label>
                         <input matInput type = "text" [(ngModel)]="profile.name" name = "nameee" required pattern = "[a-zA-Z]{2,30}" [disabled] = "disabled"/>
@@ -63,7 +63,7 @@
             </form>
         </mat-card>
         <div>
-            <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
+            <mat-card class="mat-elevation-z8" style="margin: 30px; background-color: rgba(255, 255, 255, 0.93); width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
                 <div style="padding: 20px; width: 100%;">
                     <h2 style="text-align: center; margin-bottom:10px;">Allergies</h2>
                     <mat-form-field style="width: 100%;">
@@ -100,7 +100,7 @@
       
                 </div>
             </mat-card>
-            <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
+            <mat-card class="mat-elevation-z8" style="margin: 30px; width: 80%; background-color: rgba(255, 255, 255, 0.93); height: auto; display: flex; justify-content: center; align-items: center; padding: 20px;">             
                 <form style="padding: 20px;">
                     <h2 style="text-align: center; margin-bottom:10px;">Loyalty program</h2>
                     <mat-form-field style="width: 100%;">

@@ -39,7 +39,7 @@ export class RegisterPharmacyAdminComponent implements OnInit {
       else {
         this.adminService.registerPharmacyAdmin(new PharmacyAdminRegisterDTO(this.email, this.password, this.nameOfUser, this.surname, this.id)).subscribe(
             (data) => {
-              let message = this.nameOfUser + " " + this.surname + ", " + "your account is created. ";
+              let message = this.nameOfUser + " " + this.surname + ", " + " account is created. ";
               this.openSnackBar(message, "Okay");
             },
             error => {

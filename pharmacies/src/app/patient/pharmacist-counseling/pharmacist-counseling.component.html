@@ -1,13 +1,14 @@
+<div class="bg" style="background-image: url(assets/efe-1\.jpg); height: 100%;">
 <h2 style="text-align: center; padding-top: 20px;">Schedule counseling</h2>  
 <div  style="display: flex; justify-content: center; margin-top: 30px;">
-  <mat-card class="mat-elevation-z8" style="margin-top: 1%; width:50%;  display: flex; justify-content: center; align-items: center; padding: 2%; ">
+  <mat-card class="mat-elevation-z8" style="margin-top: 1%; width:50%;  display: flex; background-color: rgba(255, 255, 255, 0.9); justify-content: center; align-items: center; padding: 2%; ">
       <div style="margin-left:auto; margin-right:auto; width:auto; ">
         <div *ngIf ="pickDate" style=" margin-top: 30px;">
           <h2>1. Please choose date and time for counseling</h2>
           <form class="example-form" style = "display: inline;" >
             <mat-form-field appearance="fill" style="padding:5px; width: 300px;">
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [min] = "minDate" required [(ngModel)]= "date" name = "datum">
+                <input matInput [matDatepicker]="picker" [matDatepickerFilter]="weekendsDatesFilter" [min] = "minDate" required [(ngModel)]= "date" name = "datum">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -94,4 +95,5 @@
     </div>
     </mat-card>
     </div>
+  </div>
     

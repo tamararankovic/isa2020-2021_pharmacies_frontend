@@ -45,7 +45,7 @@ export class UpdateOfferComponent implements OnInit {
     let offer = new OfferUpdate(Number(this.route.snapshot.paramMap.get('idOffer')),  date, this.totalPrice);
     this.supplierService.updateOffer(offer).subscribe(
       (val) => {this.openSnackBar("Offer successfully updated!", "Okay"); },
-      error => this.openSnackBar(error.error.message, "Okay")
+      error => this.openSnackBar(error.error, "Okay")
     )
   
 }

@@ -25,3 +25,17 @@ label {
   .example-full-width {
     width: 100%;
 }
+.content{
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.mat1{
+  width: 160px;
+  height: 130px;
+  margin: 10px;
+  padding: 10px;
+  padding-top: 25px;
+}

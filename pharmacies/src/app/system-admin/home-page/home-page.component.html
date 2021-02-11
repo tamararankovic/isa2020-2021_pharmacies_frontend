@@ -2,9 +2,54 @@
 <body style="background-color: rgb(246, 248, 250);">
     <div style="display: flex; justify-content: center; background-color: rgb(58, 117, 211);">
         <mat-card class="mat-elevation-z8" style="width: 1200px; height: 30%; margin-top: 30px; margin-bottom: 30px;">
-            <h2 style="text-align: center;">
+            <h2 *ngIf ="showButton" style="text-align: center;">
                 Complaint's list
             </h2>
+            <h2 *ngIf ="!showButton" style="text-align: center;">
+                Answer on complaint
+            </h2>
+            <form *ngIf ="!showButton">            
+                <mat-form-field style="width: 37%; margin-right: 2%; margin-left : 30%;">
+                    <mat-label>Inser answer</mat-label>
+                    <input matInput required maxlength="3000" minlength="2" placeholder="Answer must have between 2 and 3000 characters" #name4 = "ngModel" name="c4"  id="imelabela" name="imetekst" [(ngModel)]="answer">
+                </mat-form-field>
+                <button mat-raised-button  id="registerButton"  [disabled] ="name4.invalid" style="width: auto; color: rgb(50, 102, 185); height: 40px;" (click)="Answer()" >Answer</button>
+                <button mat-raised-button  id="registerButton2"   style="margin-left : 5px; width: auto; color: rgb(50, 102, 185); height: 40px;" (click)="Cancel()" >Cancel</button>
+
+            </form>  
+
+            <div *ngIf ="showButton" style="display: flex; justify-content: center; margin-bottom: 2%;">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                
+                  <ng-container matColumnDef="content">
+                    <th mat-header-cell *matHeaderCellDef> Content </th>
+                    <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="complainedOn">
+                    <th mat-header-cell *matHeaderCellDef> Complained on</th>
+                    <td mat-cell *matCellDef="let element"> {{element.complainedFullName}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="patient">
+                    <th mat-header-cell *matHeaderCellDef> Patinet</th>
+                    <td mat-cell *matCellDef="let element"> {{element.patientFullName}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef> Answer</th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <button mat-stroked-button color="accent" type="button" id="selectButton" (click)="OnClick(element)" >ANSWER</button>
+                      
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+
+
         </mat-card>
     </div>
     <div class="content" fxLayout="row wrap">
@@ -57,7 +102,7 @@
             </mat-card>
         </div>
         <div>
-            <mat-card class="mat1" >
+            <mat-card class="mat1" routerLink="../system-admin/loyalty">
                 <mat-card-content style="text-align: center;">
                     <img src="assets/program.png">
                     <p id = "text">Loyalty program</p>
