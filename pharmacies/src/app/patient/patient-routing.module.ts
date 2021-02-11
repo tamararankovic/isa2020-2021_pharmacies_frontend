@@ -16,11 +16,19 @@ import { PharmacistCounselingComponent } from './pharmacist-counseling/pharmacis
 import { MedicineSpecificationComponent } from './medicine-specification/medicine-specification.component';
 import { IncomingAppointmentsComponent } from './incoming-appointments/incoming-appointments.component';
 import { UploadQrComponent } from './upload-qr/upload-qr.component';
+import { ComplaintsComponent } from './complaints/complaints.component';
+import { PharmacyComplaintComponent } from './pharmacy-complaint/pharmacy-complaint.component';
+import { DermatologistComplaintComponent } from './dermatologist-complaint/dermatologist-complaint.component';
+import { PharmacistComplaintComponent } from './pharmacist-complaint/pharmacist-complaint.component';
 import { PastAppointmentsComponent } from './past-appointments/past-appointments.component';
 import { RatingComponent } from './rating/rating.component';
 
 
 const routes: Routes = [
+  {path: 'pharmacy-complaint', component: PharmacyComplaintComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'dermatologist-complaint', component: DermatologistComplaintComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'pharmacist-complaint', component: PharmacistComplaintComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
+  {path: 'complaints', component: ComplaintsComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'upload-qr', component: UploadQrComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'rating', component: RatingComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT"]}},
   {path: 'med-specification/:id', component: MedicineSpecificationComponent, canActivate: [RouteGuardService], data: { expectedRoles : ["PATIENT", "SYSTEM_ADMIN", "DERMATOLOGIST", "PHARMACIST","PHARMACY_ADMIN"]}},

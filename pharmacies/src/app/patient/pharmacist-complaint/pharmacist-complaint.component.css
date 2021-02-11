@@ -12,7 +12,7 @@ label {
     background-color: rgb(66, 65, 68);
     font-size: larger;
     color: white;
-    width: 20%;
+    width: 50%;
   }
 
 .mat-row:hover {
@@ -22,20 +22,3 @@ label {
 .form-field{
     display: block
   }
-  .example-full-width {
-    width: 100%;
-}
-.content{
-  display: flex;
-  justify-content: center;
-  width: 700px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-.mat1{
-  width: 160px;
-  height: 130px;
-  margin: 10px;
-  padding: 10px;
-  padding-top: 25px;
-}

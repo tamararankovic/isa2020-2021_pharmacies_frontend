@@ -13,6 +13,8 @@ import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
 import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
 import { ERecepyDTO } from '../DTOs/erecepy-dto';
+import { UserDTO } from '../DTOs/user-dto';
+import { ComplaintDTO } from '../DTOs/complaint-dto';
 import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 
 @Injectable({
@@ -86,6 +88,27 @@ export class PatientService {
     return this._http.post<ERecepyDTO[]>(Constants.sortByPharmacyName, data, {withCredentials: true});
   }
 
+  getAllPharmacists() : Observable<UserDTO[]>{
+    return this._http.get<UserDTO[]>(Constants.getAllPharmacistsForComplaintUrl, {withCredentials: true})
+
+  }
+  getAllDermatologists() : Observable<UserDTO[]>{
+    return this._http.get<UserDTO[]>(Constants.getAllDermatologistsForComplaintUrl, {withCredentials: true})
+
+  }
+  getAllPharmaciesUser() : Observable<PharmacyAddAdminDTO[]>{
+    return this._http.get<PharmacyAddAdminDTO[]>(Constants.getAllPharmaciesUserUrl,  {responseType: 'json', withCredentials: true});
+  }
+  dermatologistComplaint(data : ComplaintDTO) : Observable<string>{
+    return this._http.post<string>(Constants.dermatologistComplaintUrl, data, {withCredentials : true});
+  }
+  pharmacistComplaint(data : ComplaintDTO) : Observable<string>{
+    return this._http.post<string>(Constants.pharmacistComplaintUrl, data, {withCredentials : true});
+  }
+  pharmacyComplaint(data : ComplaintDTO) : Observable<string>{
+    return this._http.post<string>(Constants.pharmacyComplaintUrl, data, {withCredentials : true});
+  }
+  
   getPastCounseling() : Observable<ShowAppointmentDto[]>{
     return this._http.get<ShowAppointmentDto[]>(Constants.pastCounselingsUrl,{withCredentials: true} )
   }

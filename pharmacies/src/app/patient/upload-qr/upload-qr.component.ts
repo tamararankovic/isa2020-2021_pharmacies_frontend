@@ -32,18 +32,25 @@ export class UploadQrComponent implements OnInit {
     this.fileExtension = this.selectedFile.name.split('?')[0].split('.').pop();
   }
   public choose(element){
+    console.log('uslo');
     element.clicked=true;
-    this.showButton = true;
+    if(this.showButton == false) {
     this.patientService.choosePharmacy(element).subscribe(
       (data) => {
         let message = "You succesfully bought all medicines. ";
         this.openSnackBar(message, "Okay");
+        this.showButton = true;
       },
       error => {
+          console.log('greska');
           this.openSnackBar(error.error, "Okay");
         
       }
     );
+    
+    } else {
+      this.openSnackBar("You can choose only one pharmacy", "Okay");
+    }
   }
   sortByPrice(){
     this.patientService.sortByPrice(this.dataSource).subscribe(
@@ -106,6 +113,7 @@ export class UploadQrComponent implements OnInit {
       console.log(this.selectedFile.name);
       this.patientService.sendQrCode(fd).subscribe( (data) => {
         this.dataSource = data;
+        this.showButton = false;
       });
     }
   }

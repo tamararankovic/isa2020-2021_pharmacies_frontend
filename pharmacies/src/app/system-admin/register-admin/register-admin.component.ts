@@ -27,7 +27,7 @@ export class RegisterAdminComponent implements OnInit {
     else {
       this.adminService.registerAdmin(new AdminDTO(this.email, this.password, this.nameOfUser, this.surname)).subscribe(
           (data) => {
-            let message = this.nameOfUser + " " + this.surname + ", " + "your account is created. ";
+            let message = this.nameOfUser + " " + this.surname + ", " + "account is created. ";
             this.openSnackBar(message, "Okay");
           },
           error => {
