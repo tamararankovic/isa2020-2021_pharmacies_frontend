@@ -5,6 +5,7 @@ export class PriceListDTO {
         public medicinePrices : ItemPriceDto[],
         public pharmacistAppointmentPrice : ItemPriceDto,
         public dermatologistAppointmentPrice : ItemPriceDto,
-        public startDate : Date
+        public startDate : Date,
+        public version : number
     ){}
 }
