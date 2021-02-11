@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermService } from '../service/derm.service';
 import { PharmAppDTO } from '../../pharmacist/DTOs/pharm-app-dto';
 import { DermPharmacyDTO } from '../DTOs/derm-pharmacy-dto';
+import { CurrentlyHasAppointmentDTO } from 'src/app/pharmacist/DTOs/currently-free-dto';
 
 @Component({
   selector: 'app-calendar',
@@ -39,6 +40,9 @@ export class CalendarComponent implements OnInit {
   pharmData : DermPharmacyDTO[] = [];
   displayedColumns2: string[] = ['name'];
   pharmChosen = false;
+  alreadyStarted = false;
+
+  av : CurrentlyHasAppointmentDTO;
 
   constructor(private dermService : DermService, private _snackBar: MatSnackBar, public router: Router) { 
     this.endDate.setDate(this.startDate.getDate() + 7);
@@ -71,11 +75,13 @@ export class CalendarComponent implements OnInit {
     this.timeSpan = "w";
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
   }
 
   setTimeSpan(ts : string){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     this.timeSpan = ts;
     if(ts === "w") this.setWeek();
     if(ts === "m") this.setMonth();
@@ -125,6 +131,7 @@ export class CalendarComponent implements OnInit {
   next(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     if(this.timeSpan === "w") this.addWeek();
     if(this.timeSpan === "m") this.addMonth();
     if(this.timeSpan === "y") this.addYear();
@@ -133,6 +140,7 @@ export class CalendarComponent implements OnInit {
   previous(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     if(this.timeSpan === "w") this.minusWeek();
     if(this.timeSpan === "m") this.minusMonth();
     if(this.timeSpan === "y") this.minusYear();
@@ -228,6 +236,7 @@ export class CalendarComponent implements OnInit {
   start(element){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     if(element.patientName != ""){
       this.chosenAppointmentDTO = element;
       var splitted = this.chosenAppointmentDTO.startTime.split(", ", 2);
@@ -242,35 +251,80 @@ export class CalendarComponent implements OnInit {
   }
 
   startButton(){
-    this.dermService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
-    this.router.navigate(['dermatologist/report']);
+    this.dermService.getCurrentlyAvailable().subscribe(
+      data => {
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.dermService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
+          this.router.navigate(['dermatologist/report']);
+        }
+        else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
+      }
+    );
+  }
+
+  goToStarted(){
+    if(this.dermService.chosenAppointmnetDto != 0){
+      this.router.navigate(['dermatologist/report']);
+    }
+    else {
+      this.openSnackBar("You can only end current appointment.", "Okay");
+    }
+  }
+
+  endCurrent(){
+    this.dermService.endCurrent().subscribe(
+      data => {
+        console.log("Appointment ended.");
+        if(this.dermService.chosenAppointmnetDto != 0){
+          this.dermService.chosenAppointmnetDto = 0;
+        }
+      }
+    );
+    this.alreadyStarted = false;
   }
 
   cancel(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
   }
 
   notPresent(){
-    this.isChosen = false;
-    this.isValid = false;
-    this.dermService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
-    this.dermService.notPresent().subscribe(
+    this.dermService.getCurrentlyAvailable().subscribe(
       data => {
-        console.log("Gotov pregled.");
-        this.currentSpan = "w";
-        this.startDate = new Date();
-        this.endDate.setDate(this.startDate.getDate() + 7);
-        this.currentSpan = this.getFormattedDate(this.startDate, this.endDate);
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.isChosen = false;
+          this.isValid = false;
+          this.dermService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
+          this.dermService.notPresent().subscribe(
+            data => {
+              console.log("Gotov pregled.");
+              this.currentSpan = "w";
+              this.startDate = new Date();
+              this.endDate.setDate(this.startDate.getDate() + 7);
+              this.currentSpan = this.getFormattedDate(this.startDate, this.endDate);
 
-        this.week = new AppWeekDTO(this.startDate, this.endDate);
-        this.dermService.getByWeek(this.week, this.chosenPharmacyDTO.pharmacyId).subscribe(
-          data => {
-            this.appData = data;
-          }
-        );
+              this.week = new AppWeekDTO(this.startDate, this.endDate);
+              this.dermService.getByWeek(this.week, this.chosenPharmacyDTO.pharmacyId).subscribe(
+                data => {
+                  this.appData = data;
+                }
+              );
+            }
+          );
+        }
+        else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
       }
     );
+    
 
   }
 

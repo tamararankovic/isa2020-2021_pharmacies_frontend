@@ -60,11 +60,21 @@ export class SchedulingComponent implements OnInit {
                 this.openSnackBar("Appointment is saved.", "Okay");
                 this.dermService.appointmentId = 0;
                 this.router.navigate(['dermatologist/calendar']);
+              },
+              error => {
+                console.log(error);
+                var message = error.error.message;
+                this.openSnackBar(message, "Okay");
               }
             );
           }
         }
         else this.openSnackBar("Try another date and time. This appointment is not available.", "Okay");
+      },
+      error => {
+        console.log(error);
+        var message = error.error.message;
+        this.openSnackBar(message, "Okay");
       }
     );
   }

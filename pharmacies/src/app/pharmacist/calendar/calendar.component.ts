@@ -6,6 +6,8 @@ import { AppWeekDTO } from '../DTOs/app-week-dto';
 import { AppMonthDTO } from '../DTOs/app-month-dto';
 import { AppYearDTO } from '../DTOs/app-year-dto';
 import { Router } from '@angular/router';
+import { id } from '@swimlane/ngx-charts';
+import { CurrentlyHasAppointmentDTO } from '../DTOs/currently-free-dto';
 
 @Component({
   selector: 'app-calendar',
@@ -34,6 +36,9 @@ export class CalendarComponent implements OnInit {
   appData : PharmAppDTO[] = [];
   displayedColumns: string[] = ['startTime', 'durationInMinutes', 'patientName'];
 
+  av : CurrentlyHasAppointmentDTO;
+  alreadyStarted = false;
+
   constructor(private pharmService : PharmService, private _snackBar: MatSnackBar, public router: Router) { 
     this.endDate.setDate(this.startDate.getDate() + 7);
     this.currentSpan = this.getFormattedDate(this.startDate, this.endDate);
@@ -53,6 +58,7 @@ export class CalendarComponent implements OnInit {
   setTimeSpan(ts : string){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     this.timeSpan = ts;
     if(ts === "w") this.setWeek();
     if(ts === "m") this.setMonth();
@@ -102,6 +108,7 @@ export class CalendarComponent implements OnInit {
   next(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     if(this.timeSpan === "w") this.addWeek();
     if(this.timeSpan === "m") this.addMonth();
     if(this.timeSpan === "y") this.addYear();
@@ -110,6 +117,7 @@ export class CalendarComponent implements OnInit {
   previous(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
     if(this.timeSpan === "w") this.minusWeek();
     if(this.timeSpan === "m") this.minusMonth();
     if(this.timeSpan === "y") this.minusYear();
@@ -217,36 +225,77 @@ export class CalendarComponent implements OnInit {
   }
 
   startButton(){
-    this.pharmService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
-    this.router.navigate(['pharmacist/report']);
+    this.pharmService.getCurrentlyAvailable().subscribe(
+      data => {
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.pharmService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
+          this.router.navigate(['pharmacist/report']);
+        } else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
+      }
+    );
+  }
+
+  goToStarted(){
+    if(this.pharmService.chosenAppointmnetDto != 0){
+      this.router.navigate(['pharmacist/report']);
+    }
+    else {
+      this.openSnackBar("You can only end current appointment.", "Okay");
+    }
+  }
+
+  endCurrent(){
+    this.pharmService.endCurrent().subscribe(
+      data => {
+        console.log("Appointment ended.");
+        if(this.pharmService.chosenAppointmnetDto != 0){
+          this.pharmService.chosenAppointmnetDto = 0;
+        }
+      }
+    );
+    this.alreadyStarted = false;
   }
 
   cancel(){
     this.isChosen = false;
     this.isValid = false;
+    this.alreadyStarted = false;
   }
 
   notPresent(){
-    this.isChosen = false;
-    this.isValid = false;
-    this.pharmService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
-    this.pharmService.notPresent().subscribe(
+    this.pharmService.getCurrentlyAvailable().subscribe(
       data => {
-        console.log("Gotov pregled.");
-        this.currentSpan = "w";
-        this.startDate = new Date();
-        this.endDate.setDate(this.startDate.getDate() + 7);
-        this.currentSpan = this.getFormattedDate(this.startDate, this.endDate);
+        this.av = data;
+        if(!this.av.hasAppointment){
+          this.isChosen = false;
+          this.isValid = false;
+          this.pharmService.chosenAppointmnetDto = this.chosenAppointmentDTO.appointmentId;
+          this.pharmService.notPresent().subscribe(
+            data => {
+              console.log("Gotov pregled.");
+              this.currentSpan = "w";
+              this.startDate = new Date();
+              this.endDate.setDate(this.startDate.getDate() + 7);
+              this.currentSpan = this.getFormattedDate(this.startDate, this.endDate);
 
-        this.week = new AppWeekDTO(this.startDate, this.endDate);
-        this.pharmService.getByWeek(this.week).subscribe(
-          data => {
-            this.appData = data;
-          }
-        );
+              this.week = new AppWeekDTO(this.startDate, this.endDate);
+              this.pharmService.getByWeek(this.week).subscribe(
+                data => {
+                  this.appData = data;
+                }
+              );
+            }
+          );
+        } else {
+          this.openSnackBar("You have already started another appointment.", "Okay");
+          this.alreadyStarted = true;
+        }
       }
     );
-
   }
 
   getFormattedDate(startDate : Date, endDate : Date) : string{

@@ -33,13 +33,25 @@ export class SchedulingComponent implements OnInit {
         console.log(this.appAvailable);
         if(this.appAvailable.available){
           this.pharmService.saveAppointment(this.dto).subscribe(
-            data => console.log(data + "Appointment saved.")
+            data => {
+              console.log(data + "Appointment saved.");
+              this.openSnackBar("Appointment is saved.", "Okay");
+              this.pharmService.appointmentId = 0;
+              this.router.navigate(['pharmacist/calendar']);
+            },
+            error => {
+              console.log(error);
+              var message = error.error.message;
+              this.openSnackBar(message, "Okay");
+            }
           );
-          this.openSnackBar("Appointment is saved.", "Okay");
-          this.pharmService.appointmentId = 0;
-          this.router.navigate(['pharmacist/calendar']);
         }
         else this.openSnackBar("Try another date and time. This appointment is not available.", "Okay");
+      },
+      error => {
+        console.log(error);
+        var message = error.error.message;
+        this.openSnackBar(message, "Okay");
       }
     );
   }
