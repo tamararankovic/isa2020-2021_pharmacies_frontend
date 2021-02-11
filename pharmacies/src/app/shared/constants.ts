@@ -116,9 +116,20 @@ export class Constants {
     public static availablePharmacistsUrl = Constants.baseUrl + "/pharm/available-pharmacists";
     public static savePharmacistAppUrl = Constants.baseUrl + "/pharm/save-appointment";
     public static incomingAppointmentsUrl = Constants.baseUrl + "/pharm/incoming-app";
-    public static pastAppointmentsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static pastCounselingsUrl = Constants.baseUrl + "/pharm/past-app";
+    public static pastAppUrl = Constants.baseUrl + "/pharm/past-app-derm";
     public static cancelPharmAppUrl = Constants.baseUrl + "/pharm/cancel-app";
-    public static cancelDermAppUrl = Constants.baseUrl + "/pharm/cancel-app-derm";
+    public static scheduleDermAppUrl = Constants.baseUrl + "/derm/schedule";
+    public static pharmForRatingUrl = Constants.baseUrl + "/pharm/pharm-rating";
+    public static dermForRatingUrl = Constants.baseUrl + "/derm/derm-rating";
+    public static medForRatingUrl = Constants.baseUrl + "/reserv/med-rating";
+    public static pharmacyForRatingUrl = Constants.baseUrl + "/reserv/pharmacy-rating";
+    public static savepharmForRatingUrl = Constants.baseUrl + "/pharm/save-pharm-rating";
+    public static savedermForRatingUrl = Constants.baseUrl + "/derm/save-derm-rating";
+    public static savemedForRatingUrl = Constants.baseUrl + "/reserv/save-med-rating";
+    public static savePharmacyForRatingUrl = Constants.baseUrl + "/pharmacy/save-pharmacy-rating";
+
+
 
     //pharmacy admin
     public static dermatologistsUrl = Constants.baseUrl + "/derm";

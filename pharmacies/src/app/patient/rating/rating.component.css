@@ -1,0 +1,102 @@
+ 
+  .rating-list {
+
+      display: inline-block;
+      list-style: none;
+  }
+  li {
+    font-size: 25px;
+        float: right;
+        color: #ddd;
+        padding: 5px 5px;
+        
+    }
+    li.selected {
+        color: #ffd700;
+    }
+    li.selected1 {
+        color: #dfbe02;
+    }
+    li.selected2 {
+        color: #dfbe02;
+    }
+    li.selected3 {
+        color: #dfbe02;
+    }
+
+    table {
+        margin-top: 3%;
+        text-align: center;
+      }
+      
+    .example-button-row {
+        display: table-cell;
+        width: auto;
+      }
+      
+    
+    div {
+      height: auto;
+    }
+    
+    .mat-header-cell {
+      background-color: rgb(66, 65, 68);
+      font-size: larger;
+      color: white;
+      width: 15%;
+    }
+    
+    .mat-row:hover {
+        background-color: rgb(250, 242, 231);
+    }
+    
+    th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+        padding: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        text-align: center;
+    }
+    .example-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1%
+    }
+    
+    
+    element.style {
+        width: 100%;
+        color: rgb(50, 102, 185);
+        height: 40px;
+    }
+    
+    .mat-raised-button{
+        min-width: 100px;
+    }
+    
+    .example-full-width {
+      width: 35%;
+    }
+    .bg {
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .mat-card {
+        background: #fff;
+        color: rgba(0,0,0,.87);
+        height: auto;
+    }
+    
+    
+    element.style {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    
