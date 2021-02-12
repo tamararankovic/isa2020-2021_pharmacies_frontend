@@ -40,16 +40,21 @@ export class AddOfferComponent implements OnInit {
   }
 
   create() {
-      console.log(this.totalPrice);
-      let date = new Date(this.selectedDate.value);
-      date.setHours(Number(this.selectedTime.substr(0, 2)) + 1);
-      date.setMinutes(Number(this.selectedTime.substr(3, 2)));
-      let offer = new OfferDTO(Number(this.route.snapshot.paramMap.get('id')),date, this.totalPrice);
-      console.log(date);
-      this.supplierService.createOffer(offer).subscribe(
-        (val) => {this.openSnackBar("Offer successfully created!", "Okay"); },
-        error => this.openSnackBar(error.error, "Okay")
-      )
+      if(this.totalPrice == undefined || this.selectedDate == undefined || this.selectedTime == undefined) {
+        this.openSnackBar("Not valid price.", "Okay");
+      } else {
+        console.log(this.totalPrice);
+        let date = new Date(this.selectedDate.value);
+        date.setHours(Number(this.selectedTime.substr(0, 2)) + 1);
+        date.setMinutes(Number(this.selectedTime.substr(3, 2)));
+        let offer = new OfferDTO(Number(this.route.snapshot.paramMap.get('id')),date, this.totalPrice);
+        console.log(date);
+        this.supplierService.createOffer(offer).subscribe(
+          (val) => {this.openSnackBar("Offer successfully created!", "Okay"); },
+          error => this.openSnackBar(error.error, "Okay")
+      );
     
+      }
+      
   }
 }
