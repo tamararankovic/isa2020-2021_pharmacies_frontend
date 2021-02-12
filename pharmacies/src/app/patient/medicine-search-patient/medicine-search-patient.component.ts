@@ -105,6 +105,10 @@ export class MedicineSearchPatientComponent implements OnInit {
 
 
   reserve(element){
+    let penalties  = 0;
+    this.patientService.getPenalties().subscribe((data) => { penalties = data;
+    console.log(penalties);
+    if(penalties < 3){
     var med = new MedicineInfoDto(element.id, element.name, "", element.specification.advisedDailyDose, "", "",element.type, 0);
     console.log(med);
     this.medicine.push(med);
@@ -112,10 +116,15 @@ export class MedicineSearchPatientComponent implements OnInit {
     this.pharmacyService.getPharmaciesForReservation(med).subscribe(data => this.pharmacies = data);
     console.log(this.pharmacies);
     this.makeReservation = true;
-    
+    }
+    else{
+      this.openSnackBar("You have three penalties. You cannot reserve medicine until next month.","Okay");
+    }  
+    });
   }
 
   makeReservations(){
+    
     if(this.date == undefined || this.selectedPharmacy == "" ){
       this.openSnackBar("You have to choose pharmacy and date in order to make a reservation.", "Okay");
     }else{
