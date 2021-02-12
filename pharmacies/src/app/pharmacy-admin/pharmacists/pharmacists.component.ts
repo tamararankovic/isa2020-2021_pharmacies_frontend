@@ -48,7 +48,7 @@ export class PharmacistsComponent implements OnInit {
   delete(id : number) {
     this.pharmService.delete(id).subscribe(
       (val) => {this.get(); this.openSnackBar("Successfully deleted pharmacist!", "Okay");},
-      error => this.openSnackBar(error.error, "Okay")
+      error => this.openSnackBar(error.error.message, "Okay")
     )
   }
 
@@ -77,7 +77,7 @@ export class PharmacistsComponent implements OnInit {
         (val) => {this.pharmacists = val;
                   this.displayPharmacists = this.pharmacists;
                   this.filter()},
-        error => this.openSnackBar(error.error, "Okay")
+        error => this.openSnackBar(error.error.message, "Okay")
       );
     }
   }
