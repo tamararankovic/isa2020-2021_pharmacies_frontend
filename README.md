@@ -11,4 +11,5 @@ Pokretanje projekta:
   
 Napomene:
   - Ukoliko dođe go greške "[@types/googlemaps] Generic type 'MapHandlerMap<T>' requires 1 type argument(s)"
-    - ukucati npm install --save @types/googlemaps@3.39.12
+    - npm install --save @types/googlemaps@3.39.12
+    - ng serve
