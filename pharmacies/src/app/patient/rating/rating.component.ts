@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { StarRatingComponent } from 'ng-starrating';
 import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 import { PatientService } from '../service/patient.service';
 
