@@ -82,11 +82,12 @@ export class Constants {
     public static pharmForRatingUrl = Constants.baseUrl + "/pharm/pharm-rating";
     public static dermForRatingUrl = Constants.baseUrl + "/derm/derm-rating";
     public static medForRatingUrl = Constants.baseUrl + "/reserv/med-rating";
-    public static pharmacyForRatingUrl = Constants.baseUrl + "/reserv/pharmacy-rating";
+    public static pharmacyForRatingUrl = Constants.baseUrl + "/pharmacy/pharmacy-rating";
     public static savepharmForRatingUrl = Constants.baseUrl + "/pharm/save-pharm-rating";
     public static savedermForRatingUrl = Constants.baseUrl + "/derm/save-derm-rating";
     public static savemedForRatingUrl = Constants.baseUrl + "/reserv/save-med-rating";
     public static savePharmacyForRatingUrl = Constants.baseUrl + "/pharmacy/save-pharmacy-rating";
+    public static getPenaltiesUrl = Constants.baseUrl + "/reserv/penalties";
 
 
     //dermatologist

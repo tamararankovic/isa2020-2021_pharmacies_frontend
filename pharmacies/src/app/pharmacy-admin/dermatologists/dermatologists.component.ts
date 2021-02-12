@@ -48,7 +48,7 @@ export class DermatologistsComponent implements OnInit {
   delete(id : number) {
     this.dermService.delete(id).subscribe(
       (val) => {this.get(); this.openSnackBar("Successfully deleted dermatologist!", "Okay");},
-      error => this.openSnackBar(error.error, "Okay")
+      error => this.openSnackBar(error.error.message, "Okay")
     )
   }
 
@@ -78,7 +78,7 @@ export class DermatologistsComponent implements OnInit {
         (val) => {this.dermatologists = val;
                   this.displayDermatologists = this.dermatologists;
                   this.filter()},
-        error => this.openSnackBar(error.error, "Okay")
+        error => this.openSnackBar(error.error.message, "Okay")
       );
     }
   }

@@ -19,8 +19,8 @@
         <div fxFlex="30%">
             <mat-card class="mat1" routerLink="../patient/medicine-search">
                 <mat-card-content style="text-align: center;">
-                    <img src="assets/icons8-stethoscope-64.png">
-                    <p id = "text">Schedule appointment</p>
+                    <img src="assets/icons8-pill-bottle-64.png">
+                    <p id = "text">Reserve medicine</p>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -45,7 +45,7 @@
             </mat-card>
         </div>
         <div>
-            <mat-card class="mat1" routerLink="../patient/upload-qr">
+            <mat-card (click) = "isSuspended()" class="mat1">
                 <mat-card-content style="text-align: center;">
                     <img src="assets/icons8-hand-with-a-pill-64.png">
                     <p id = "text">E-prescriptions</p>
@@ -73,7 +73,7 @@
     <div class="content" fxLayout="row wrap">
         
         <div>
-            <mat-card class="mat1" routerLink="../patient/upload-qr">
+            <mat-card class="mat1" routerLink="../patient/complaints">
                 <mat-card-content style="text-align: center;">
                     <img src="assets/icons8-customer-64.png">
                     <p id = "text">Complaints</p>

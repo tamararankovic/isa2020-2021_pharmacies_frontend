@@ -13,7 +13,7 @@ export class PriceListComponent implements OnInit {
 
   constructor(private pharmacyService : PharmacyService, private snackBar : MatSnackBar) { }
 
-  public priceList : PriceListDTO = new PriceListDTO([], new ItemPriceDto(0, "", 0, false), new ItemPriceDto(0, "", 0, false), new Date());
+  public priceList : PriceListDTO = new PriceListDTO([], new ItemPriceDto(0, "", 0, false), new ItemPriceDto(0, "", 0, false), new Date(), 0);
   
   ngOnInit(): void {
     this.pharmacyService.getPriceList().subscribe(
