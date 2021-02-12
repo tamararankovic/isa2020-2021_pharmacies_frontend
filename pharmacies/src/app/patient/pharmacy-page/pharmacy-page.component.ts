@@ -7,6 +7,7 @@ import { PharmacyService } from '../service/pharmacy.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DermAppDto } from '../DTOs/derm-app-dto';
 import { NgxMaterialTimepickerHoursFace } from 'ngx-material-timepicker/src/app/material-timepicker/components/timepicker-hours-face/ngx-material-timepicker-hours-face';
+import { PatientService } from '../service/patient.service';
 
 @Component({
   selector: 'app-pharmacy-page',
@@ -33,11 +34,12 @@ export class PharmacyPageComponent implements OnInit {
   public latitude: number = 0;
   public longitude: number = 0;
   public zoom:number = 15;
+  
 
   private geocoder;
 
   public isSelected:string;
-  constructor(private pharmacyService : PharmacyService, private route : ActivatedRoute, private _snackBar: MatSnackBar,private router:Router) {
+  constructor(private pharmacyService : PharmacyService, private patientService: PatientService,private route : ActivatedRoute, private _snackBar: MatSnackBar,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -89,10 +91,18 @@ export class PharmacyPageComponent implements OnInit {
   }
 
   goToPage(name){
+    let penalties  = 0;
+    this.patientService.getPenalties().subscribe((data) => { penalties = data;
+    console.log(penalties);
+    if(penalties < 3){
     this.router.navigateByUrl("patient/make-reservation");
     console.log();
     this.reservation  = new  ReservationDto(this.data.id, name, this.data.name, null, null, true);
-    this.pharmacyService.setReservationInfo(this.reservation);
+    this.pharmacyService.setReservationInfo(this.reservation);}
+  else{
+    this.openSnackBar("You have three penalties. You cannot reserv medicine until next month.","Okay");
+  }  
+  });
   }
   Subscribe(value) {
     this.isSelected=value;
@@ -111,9 +121,19 @@ export class PharmacyPageComponent implements OnInit {
   }
 
   scheduleApp(element){
-    this.dermApp = new DermAppDto(element.id, element.startDateTime, element.dermatologist, element.duration, element.price);
-    this.pharmacyService.scheduleDermApp(this.dermApp).subscribe(data =>this.message = data );
-    this.openSnackBar("You have successfull scheduled appointment.","Okay");
+    let penalties  = 0;
+    this.patientService.getPenalties().subscribe((data) => { penalties = data;
+    console.log(penalties);
+    if(penalties < 3){
+
+      this.dermApp = new DermAppDto(element.id, element.startDateTime, element.dermatologist, element.duration, element.price);
+      this.pharmacyService.scheduleDermApp(this.dermApp).subscribe(data =>this.message = data );
+      this.openSnackBar("You have successfull scheduled appointment.","Okay");
+    }
+    else {
+      this.openSnackBar("You have three penalties. You cannot schedule an appointment until next month.","Okay");
+    }
+  });
   }
 
   openSnackBar(message: string, action: string) {

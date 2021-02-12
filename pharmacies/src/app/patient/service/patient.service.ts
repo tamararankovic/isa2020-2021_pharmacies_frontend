@@ -13,9 +13,9 @@ import { MedicineSearchDTO } from '../DTOs/medicine-search-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
 import { ShowAppointmentDto } from '../DTOs/show-appointment-dto';
 import { ERecepyDTO } from '../DTOs/erecepy-dto';
+import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 import { UserDTO } from '../DTOs/user-dto';
 import { ComplaintDTO } from '../DTOs/complaint-dto';
-import { DoctorRatingDto } from '../DTOs/doctor-rating-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -144,5 +144,9 @@ export class PatientService {
   }
   savePharmacyRating(dto: DoctorRatingDto) : Observable<string>{
     return this._http.post<string>(Constants.savePharmacyForRatingUrl,dto,{withCredentials: true});
+  }
+
+  getPenalties() : Observable<number>{
+    return this._http.get<number>(Constants.getPenaltiesUrl, {withCredentials: true});
   }
 }

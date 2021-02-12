@@ -6,6 +6,7 @@ import { constants } from 'buffer';
 import { PharmacistDTO } from 'src/app/pharmacy-admin/DTOs/pharmacist-dto';
 import { PharamciesCounselingDto } from '../DTOs/pharamcies-counseling-dto';
 import { PharmacistAppointmentDto } from '../DTOs/pharmacist-appointment-dto';
+import { PatientService } from '../service/patient.service';
 import { PharmacyService } from '../service/pharmacy.service';
 
 @Component({
@@ -34,7 +35,7 @@ export class PharmacistCounselingComponent implements OnInit {
 
   public displayedColumns1 = ["name", "address", "rating", "price", "action"];
 
-  constructor(private pharmacyService: PharmacyService, private datepipe : DatePipe,private _snackBar: MatSnackBar, private router:Router) {
+  constructor(private pharmacyService: PharmacyService,private patientService: PatientService, private datepipe : DatePipe,private _snackBar: MatSnackBar, private router:Router) {
       this.minDate.setDate(this.minDate.getDate()+ 2);
    }
 
@@ -43,21 +44,28 @@ export class PharmacistCounselingComponent implements OnInit {
   }
 
   nextStep(){
-    
-    if(this.date == undefined  || this.selectedTime == ""){
-      this.openSnackBar("You have to choose date and time.","Okay");
+    let penalties  = 0;
+    this.patientService.getPenalties().subscribe((data) => { penalties = data;
+    console.log(penalties);
+    if(penalties < 3){
+        if(this.date == undefined  || this.selectedTime == ""){
+          this.openSnackBar("You have to choose date and time.","Okay");
+        }else{
+        var splitted = this.selectedTime.split(":");
+        
+        this.date.setHours(Number(splitted[0]));
+        this.date.setMinutes(Number(splitted[1]))
+        
+        this.appointment.date = this.datepipe.transform(this.date, 'dd-MM-yyyy HH:mm');
+        this.appointment.pharmacistId = 0;
+        this.pharmacyService.getPharmaciesForCounseling(this.appointment).subscribe(data => this.pharmacies = data);
+        this.pickDate = false;
+        this.pickPharmacy = true;
+        }
     }else{
-    var splitted = this.selectedTime.split(":");
-    
-    this.date.setHours(Number(splitted[0]));
-    this.date.setMinutes(Number(splitted[1]))
-    
-    this.appointment.date = this.datepipe.transform(this.date, 'dd-MM-yyyy HH:mm');
-    this.appointment.pharmacistId = 0;
-    this.pharmacyService.getPharmaciesForCounseling(this.appointment).subscribe(data => this.pharmacies = data);
-    this.pickDate = false;
-    this.pickPharmacy = true;
-    }
+      this.openSnackBar("You have three penalties. You cannot schedule counseling until next month.","Okay");
+    }  
+    });
   }
 
   cancel(){

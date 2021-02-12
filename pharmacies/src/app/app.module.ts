@@ -20,6 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Dialog } from './pharmacy-admin/leave-requests/leave-requests.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatMenuModule} from '@angular/material/menu';
     BrowserAnimationsModule,
     CommonModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatMenuModule,
     MatButtonModule,
     HttpClientModule,

@@ -45,7 +45,7 @@
       Subscribed pharmacies
     </button>
     
-    <button style="float: right;" mat-button routerLink="../patient/upload-qr">
+    <button style="float: right;" [disabled]="penalties" mat-button (click)="isSuspended()" >
       ePrescription
     </button>
     <button style="float: right;" mat-button routerLink="../patient/complaints">
