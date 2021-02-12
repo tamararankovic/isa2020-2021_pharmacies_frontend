@@ -8,6 +8,7 @@ Korišćene tehnologije:
 Pokretanje projekta:
   - https://angular.io/guide/setup-local#prerequisites
   - preko komandne linije pozicionirati se u folder pharmacies i kucati naredbu: npm install, zatim ng serve
+  - u pretraživač ukucati: http://localhost:4200/
   
 Napomene:
   - Ukoliko dođe go greške "[@types/googlemaps] Generic type 'MapHandlerMap<T>' requires 1 type argument(s)"
