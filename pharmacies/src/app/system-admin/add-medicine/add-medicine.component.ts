@@ -58,15 +58,20 @@ export class AddMedicineComponent implements OnInit {
         }
 }
   OnClick(){
-
-    this.dataSource.push(this.ingredient);
-    
-    var dataSource2 = this.dataSource;
-    this.dataSource= [];
-    for (let i=0; i<dataSource2.length; i++){
-      this.dataSource.push(dataSource2[i]);
+    if(this.ingredient == ""){
+      this.openSnackBar("Ingredient cannot be empty.", "Okay");
     }
+    else {
+      this.dataSource.push(this.ingredient);
     
+      var dataSource2 = this.dataSource;
+      this.dataSource= [];
+      for (let i=0; i<dataSource2.length; i++){
+        this.dataSource.push(dataSource2[i]);
+      }
+      
+    }
+   
   }
 
   public OnClick2(element) {
