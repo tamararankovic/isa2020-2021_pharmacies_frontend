@@ -14,3 +14,6 @@ Napomene:
   - Ukoliko dođe go greške "[@types/googlemaps] Generic type 'MapHandlerMap<T>' requires 1 type argument(s)"
     - npm install --save @types/googlemaps@3.39.12
     - ng serve
+
+  - Primeri QR kodova za testiranje funkcionalnosti eRecepy se nalaze u folderu: chooseQRcodes
+  
